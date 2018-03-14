@@ -1,4 +1,4 @@
-
+// SZIA SOMA
 public abstract class Entity {
 	private Tile tile;
 	
