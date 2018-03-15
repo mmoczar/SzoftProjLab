@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class WareHouse {
 	private int numOfBoxes;
@@ -8,6 +9,10 @@ public class WareHouse {
 	private int width;
 	
 	private Tile[][] tiles;
+	
+	public WareHouse(ArrayList<String> map) {
+		System.out.println("Létrehoztam");
+	}
 	
 	public void AddEntity(Entity e) {
 		
