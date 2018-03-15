@@ -51,7 +51,7 @@ public class Game {
 	}
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		Game game = new Game("the-file-name.txt");
+		Game game = new Game("game.txt");
 		
 	}
 }
