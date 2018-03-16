@@ -28,13 +28,30 @@ public class WareHouse {
 			}
 		}
 		
+		/*
+		 * A trapdoorokat és a switcheket a fájlban egymás után tároljuk
+		 * és a beolvasásnál a trapdor alatti switch tartozik hozzá.
+		 */
+		TrapDoor recenttrap = null;
+		
 		//Tile típusok hozzáadása
 		for(int i = 0; i < map.size(); i++) {
 			String[] temp_tile = map.get(i).split(" ");
 			int x,y;
-			x = Integer.parseInt(temp_tile[1]);
-			y = Integer.parseInt(temp_tile[2]);
+			x = Integer.parseInt(temp_tile[2]);
+			y = Integer.parseInt(temp_tile[1]);
+			
 			if(temp_tile[0].equals("Hole")) tiles[x][y] = new Hole(new Vec2D(x,y));
+			
+			else if(temp_tile[0].equals("Trapdoor")) {
+				recenttrap = new TrapDoor(new Vec2D(x,y));
+				tiles[x][y] = recenttrap;
+			}
+			
+			else if(temp_tile[0].equals("Switch")) {
+				tiles[x][y] = new Switch(new Vec2D(x,y), recenttrap);
+				recenttrap = null;
+			}
 		}
 		
 		

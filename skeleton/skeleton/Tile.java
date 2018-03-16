@@ -7,6 +7,10 @@ public class Tile {
 		position = pos;
 	}
 	
+	public Tile(Vec2D pos, TrapDoor trap) {
+		position = pos;
+	}
+	
 	public void Accept(Entity e, Direction d) {
 		
 	}
