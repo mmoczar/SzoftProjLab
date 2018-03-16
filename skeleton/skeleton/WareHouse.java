@@ -33,11 +33,12 @@ public class WareHouse {
 		 * és a beolvasásnál a trapdor alatti switch tartozik hozzá.
 		 */
 		TrapDoor recenttrap = null;
-		
+		Target recenttarget = null;
 		//Tile típusok hozzáadása
 		for(int i = 0; i < map.size(); i++) {
 			String[] temp_tile = map.get(i).split(" ");
 			int x,y;
+			
 			x = Integer.parseInt(temp_tile[2]);
 			y = Integer.parseInt(temp_tile[1]);
 			
@@ -52,6 +53,19 @@ public class WareHouse {
 				tiles[x][y] = new Switch(new Vec2D(x,y), recenttrap);
 				recenttrap = null;
 			}
+			
+			else if(temp_tile[0].equals("Target")) {
+				recenttarget = new Target(new Vec2D(x,y));
+				tiles[x][y] = recenttarget;
+				
+			}
+			
+			else if(temp_tile[0].equals("Box")) {
+				Box currentBox = new Box();
+				tiles[x][y].SetEntity(currentBox);
+				recenttarget.AddBox(currentBox);
+			}
+			
 		}
 		
 		

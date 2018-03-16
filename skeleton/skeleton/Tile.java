@@ -11,6 +11,9 @@ public class Tile {
 		position = pos;
 	}
 	
+	public void SetEntity(Entity e) {
+		entity = e;
+	}
 	public void Accept(Entity e, Direction d) {
 		
 	}
@@ -23,7 +26,7 @@ public class Tile {
 		return null;
 		
 	}
-	 // Debug függvény
+	 // Debug fï¿½ggvï¿½ny
 	public void Hi() {
 		System.out.print("O");
 	}
