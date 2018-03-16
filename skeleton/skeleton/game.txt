@@ -2,6 +2,11 @@
 10 10
 Hole 2 5
 Hole 5 5
+Trapdoor 3 6
+Switch 1 7
+Target 3 2
+Box 5 2
+Box 4 4
 +
 5 5
 Hole 2 2

@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -40,6 +41,9 @@ public class Game {
 	}
 	
 	public void ShowWHs() {
+		for(int i = 0; i < warehouses.length; i++) {
+			warehouses[i].draw();
+		}
 	}
 	
 	public void NewGame(WareHouse wh) {
@@ -52,6 +56,19 @@ public class Game {
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Game game = new Game("game.txt");
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String key = null;
+		do {
+			System.out.println("Show Warehouses (showwh)");
+			System.out.println("Exit (exit)");
+			
+			key = br.readLine();
+			
+			if(key.equals("showwh")) game.ShowWHs();
+			
+			
+		}while(!key.equals("exit"));
 		
 	}
 }

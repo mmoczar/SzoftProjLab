@@ -68,16 +68,16 @@ public class WareHouse {
 			
 		}
 		
-		
-		
-		/* Egyszerű debug kirajzolás*/
+		 
+	}
+	//Konzolos kirajzolás
+	public void draw() {
 		for(int i= 0; i<height; i++) {
 			for(int j = 0; j<width; j++) {
 				tiles[i][j].Hi();
 				}
 			System.out.println("");
 			}
-		 
 	}
 	
 	public void AddEntity(Entity e) {
