@@ -3,13 +3,20 @@ public class Switch extends Tile {
 
 	private TrapDoor hole;
 	
-	public Switch(Vec2D pos) {
-		super(pos);
+	public Switch() {
+	
 	}
 	
-	public Switch(Vec2D pos, TrapDoor trap) {
-		super(pos);
+	public Switch( TrapDoor trap) {
+	
 		hole = trap;
+	}
+	
+	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
+		UP = up;
+		DOWN = down;
+		LEFT = left;
+		RIGHT = right;
 	}
 
 	public void Hi() {

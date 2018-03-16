@@ -9,15 +9,19 @@ public class Worker extends Entity {
 	}
 
 	public void SetTile(Tile t) {
-		//Tile be�ll�t�sa
+		//Tile beállítása
 		tile = t;
 	}
 	
 	@Override
 	public boolean Move(Entity e, Direction d) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+			//Ellenőrzi, hogy a mozgás irányában van-e valaki
+			if(tile.GetEntityAt(d) == null) System.out.println("Mellttem nincs semmi");
+			else System.out.println("Itt van valami");
+			return false;
+				
+		}
+	
 
 	public boolean MovedBy(Box b) {
 		// TODO Auto-generated method stub

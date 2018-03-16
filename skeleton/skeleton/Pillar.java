@@ -2,12 +2,19 @@
 public class Pillar extends Tile {
 	
 	
-	public Pillar(Vec2D pos) {
-		super(pos);
+	public Pillar() {
+		
 	}
 
 	public void Accept(Entity e, Direction d) {
 		
+	}
+	
+	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
+		UP = up;
+		DOWN = down;
+		LEFT = left;
+		RIGHT = right;
 	}
 	
 	//Debug függvény

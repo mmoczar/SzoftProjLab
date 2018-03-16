@@ -1,9 +1,14 @@
 
 public class Hole extends Tile {
 
-	public Hole(Vec2D pos) {
-		super(pos);
-		// TODO Auto-generated constructor stub
+	public Hole() {
+	}
+	
+	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
+		UP = up;
+		DOWN = down;
+		LEFT = left;
+		RIGHT = right;
 	}
 	
 	public void Hi() {

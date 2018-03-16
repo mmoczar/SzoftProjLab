@@ -1,14 +1,17 @@
 
 public class Tile {
 	protected Vec2D position;
-	private Entity entity;
+	protected Entity entity = null;
 	
-	public Tile(Vec2D pos) {
-		position = pos;
+	protected Tile UP;
+	protected Tile DOWN;
+	protected Tile LEFT;
+	protected Tile RIGHT;
+	
+	public Tile() {
 	}
 	
-	public Tile(Vec2D pos, TrapDoor trap) {
-		position = pos;
+	public Tile(TrapDoor trap) {
 	}
 	
 	public void SetEntity(Entity e) {
@@ -22,17 +25,38 @@ public class Tile {
 		
 	}
 	
-	public Entity GetEntityAt(Vec2D v) {
+	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
+		UP = up;
+		DOWN = down;
+		LEFT = left;
+		RIGHT = right;
+	}
+	
+	//Amikor már egy másik Tile kérdezi
+	public Entity GetEntityAt() {
+		return entity;
+	}
+	
+	//Eza függvény amikor a worker kérdezi az alatta lévő mezőt, hogy mondja meg a szomszédon van-e Entity
+	public Entity GetEntityAt(Direction d) {
+		switch(d) {
+		case UP: return UP.GetEntityAt();
+		case DOWN: return DOWN.GetEntityAt();
+		case LEFT: return LEFT.GetEntityAt();
+		case RIGHT: return RIGHT.GetEntityAt();
+		default:
+			break;
+		}
 		return null;
 		
 	}
-	 // Debug f�ggv�ny
+	 // Debug fï¿½ggvï¿½ny
 	public void Hi() {
 		System.out.print("O");
 	}
 	
-	public void pos() {
-		System.out.println(position.toString());
+	public Vec2D pos() {
+		return position;
 	}
 	
 }

@@ -23,10 +23,12 @@ public class WareHouse {
 		//Alap feltöltés Pillarokkal és Tileokkal. Pillarok a szélén
 		for(int i= 0; i<height; i++) {
 			for(int j = 0; j<width; j++) {
-				if(i == 0 || i == height-1 || j == 0 || j == width-1) tiles[i][j] = new Pillar(new Vec2D(i,j));
-				else tiles[i][j] = new Tile(new Vec2D(i,j));
+				if(i == 0 || i == height-1 || j == 0 || j == width-1) tiles[i][j] = new Pillar();
+				else tiles[i][j] = new Tile();
 			}
 		}
+		
+		
 		
 		/*
 		 * A trapdoorokat és a switcheket a fájlban egymás után tároljuk
@@ -42,20 +44,20 @@ public class WareHouse {
 			x = Integer.parseInt(temp_tile[2]);
 			y = Integer.parseInt(temp_tile[1]);
 			
-			if(temp_tile[0].equals("Hole")) tiles[x][y] = new Hole(new Vec2D(x,y));
+			if(temp_tile[0].equals("Hole")) tiles[x][y] = new Hole();
 			
 			else if(temp_tile[0].equals("Trapdoor")) {
-				recenttrap = new TrapDoor(new Vec2D(x,y));
+				recenttrap = new TrapDoor();
 				tiles[x][y] = recenttrap;
 			}
 			
 			else if(temp_tile[0].equals("Switch")) {
-				tiles[x][y] = new Switch(new Vec2D(x,y), recenttrap);
+				tiles[x][y] = new Switch(recenttrap);
 				recenttrap = null;
 			}
 			
 			else if(temp_tile[0].equals("Target")) {
-				recenttarget = new Target(new Vec2D(x,y));
+				recenttarget = new Target();
 				tiles[x][y] = recenttarget;
 				
 			}
@@ -66,6 +68,14 @@ public class WareHouse {
 				recenttarget.AddBox(currentBox);
 			}
 			
+		}
+		
+		
+		//Szomszédok beállítása aperem kivételével
+		for(int i= 1; i<height-1; i++) {
+			for(int j = 1; j<width-1; j++) {
+				tiles[i][j].setNeighbor(tiles[i+1][j], tiles[i-1][j], tiles[i][j-1], tiles[i][j+1]);
+			}
 		}
 		
 		 

@@ -48,9 +48,13 @@ public class Game {
 	
 	public void NewGame(int wh) {
 		//Worker hozzáadása
-		Worker w = new Worker();
-		warehouses[wh].AddWorker(w, new Vec2D(1,1));
-		System.out.println(w.tile.position.toString());
+		Worker w1 = new Worker();
+		Worker w2 = new Worker();
+		warehouses[wh].AddWorker(w1, new Vec2D(1,1));
+		warehouses[wh].AddWorker(w2, new Vec2D(2,1));
+		w1.Move(null, Direction.RIGHT);
+		w1.Move(null, Direction.UP);
+		//System.out.println(w.tile.position.toString());
 		
 		
 	}
@@ -65,6 +69,7 @@ public class Game {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String key = null;
 		do {
+			System.out.println("Start (start)");
 			System.out.println("Show Warehouses (showwh)");
 			System.out.println("Exit (exit)");
 			
