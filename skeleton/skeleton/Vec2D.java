@@ -23,4 +23,9 @@ public class Vec2D {
 		X = x;
 		Y = y;
 	}
+	
+	
+	public String toString() {
+		return X + " " + Y ;
+	}
 }

@@ -31,5 +31,8 @@ public class Tile {
 		System.out.print("O");
 	}
 	
+	public void pos() {
+		System.out.println(position.toString());
+	}
 	
 }

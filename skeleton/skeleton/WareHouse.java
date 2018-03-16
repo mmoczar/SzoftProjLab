@@ -80,8 +80,11 @@ public class WareHouse {
 			}
 	}
 	
-	public void AddEntity(Entity e) {
-		
+	public void AddWorker(Worker w, Vec2D pos) { 
+		//Worker elhelyezése a pályán plusz worker tile mezőjének beállítása
+		w.SetTile(tiles[pos.getX()][pos.getY()]);
+		tiles[pos.getX()][pos.getY()].SetEntity(w);
+
 	}
 	
 	public Tile GetTileAt(Vec2D v) {

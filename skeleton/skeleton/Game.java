@@ -46,7 +46,12 @@ public class Game {
 		}
 	}
 	
-	public void NewGame(WareHouse wh) {
+	public void NewGame(int wh) {
+		//Worker hozzáadása
+		Worker w = new Worker();
+		warehouses[wh].AddWorker(w, new Vec2D(1,1));
+		System.out.println(w.tile.position.toString());
+		
 		
 	}
 	
@@ -66,7 +71,7 @@ public class Game {
 			key = br.readLine();
 			
 			if(key.equals("showwh")) game.ShowWHs();
-			
+			else if(key.equals("start")) game.NewGame(1);
 			
 		}while(!key.equals("exit"));
 		

@@ -1,6 +1,6 @@
 // SZIA SOMA
 public abstract class Entity {
-	private Tile tile;
+	protected Tile tile;
 	
 	public abstract boolean Move (Entity e, Direction d);
 	

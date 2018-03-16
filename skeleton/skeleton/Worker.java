@@ -4,6 +4,14 @@ public class Worker extends Entity {
 	
 	private int numOfPlacedBoxes;
 	
+
+	public Worker() {
+	}
+
+	public void SetTile(Tile t) {
+		//Tile beállítása
+		tile = t;
+	}
 	
 	@Override
 	public boolean Move(Entity e, Direction d) {
@@ -39,5 +47,7 @@ public class Worker extends Entity {
 		numOfPlacedBoxes++;
 	}
 	
-
+	public void inf() {
+		System.out.println("Worker on");
+	}
 }
