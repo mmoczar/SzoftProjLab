@@ -33,13 +33,10 @@ public class Tile {
 	}
 	//Worker vagy Box keri ezt az Acceptet
 	public void Accept(Entity e, Direction d) throws IOException {
-<<<<<<< HEAD
-		//oszlop figyelese
-		boolean isPillar = false;
-=======
+
 		Szkeleton.kiir(">", "Tile", "Accept(e,d)");
 		Szkeleton.kiir("<", "Tile", "Accept(e,d)");
->>>>>>> 4de1573706b208ca41ca2c5a4416cd85ab11aec0
+
 		
 	}
 	

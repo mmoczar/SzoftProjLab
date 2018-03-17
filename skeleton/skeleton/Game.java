@@ -38,6 +38,7 @@ public class Game {
 		currentWarehouse.AddWorker(w1, new Vec2D(1,1));
 		w1.Move(null, Direction.UP);
 		Szkeleton.kiir("<", "Game", "NewGame()");
+
 	}
 
 	
