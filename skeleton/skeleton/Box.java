@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 public class Box extends Entity {
 	
@@ -18,7 +19,9 @@ public class Box extends Entity {
 	
 	// A lada hat a kapcsolora
 	@Override
-	public boolean SwitchAction() {
+	public boolean SwitchAction() throws IOException {
+		Szkeleton.kiir(">", "Box", "SwitchAction()");
+		Szkeleton.kiir("<", "Box", "SwitchAction(): box");
 		return true;
 	}
 

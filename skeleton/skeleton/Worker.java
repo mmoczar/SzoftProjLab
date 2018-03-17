@@ -41,7 +41,9 @@ public class Worker extends Entity {
 	
 	// a munkas nem hat a kapcsolora
 	@Override
-	public boolean SwitchAction() {
+	public boolean SwitchAction() throws IOException {
+		Szkeleton.kiir(">", "Worker", "SwitchAction()");
+		Szkeleton.kiir("<", "Worker", "SwitchAction(): false");
 		return false;
 	}
 
