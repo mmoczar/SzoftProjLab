@@ -7,13 +7,10 @@ public class Hole extends Tile {
 		Szkeleton.kiir("<", "Hole", "Hole()");
 	}
 	
-	public boolean Accept(Entity e) {
-		entity = e;
-		
-		e.Hi();
+	public boolean Accept(Entity e) throws IOException {
+		Szkeleton.kiir(">", "Hole", "Accept(e)");
 		System.out.println(" leesett!");
-		e.reduceNum();
-		e = null;
+		Szkeleton.kiir("<", "Hole", "Accept(e)");
 		return false;
 		
 	}

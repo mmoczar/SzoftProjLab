@@ -7,7 +7,7 @@ public abstract class Entity {
 	
 	public abstract boolean Move (Entity e, Direction d) throws IOException;
 	
-	public abstract boolean MovedBy(Entity e);
+	public abstract boolean MovedBy(Entity e) throws IOException;
 	
 	public abstract boolean SwitchAction() throws IOException;
 	
@@ -16,4 +16,6 @@ public abstract class Entity {
 	//debug
 	
 	public abstract void Hi();
+
+	public abstract boolean ToPillar() throws IOException;
 }

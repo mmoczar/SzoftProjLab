@@ -4,7 +4,7 @@ public class Worker extends Entity {
 
 	
 	private int numOfPlacedBoxes;
-	
+	private Entity byEntity;
 
 	public Worker() throws IOException {
 		Szkeleton.kiir(">", "Worker", "Worker()");
@@ -22,19 +22,46 @@ public class Worker extends Entity {
 	@Override
 	public boolean Move(Entity e, Direction d) throws IOException {
 			//Ellenorzi hogy az adott iranyban van-e valaki
-			
+			byEntity = e;
+			if(d == Direction.UP) {
 			Szkeleton.kiir(">", "Worker", "Move()");
-			
 			Tile tile = new Tile();
 			Entity nb = tile.GetEntityAt(Direction.UP);
-			
+		
 			if(nb == null) {
-				tile.Accept(this, d);
+				if(tile.Accept(this))
+				{
+					Szkeleton.kiir("<", "Worker", "Move(): true");
+					return true;
+				}
+				Szkeleton.kiir("<", "Worker", "Move(): false");
+				return false;
+			}
+			else {
+				if(nb.MovedBy(e)) {
+					if(nb.Move(this, Direction.UP)) {
+						Szkeleton.kiir("<", "Worker", "Move(): true");
+						return true;
+					}
+				}
+			}
 			}
 			
+			if(d == Direction.DOWN) {
+				Tile tile = new Hole();
+				tile.Accept(this);
+				Szkeleton.kiir("<", "Worker", "Move(): true");
+				return true;
+			}
+			
+			if(d == Direction.RIGHT) {
+				Tile tile = new Pillar();
+				if(e != null) {
+					tile.Accept(this);
+				}
+			}
 			
 			Szkeleton.kiir("<", "Worker", "Move(): false");
-			
 			return false;
 				
 	}
@@ -48,10 +75,15 @@ public class Worker extends Entity {
 	}
 
 	@Override
-	public boolean MovedBy(Entity e) {
+	public boolean MovedBy(Entity e) throws IOException {
+		Szkeleton.kiir(">", "Worker", "MovedBy()");
 		
-		if(e == null) return false;
+		if(e == null) {
+			Szkeleton.kiir("<", "Worker", "MovedBy(): false");
+			return false;
+		} 
 		
+		Szkeleton.kiir("<", "Worker", "MovedBy(): true");
 		return true;
 		
 	}
@@ -73,5 +105,18 @@ public class Worker extends Entity {
 	public void reduceNum() {
 		Game.getCurrentWH().reduceNumOfWorkers();
 		
+	}
+
+	@Override
+	public boolean ToPillar() throws IOException {
+		
+		Szkeleton.kiir(">", "Worker", "ToPillar()");
+		if(byEntity != null) {
+			System.out.println("Nullos vagyok... Haltam...");
+			Szkeleton.kiir("<", "Worker", "ToPillar(): true");
+			return true;
+		}
+		Szkeleton.kiir("<", "Worker", "ToPillar(): false");
+		return false;
 	}
 }

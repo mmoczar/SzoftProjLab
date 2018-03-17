@@ -71,10 +71,28 @@ public class Game {
 			
 			//WH-k kilistazasa
 			else if(key.equals("showwh")) game.ShowWHs();
+			
+			//Player mozgások - tolások
 			else if(key.equals("playermove")) {
 				Worker player = new Worker();
 				player.Move(null, Direction.UP);
 			} 
+			
+			else if(key.equals("pth")) {
+				Worker player = new Worker();
+				player.Move(null, Direction.DOWN);
+			} 
+			
+			else if(key.equals("bth")) {
+				Box box = new Box();
+				box.Move(null, Direction.DOWN);
+			} 
+			
+			else if(key.equals("ptp")) {
+				Worker player = new Worker();
+				player.Move(new Box(), Direction.RIGHT);
+			} 
+			
 			//Palya valasztas es jatek inditas
 			else if(key.equals("start")) {
 				readWHs(); // ujra beolvassuk a fajlt, hogy az eredeti palyaallapotokat kapjuk vissza

@@ -25,10 +25,9 @@ public class Tile {
 	
 	//Szomszedos Tile keri ezt az Acceptet
 	public boolean Accept(Entity e) throws IOException {
-		entity = e;
-		e.SetTile(this);
-		System.out.println("Sikeres Mozgas"); // TODO ?? (bence)
-		return false;
+		Szkeleton.kiir(">", "Tile", "Accept(e)");
+		Szkeleton.kiir("<", "Tile", "Accept(e): true");
+		return true;
 		
 	}
 	//Worker vagy Box keri ezt az Acceptet
@@ -63,11 +62,11 @@ public class Tile {
 	public Entity GetEntityAt(Direction d) throws IOException {
 		Szkeleton.kiir(">", "Tile", "GetEntityAt(d)");
 		switch(Szkeleton.kiir("?", "Mi van arra? (semmi, box, worker) ", "")) {
-			case "semmi": Szkeleton.kiir("<", "Tile", "GetEntityAt(d)");
+			case "semmi": Szkeleton.kiir("<", "Tile", "GetEntityAt(d): Entity");
 						  return null;
-			case "box": Szkeleton.kiir("<", "Tile", "GetEntityAt(d)");
+			case "box": Szkeleton.kiir("<", "Tile", "GetEntityAt(d): Entity");
 						return new Box();
-			case "worker": Szkeleton.kiir("<", "Tile", "GetEntityAt(d)");
+			case "worker": Szkeleton.kiir("<", "Tile", "GetEntityAt(d): Entity");
 						   return new Worker();
 		}
 		return null;

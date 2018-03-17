@@ -9,8 +9,20 @@ public class Pillar extends Tile {
 	}
 
 	//oszlop acceptje
-	public boolean Accept(Entity e) {
-		System.out.println("Ez egy oszlop"); // TODO ezmiez? :D (bence)
+	public boolean Accept(Entity e) throws IOException {
+		Szkeleton.kiir(">", "Pillar", "Accept(e)");
+		if(e.ToPillar()) {
+			Szkeleton.kiir("<", "Pillar", "Accept(e): true");
+			return true;
+		}
+		Szkeleton.kiir("<", "Pillar", "Accept(e): false");
+		return false;
+	}
+	
+	public boolean WorkerToPillar(Worker w) throws IOException {
+		Szkeleton.kiir(">", "Pillar", "Accept()");
+		System.out.println("Ezt a playert fel kell kanalazni");
+		Szkeleton.kiir("<", "Pillar", "Accept(): true");
 		return true;
 	}
 	
