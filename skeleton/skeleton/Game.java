@@ -58,15 +58,7 @@ public class Game {
 			key = Szkeleton.kiir("?", "", "");
 			
 			
-			//parancsok listazasa
-			if(key.equals("help")) {
-				System.out.println("-   Start (start)");
-				System.out.println("-   Show Warehouses (showwh)");
-				System.out.println("-   Exit (exit)");
-			}
-			
-			//WH-k kilistazasa
-			else if(key.equals("showwh")) game.ShowWHs();
+			if(key.equals("showwh")) game.ShowWHs();
 			else if(key.equals("playermove")) {
 				Worker player = new Worker();
 				player.Move(null, Direction.UP);
@@ -77,6 +69,11 @@ public class Game {
 				key = Szkeleton.kiir("?", "Valassz palyat! (0-2) ", "");
 				Szkeleton.kiir("-", "currentWareHouse bellitva a megadott palyara ("+key+")", "");
 				NewGame();
+			} else {
+				System.out.println("-   Start (start)");
+				System.out.println("-   Show Warehouses (showwh)");
+				System.out.println("-   Move player (playermove)");
+				System.out.println("-   Exit (exit)");
 			}
 			//Szkeleton.melyseg--;
 		} while(!key.equals("exit"));
