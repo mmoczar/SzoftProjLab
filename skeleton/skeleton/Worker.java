@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 public class Worker extends Entity {
 
@@ -5,32 +6,34 @@ public class Worker extends Entity {
 	private int numOfPlacedBoxes;
 	
 
-	public Worker() {
+	public Worker() throws IOException {
+		Szkeleton.kiir(">", "Worker", "Worker()");
+		Szkeleton.kiir("<", "Worker", "Worker()");
 	}
 
-	public void SetTile(Tile t) {
+	public void SetTile(Tile t) throws IOException {
 		//Tile beallotsa
+		Szkeleton.kiir(">", "Worker", "SetTile(t)");
+		Szkeleton.kiir("<", "Worker", "SetTile(t)");
 		tile = t;
 	}
 	
 	//Worker mozgatasa
 	@Override
-	public boolean Move(Entity e, Direction d) {
+	public boolean Move(Entity e, Direction d) throws IOException {
 			//Ellenorzi hogy az adott iranyban van-e valaki
-			Entity nb = tile.GetEntityAt(d); 
-			if(nb == null){
-				System.out.println("Mellttem nincs semmi");
+			
+			Szkeleton.kiir(">", "Worker", "Move()");
+			
+			Tile tile = new Tile();
+			Entity nb = tile.GetEntityAt(Direction.UP);
+			
+			if(nb == null) {
 				tile.Accept(this, d);
 			}
-			else {
-				System.out.println("Itt van valami");
-				if(nb.MovedBy(e)) {
-					System.out.println("El tudom tolni");
-					nb.Move(this, d);
-					tile.Accept(this, d);
-				} 
-				else System.out.println("Nem tudom tolni");
-			} 
+			
+			
+			Szkeleton.kiir("<", "Worker", "Move()");
 			
 			return false;
 				

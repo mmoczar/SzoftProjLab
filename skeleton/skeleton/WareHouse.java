@@ -10,7 +10,7 @@ public class WareHouse {
 	private int height;
 	private int width;
 	
-	private Tile[][] tiles;
+	private Tile[][] tiles = new Tile[2][2];
 	
 	public WareHouse(ArrayList<String> map) throws IOException {
 		Szkeleton.kiir(">", "WareHouse", "WareHouse(map)");
@@ -33,11 +33,13 @@ public class WareHouse {
 			}
 	}
 	
-	public void AddWorker(Worker w, Vec2D pos) { 
+	public void AddWorker(Worker w, Vec2D pos) throws IOException { 
+		Szkeleton.kiir(">", "WareHouse", "AddWorker(w, pos)");
 		//Worker elhelyezese a palyan plusz worker tile mezojenek beallitasa
-		w.SetTile(tiles[pos.getX()][pos.getY()]);
-		tiles[pos.getX()][pos.getY()].SetEntity(w);
-		numOfWorkers++;
+		Tile t = new Tile();
+		w.SetTile(t);
+		t.SetEntity(w);
+		Szkeleton.kiir("<", "WareHouse", "AddWorker(w, pos)");
 	}
 	
 	public Tile GetTileAt(Vec2D v) {

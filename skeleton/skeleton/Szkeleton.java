@@ -4,8 +4,17 @@ import java.io.InputStreamReader;
 
 public class Szkeleton {
 	public static int melyseg = 0;
-	
+	//Kiir, illetve, ha inputot varunk, akkor azt bekeri a felhasznalotol.
+	// ? eseten: Az osztaly stringbe lehet kerdest feltenni.
+	// - esetem: Az  osztaly stringbe lehet beadni a kommentet. Ilyenkor a melyseg NEM novekszik.
 	public static String kiir(String tipus, String osztaly, String fuggveny) throws IOException {
+		if (tipus == "-") {
+			System.out.print(tipus);
+			for (int i=0; i<melyseg; i++)
+				System.out.print("   ");
+			System.out.println(osztaly);
+			return "";
+		}
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		if (tipus == ">" || tipus == "?") melyseg++;
 		System.out.print(tipus);
@@ -15,8 +24,10 @@ public class Szkeleton {
 		if (tipus == "<") System.out.print("<-");
 		if (tipus != "?") System.out.println("["+osztaly+"]."+fuggveny);
 		if (tipus == "<") melyseg--;
-		if (tipus == "?")
+		if (tipus == "?") {
+			System.out.print(osztaly);
 			return br.readLine();
+		}
 		else return "";
 	}
 }

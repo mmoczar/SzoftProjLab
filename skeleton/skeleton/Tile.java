@@ -17,12 +17,14 @@ public class Tile {
 	public Tile(TrapDoor trap) {
 	}
 	
-	public void SetEntity(Entity e) {
+	public void SetEntity(Entity e) throws IOException {
+		Szkeleton.kiir(">", "Tile", "SetEntity(e)");
 		entity = e;
+		Szkeleton.kiir("<", "Tile", "SetEntity(e)");
 	}
 	
 	//Szomszedos Tile keri ezt az Acceptet
-	public boolean Accept(Entity e) {
+	public boolean Accept(Entity e) throws IOException {
 		entity = e;
 		e.SetTile(this);
 		System.out.println("Sikeres Mozgás");
@@ -30,22 +32,15 @@ public class Tile {
 		
 	}
 	//Worker vagy Box keri ezt az Acceptet
-	public void Accept(Entity e, Direction d) {
+	public void Accept(Entity e, Direction d) throws IOException {
+<<<<<<< HEAD
 		//oszlop figyelese
 		boolean isPillar = false;
+=======
+		Szkeleton.kiir(">", "Tile", "Accept(e,d)");
+		Szkeleton.kiir("<", "Tile", "Accept(e,d)");
+>>>>>>> 4de1573706b208ca41ca2c5a4416cd85ab11aec0
 		
-		//Mozgas iranyaba elfogadat kerni
-		switch(d) {
-		case UP: isPillar = tUP.Accept(e); break;
-		case DOWN: isPillar = tDOWN.Accept(e); break;
-		case LEFT: isPillar = tLEFT.Accept(e); break;
-		case RIGHT: isPillar = tRIGHT.Accept(e); break;
-		default:
-			break;
-		}
-		
-		//kitorolni az elmozgott entity referenciajat
-		if(!isPillar) entity = null;
 	}
 	
 	public void Remove(Entity e) {
@@ -65,14 +60,12 @@ public class Tile {
 	}
 	
 	//Ez a fuggveny, amikor a worker kerdezi az alatta levo mezot, hogy mondja meg a szomszedon van-e Entity
-	public Entity GetEntityAt(Direction d) {
-		switch(d) {
-		case UP: return tUP.GetEntityAt(); 
-		case DOWN: return tDOWN.GetEntityAt(); 
-		case LEFT: return tLEFT.GetEntityAt(); 
-		case RIGHT: return tRIGHT.GetEntityAt();
-		default:
-			break;
+	public Entity GetEntityAt(Direction d) throws IOException {
+		Szkeleton.kiir(">", "Tile", "GetEntityAt(d)");
+		switch(Szkeleton.kiir("?", "", "")) {
+		case"null": Szkeleton.kiir("<", "Tile", "GetEntityAt(d)"); return null;
+		case"box": Szkeleton.kiir("<", "Tile", "GetEntityAt(d)");   return new Box();
+		case"worker": Szkeleton.kiir("<", "Tile", "GetEntityAt(d)"); return new Worker();
 		}
 		return null;
 		
