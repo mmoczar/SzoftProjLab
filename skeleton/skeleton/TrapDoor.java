@@ -13,7 +13,7 @@ public class TrapDoor extends Tile {
 	
 	public boolean GetState() throws IOException {
 		Szkeleton.kiir(">", "TrapDoor", "GetState()");
-		Szkeleton.kiir("<", "TrapDoor", "GetState()");
+		Szkeleton.kiir("<", "TrapDoor", "GetState(): "+ state);
 		return state;
 	}
 	
@@ -35,11 +35,13 @@ public class TrapDoor extends Tile {
 	// eloszor ralep az entitas, es ha nyitva van, akkor leejti
 	public void Accept(Entity e, Direction d) throws IOException {
 		super.Accept(e, d);
-		if(!state) DropEntity(e);
+		if(!state) DropEntity(e); // TODO Nem a true a nyitott allapot??? (bence)
 	}
 	
 	public void DropEntity(Entity e) throws IOException {
+		Szkeleton.kiir(">", "TrapDoor", "DropEntity(e)");
 		Remove(e);
+		Szkeleton.kiir("<", "TrapDoor", "DropEntity(e)");
 	}
 	
 }

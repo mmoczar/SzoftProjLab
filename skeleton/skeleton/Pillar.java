@@ -10,7 +10,7 @@ public class Pillar extends Tile {
 
 	//oszlop acceptje
 	public boolean Accept(Entity e) {
-		System.out.println("Ez egy oszlop");
+		System.out.println("Ez egy oszlop"); // TODO ezmiez? :D (bence)
 		return true;
 	}
 	

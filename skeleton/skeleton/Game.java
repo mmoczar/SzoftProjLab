@@ -105,9 +105,13 @@ public class Game {
 			else if(key.equals("eot")) {
 				Worker worker = new Worker();
 				TrapDoor trapdoor = new TrapDoor();
-				trapdoor.SetEntity(worker); // a worker a csapoajton all
 				Switch swi = new Switch();
 				swi.SetTrapDoor(trapdoor);
+				Szkeleton.kiir("-", "Eddig csak konstruktor hivasok.", "");
+				Szkeleton.kiir("-", "A worker a csapoajton all:", "");
+				trapdoor.SetEntity(worker); // a worker a csapoajton all
+				Szkeleton.kiir("-", "A worker leesik:", "");
+				
 				swi.Accept(new Box(), Direction.DOWN);
 			}
 			

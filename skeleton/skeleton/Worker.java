@@ -33,7 +33,7 @@ public class Worker extends Entity {
 			}
 			
 			
-			Szkeleton.kiir("<", "Worker", "Move()");
+			Szkeleton.kiir("<", "Worker", "Move(): false");
 			
 			return false;
 				
