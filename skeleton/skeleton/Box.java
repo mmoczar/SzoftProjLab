@@ -15,11 +15,11 @@ public class Box extends Entity {
 	public boolean MovedBy(Entity e) {
 		return true;
 	}
-
+	
+	// A lada hat a kapcsolora
 	@Override
 	public boolean SwitchAction() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

@@ -37,12 +37,12 @@ public class Worker extends Entity {
 			
 			return false;
 				
-		}
+	}
 	
-
+	// a munkas nem hat a kapcsolora
 	@Override
 	public boolean SwitchAction() {
-		return true;
+		return false;
 	}
 
 	@Override

@@ -62,6 +62,8 @@ public class Game {
 			if(key.equals("help")) {
 				System.out.println("-   Start (start)");
 				System.out.println("-   Show Warehouses (showwh)");
+				System.out.println("-   Box on Switch, switch trapdoor's state (bos)");
+				System.out.println("-   Worker on Switch, nothing happens (wos)");
 				System.out.println("-   Exit (exit)");
 			}
 			
@@ -79,6 +81,23 @@ public class Game {
 				NewGame();
 			}
 			//Szkeleton.melyseg--;
+			
+			else if(key.equals("bos")) {
+				Box box = new Box();
+				Switch swi = new Switch();
+				TrapDoor trapdoor = new TrapDoor();
+				swi.SetTrapDoor(trapdoor);
+				swi.Accept(box, Direction.DOWN);
+			}
+			
+			else if(key.equals("wos")) {
+				Worker worker = new Worker();
+				Switch swi = new Switch();
+				TrapDoor trapdoor = new TrapDoor();
+				swi.SetTrapDoor(trapdoor);
+				swi.Accept(worker, Direction.DOWN);
+			}
+			
 		} while(!key.equals("exit"));
 		
 	}
