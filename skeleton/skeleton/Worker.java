@@ -22,21 +22,20 @@ public class Worker extends Entity {
 				System.out.println("Mellttem nincs semmi");
 				tile.Accept(this, d);
 			}
-			else System.out.println("Itt van valami");
+			else {
+				System.out.println("Itt van valami");
+				if(nb.MovedBy(e)) {
+					System.out.println("El tudom tolni");
+					nb.Move(this, d);
+					tile.Accept(this, d);
+				} 
+				else System.out.println("Nem tudom tolni");
+			} 
 			
 			return false;
 				
 		}
 	
-
-	public boolean MovedBy(Box b) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	public boolean MovedBy(Worker w) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public boolean SwitchAction() {
@@ -45,8 +44,11 @@ public class Worker extends Entity {
 
 	@Override
 	public boolean MovedBy(Entity e) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		if(e == null) return false;
+		
+		return true;
+		
 	}
 	
 	public void Die() {

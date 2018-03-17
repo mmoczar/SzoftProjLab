@@ -7,14 +7,13 @@ public class Box extends Entity {
 	
 	@Override
 	public boolean Move(Entity e, Direction d) {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println("Move - Box");
+		return true;
 	}
 
 	@Override
 	public boolean MovedBy(Entity e) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -33,6 +32,10 @@ public class Box extends Entity {
 	public void reduceNum() {
 		Game.getCurrentWH().reduceNumOfBoxes();
 		Game.getCurrentWH().reduceNumOfMovableBoxes();
+	}
+	public void SetTile(Tile t) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
