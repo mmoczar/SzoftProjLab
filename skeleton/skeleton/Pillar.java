@@ -23,7 +23,7 @@ public class Pillar extends Tile {
 		return null;
 	}
 	
-	//Debug függvény
+	//Debug fuggveny
 	public void Hi() {
 		System.out.print("X");
 	}

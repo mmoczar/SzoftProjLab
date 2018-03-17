@@ -25,9 +25,9 @@ public class Tile {
 		return false;
 		
 	}
-	//Worker vagy Box kéri ezt az Acceptet
+	//Worker vagy Box keri ezt az Acceptet
 	public void Accept(Entity e, Direction d) {
-		//oszlop figyelése
+		//oszlop figyelese
 		boolean isPillar = false;
 		
 		//Mozgas iranyaba elfogadat kerni
@@ -55,12 +55,12 @@ public class Tile {
 		tRIGHT = right;
 	}
 	
-	//Amikor már egy másik Tile kérdezi
+	//Amikor mar egy masik Tile kerdezi
 	public Entity GetEntityAt() {
 		return entity;
 	}
 	
-	//Eza függvény amikor a worker kérdezi az alatta lévő mezőt, hogy mondja meg a szomszédon van-e Entity
+	//Ez a fuggveny, amikor a worker kerdezi az alatta levo mezot, hogy mondja meg a szomszedon van-e Entity
 	public Entity GetEntityAt(Direction d) {
 		switch(d) {
 		case UP: return tUP.GetEntityAt(); 
@@ -73,7 +73,7 @@ public class Tile {
 		return null;
 		
 	}
-	 // Debug fï¿½ggvï¿½ny
+	 // Debug fuggveny
 	public void Hi() {
 		if(entity == null) System.out.print("O");
 		else entity.Hi();

@@ -17,12 +17,12 @@ public class Game {
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 		    String line;
 		    
-		    //Első sor beolvasása, ami egy szám és megmutatja hány raktár lesz
+		    //Elso sor beolvasasa, ami egy szam és megmutatja hany raktar lesz
 		    line = br.readLine();
-		    //Generikus tömb létrahozása a megfelelő számra
+		    //Generikus tomb letrahozasa a megfelelo szamra
 		    warehouses = (WareHouse[]) Array.newInstance(WareHouse.class, Integer.parseInt(line));
 		    
-		    //Mapok beolvasása fájlból ha, új map akkor a fáljban azt egy + jelzi
+		    //Mapok beolvasasa fajlbol, ha uj map, akkor a faljban azt egy + jelzi
 		    ArrayList<String> map = new ArrayList<String>();
 		    int i = 0;
 		    while ((line = br.readLine()) != null) {
@@ -47,7 +47,7 @@ public class Game {
 	}
 	
 	public void NewGame(int wh) {
-		//Worker hozzáadása
+		//Worker hozzaadasa
 		Worker w1 = new Worker();
 		Worker w2 = new Worker();
 		warehouses[wh].AddWorker(w1, new Vec2D(1,1));

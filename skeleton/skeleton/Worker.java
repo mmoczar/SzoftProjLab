@@ -9,7 +9,7 @@ public class Worker extends Entity {
 	}
 
 	public void SetTile(Tile t) {
-		//Tile beállítása
+		//Tile beallotsa
 		tile = t;
 	}
 	

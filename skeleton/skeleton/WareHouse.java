@@ -12,15 +12,15 @@ public class WareHouse {
 	private Tile[][] tiles;
 	
 	public WareHouse(ArrayList<String> map) {
-		//Map dimenzióinak kiszedése az első sorból
+		//Map dimenzioinak kiszedese az elso sorbol
 		String[] dimension = map.get(0).split(" ");
 		width = Integer.parseInt(dimension[0]);
 		height = Integer.parseInt(dimension[1]);
 		map.remove(0);
-		//Generikus tömb beállítása
+		//Generikus tomb beallitasa
 		tiles = (Tile[][]) Array.newInstance(Tile.class, Integer.parseInt(dimension[0]),Integer.parseInt(dimension[1]));
 		
-		//Alap feltöltés Pillarokkal és Tileokkal. Pillarok a szélén
+		//Alap feltoltes Pillarokkal es Tileokkal. Pillarok a szelen
 		for(int i= 0; i<height; i++) {
 			for(int j = 0; j<width; j++) {
 				if(i == 0 || i == height-1 || j == 0 || j == width-1) tiles[i][j] = new Pillar();
@@ -31,12 +31,12 @@ public class WareHouse {
 		
 		
 		/*
-		 * A trapdoorokat és a switcheket a fájlban egymás után tároljuk
-		 * és a beolvasásnál a trapdor alatti switch tartozik hozzá.
+		 * A trapdoorokat es a switcheket a fajlban egymas utan taroljuk
+		 * es a beolvasasnal a trapdor alatti switch tartozik hozza.
 		 */
 		TrapDoor recenttrap = null;
 		Target recenttarget = null;
-		//Tile típusok hozzáadása
+		//Tile tipusok hozzaadasa
 		for(int i = 0; i < map.size(); i++) {
 			String[] temp_tile = map.get(i).split(" ");
 			int x,y;
@@ -71,7 +71,7 @@ public class WareHouse {
 		}
 		
 		
-		//Szomszédok beállítása aperem kivételével
+		//Szomszedok beallitasa a perem kivetelevel
 		for(int i= 1; i<height-1; i++) {
 			for(int j = 1; j<width-1; j++) {
 				tiles[i][j].setNeighbor(tiles[i+1][j], tiles[i-1][j], tiles[i][j-1], tiles[i][j+1]);
@@ -80,7 +80,7 @@ public class WareHouse {
 		
 		 
 	}
-	//Konzolos kirajzolás
+	//Konzolos kirajzolas
 	public void draw() {
 		for(int i= height-1; i>=0; i--) {
 			for(int j = 0; j<width; j++) {
@@ -91,7 +91,7 @@ public class WareHouse {
 	}
 	
 	public void AddWorker(Worker w, Vec2D pos) { 
-		//Worker elhelyezése a pályán plusz worker tile mezőjének beállítása
+		//Worker elhelyezese a palyan plusz worker tile mezojenek beallitasa
 		w.SetTile(tiles[pos.getX()][pos.getY()]);
 		tiles[pos.getX()][pos.getY()].SetEntity(w);
 
