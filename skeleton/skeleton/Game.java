@@ -30,18 +30,7 @@ public class Game {
 		Szkeleton.kiir("<", "Game", "ShowWHs()");
 	}
 	
-	public static void NewGame() { //kiszedtem az int parametert, mivel a palya kivalasztasa utan mar tudjuk, melyik palyan folyik a jatek (currentWarehouse), igy felesleges atadni a sorszamat.
-		//Worker hozzaadasa
-		Worker w1 = new Worker();
-		Worker w2 = new Worker();
-		currentWarehouse.AddWorker(w1, new Vec2D(1,1));
-		currentWarehouse.AddWorker(w2, new Vec2D(1,2));
-		//w2.Move(w2, Direction.UP);
-		//w2.Move(w2, Direction.UP);
-		w1.Move(null, Direction.UP);
-		w1.Move(null, Direction.RIGHT);
-		//System.out.println(w.tile.position.toString());
-		
+	public static void NewGame() { 
 		
 	}
 	
@@ -71,7 +60,10 @@ public class Game {
 			
 			//WH-k kilistazasa
 			else if(key.equals("showwh")) game.ShowWHs();
-			
+			else if(key.equals("playermove")) {
+				Worker player = new Worker();
+				player.Move(null, Direction.UP);
+			} 
 			//Palya valasztas es jatek inditas
 			else if(key.equals("start")) {
 				readWHs(); // ujra beolvassuk a fajlt, hogy az eredeti palyaallapotokat kapjuk vissza
