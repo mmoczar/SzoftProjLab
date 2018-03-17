@@ -40,8 +40,9 @@ public class Tile {
 		
 	}
 	
-	public void Remove(Entity e) {
-		
+	public void Remove(Entity e) throws IOException {
+		Szkeleton.kiir(">", "Tile", "Remove(e)");
+		Szkeleton.kiir("<", "Tile", "Remove(e)");
 	}
 	
 	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {

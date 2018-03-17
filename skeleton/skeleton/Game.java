@@ -64,6 +64,7 @@ public class Game {
 				System.out.println("-   Show Warehouses (showwh)");
 				System.out.println("-   Box on Switch, switch trapdoor's state (bos)");
 				System.out.println("-   Worker on Switch, nothing happens (wos)");
+				System.out.println("-   Entity on TrapDoor, TrapDoor opens -> Entity falls (eot)");
 				System.out.println("-   Exit (exit)");
 			}
 			
@@ -96,6 +97,15 @@ public class Game {
 				TrapDoor trapdoor = new TrapDoor();
 				swi.SetTrapDoor(trapdoor);
 				swi.Accept(worker, Direction.DOWN);
+			}
+			
+			else if(key.equals("eot")) {
+				Worker worker = new Worker();
+				TrapDoor trapdoor = new TrapDoor();
+				trapdoor.SetEntity(worker); // a worker a csapoajton all
+				Switch swi = new Switch();
+				swi.SetTrapDoor(trapdoor);
+				swi.Accept(new Box(), Direction.DOWN);
 			}
 			
 		} while(!key.equals("exit"));

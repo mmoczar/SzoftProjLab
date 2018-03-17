@@ -29,4 +29,15 @@ public class TrapDoor extends Tile {
 	public void Hi() {
 		System.out.print("T");
 	}
+	
+	// eloszor ralep az entitas, es ha nyitva van, akkor leejti
+	public void Accept(Entity e, Direction d) throws IOException {
+		super.Accept(e, d);
+		if(!state) DropEntity(e);
+	}
+	
+	public void DropEntity(Entity e) throws IOException {
+		Remove(e);
+	}
+	
 }
