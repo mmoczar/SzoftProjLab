@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Szkeleton {
-	public static int melyseg = 0;
+	public static int melyseg = 1;
 	//Kiir, illetve, ha inputot varunk, akkor azt bekeri a felhasznalotol.
 	// ? eseten: Az osztaly stringbe lehet kerdest feltenni.
 	// - esetem: Az  osztaly stringbe lehet beadni a kommentet. Ilyenkor a melyseg NEM novekszik.
@@ -16,7 +16,7 @@ public class Szkeleton {
 			return "";
 		}
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		if (tipus == ">" || tipus == "?") melyseg++;
+		if (tipus == ">") melyseg++;
 		System.out.print(tipus);
 		for (int i=0; i<melyseg; i++)
 			System.out.print("   ");
