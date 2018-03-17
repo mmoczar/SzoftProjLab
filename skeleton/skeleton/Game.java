@@ -13,8 +13,10 @@ public class Game {
 	private static String WHfile; //a fajl, ahol a jatekokat tartoljuk.
 	
 	public Game(String file) throws FileNotFoundException, IOException {
+		Szkeleton.kiir(">", "Game", "Game(file)");
 		WHfile = file;
 		readWHs();
+		Szkeleton.kiir("<", "Game", "Game(file)");
 	}
 	
 	private static void readWHs() throws IOException {
