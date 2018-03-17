@@ -53,10 +53,11 @@ public class Game {
 		Worker w1 = new Worker();
 		Worker w2 = new Worker();
 		currentWarehouse.AddWorker(w1, new Vec2D(1,1));
-		currentWarehouse.AddWorker(w2, new Vec2D(2,1));
+		currentWarehouse.AddWorker(w2, new Vec2D(1,2));
 		//w2.Move(w2, Direction.UP);
-		w2.Move(w2, Direction.RIGHT);
-		//w1.Move(null, Direction.DOWN);
+		//w2.Move(w2, Direction.UP);
+		w1.Move(null, Direction.UP);
+		w1.Move(null, Direction.RIGHT);
 		//System.out.println(w.tile.position.toString());
 		
 		

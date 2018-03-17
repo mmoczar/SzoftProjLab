@@ -14,7 +14,7 @@ public class Target extends Tile {
 	}
 	
 	public void Accept(Entity e, Direction d) {
-		
+		// TODO Celba eres megiras
 	} 
 	
 	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {

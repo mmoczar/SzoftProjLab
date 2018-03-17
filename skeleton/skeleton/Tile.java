@@ -21,6 +21,7 @@ public class Tile {
 	//Szomszedos Tile keri ezt az Acceptet
 	public boolean Accept(Entity e) {
 		entity = e;
+		e.SetTile(this);
 		System.out.println("Sikeres Mozgás");
 		return false;
 		
