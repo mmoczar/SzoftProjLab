@@ -6,15 +6,21 @@ public class Pillar extends Tile {
 		
 	}
 
-	public void Accept(Entity e, Direction d) {
-		
+	//oszlop acceptje
+	public boolean Accept(Entity e) {
+		System.out.println("Ez egy oszlop");
+		return true;
 	}
 	
 	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
-		UP = up;
-		DOWN = down;
-		LEFT = left;
-		RIGHT = right;
+		tUP = up;
+		tDOWN = down;
+		tLEFT = left;
+		tRIGHT = right;
+	}
+	
+	public Entity GetEntityAt() {
+		return null;
 	}
 	
 	//Debug függvény

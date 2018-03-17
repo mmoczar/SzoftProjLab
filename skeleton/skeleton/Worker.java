@@ -13,11 +13,17 @@ public class Worker extends Entity {
 		tile = t;
 	}
 	
+	//Worker mozgatasa
 	@Override
 	public boolean Move(Entity e, Direction d) {
-			//Ellenőrzi, hogy a mozgás irányában van-e valaki
-			if(tile.GetEntityAt(d) == null) System.out.println("Mellttem nincs semmi");
+			//Ellenorzi hogy az adott iranyban van-e valaki
+			Entity nb = tile.GetEntityAt(d); 
+			if(nb == null){
+				System.out.println("Mellttem nincs semmi");
+				tile.Accept(this, d);
+			}
 			else System.out.println("Itt van valami");
+			
 			return false;
 				
 		}
@@ -51,7 +57,8 @@ public class Worker extends Entity {
 		numOfPlacedBoxes++;
 	}
 	
-	public void inf() {
-		System.out.println("Worker on");
+	
+	public void Hi() {
+		System.out.print("W");
 	}
 }

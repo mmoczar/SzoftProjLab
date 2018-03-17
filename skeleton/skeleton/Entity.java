@@ -7,4 +7,8 @@ public abstract class Entity {
 	public abstract boolean MovedBy(Entity e);
 	
 	public abstract boolean SwitchAction();
+	
+	//debug
+	
+	public abstract void Hi();
 }

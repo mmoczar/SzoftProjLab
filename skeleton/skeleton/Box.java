@@ -23,4 +23,10 @@ public class Box extends Entity {
 		return false;
 	}
 
+	@Override
+	public void Hi() {
+		System.out.println("B");
+		
+	}
+
 }

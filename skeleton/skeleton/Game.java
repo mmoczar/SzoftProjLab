@@ -52,8 +52,9 @@ public class Game {
 		Worker w2 = new Worker();
 		warehouses[wh].AddWorker(w1, new Vec2D(1,1));
 		warehouses[wh].AddWorker(w2, new Vec2D(2,1));
-		w1.Move(null, Direction.RIGHT);
-		w1.Move(null, Direction.UP);
+		//w2.Move(w2, Direction.UP);
+		w2.Move(w2, Direction.RIGHT);
+		//w1.Move(null, Direction.DOWN);
 		//System.out.println(w.tile.position.toString());
 		
 		
@@ -76,6 +77,7 @@ public class Game {
 			key = br.readLine();
 			
 			if(key.equals("showwh")) game.ShowWHs();
+			//Palya valasztas
 			else if(key.equals("start")) game.NewGame(1);
 			
 		}while(!key.equals("exit"));

@@ -13,10 +13,10 @@ public class Switch extends Tile {
 	}
 	
 	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
-		UP = up;
-		DOWN = down;
-		LEFT = left;
-		RIGHT = right;
+		tUP = up;
+		tDOWN = down;
+		tLEFT = left;
+		tRIGHT = right;
 	}
 
 	public void Hi() {
