@@ -18,39 +18,14 @@ public class Game {
 	}
 	
 	private static void readWHs() throws IOException {
-		try (BufferedReader br = new BufferedReader(new FileReader(WHfile))) {
-		    String line;
-		    
-		    //Elso sor beolvasasa, ami egy szam és megmutatja hany raktar lesz
-		    line = br.readLine();
-		    //Generikus tomb letrahozasa a megfelelo szamra
-		    warehouses = (WareHouse[]) Array.newInstance(WareHouse.class, Integer.parseInt(line));
-		    numOfWHs = Integer.parseInt(line);
-		    
-		    //Mapok beolvasasa fajlbol, ha uj map, akkor a faljban azt egy + jelzi
-		    ArrayList<String> map = new ArrayList<String>();
-		    int i = 0;
-		    while ((line = br.readLine()) != null) {
-		    	if(line.equals("+")) {
-		    		//System.out.println("Létrehozom");
-		    		warehouses[i] = new WareHouse(map);
-		    		map.clear();
-		    		i++;
-		    	}
-		    	else {
-		    		//System.out.println("Adatok...");
-		    		map.add(line);
-		    	}
-		    }
-		}
+		Szkeleton.kiir(">", "Game", "readWHs()");
+		WareHouse warehouse = new WareHouse(null);
+		Szkeleton.kiir("<", "Game","readWHs()");
 	}
 	
-	public void ShowWHs() {
-		for(int i = 0; i < warehouses.length; i++) {
-			System.out.println("--------------- WH ID: " + i + " ---------------");
-			warehouses[i].draw();
-			System.out.println("");
-		}
+	public void ShowWHs() throws IOException {
+		Szkeleton.kiir(">", "Game", "ShowWHs()");
+		Szkeleton.kiir("<", "Game", "ShowWHs()");
 	}
 	
 	public static void NewGame() { //kiszedtem az int parametert, mivel a palya kivalasztasa utan mar tudjuk, melyik palyan folyik a jatek (currentWarehouse), igy felesleges atadni a sorszamat.
@@ -79,16 +54,15 @@ public class Game {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Game game = new Game("game.txt");
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
 		String key = null;
 		do {
-						
-			key = br.readLine();
+			key = Szkeleton.kiir("?", "", "");
+			
 			
 			//parancsok listazasa
 			if(key.equals("help")) {
 				System.out.println("Start (start)");
-				System.out.println("Show current Warehouse (showcwh)");
 				System.out.println("Show Warehouses (showwh)");
 				System.out.println("Exit (exit)");
 			}
@@ -96,19 +70,11 @@ public class Game {
 			//WH-k kilistazasa
 			else if(key.equals("showwh")) game.ShowWHs();
 			
-			//aktualis WH kirajzolasa (amin eppen fut a jatek)
-			else if (key.equals("showcwh")) {
-				if (currentWarehouse == null)
-					System.out.println("Elobb valassz palyat! (start utasitas)");
-				else
-					currentWarehouse.draw();
-			}
-			
 			//Palya valasztas es jatek inditas
 			else if(key.equals("start")) {
 				readWHs(); // ujra beolvassuk a fajlt, hogy az eredeti palyaallapotokat kapjuk vissza
 				System.out.print("Melyik palyat valasztod? (0-" + (numOfWHs - 1) + ") ");
-				key = br.readLine();
+				//key = br.readLine();
 				if (Integer.parseInt(key) >= numOfWHs)
 					System.out.println("Nincs ilyen palya.");
 				else {
@@ -116,7 +82,7 @@ public class Game {
 					NewGame();
 				}
 			}
-			
+			Szkeleton.melyseg--;
 		} while(!key.equals("exit"));
 		
 	}

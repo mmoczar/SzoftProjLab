@@ -1,9 +1,11 @@
+import java.io.IOException;
 
 public class Pillar extends Tile {
 	
 	
-	public Pillar() {
-		
+	public Pillar() throws IOException {
+		Szkeleton.kiir(">", "Pillar", "Pillar()");
+		Szkeleton.kiir("<", "Pillar", "Pillar()");
 	}
 
 	//oszlop acceptje

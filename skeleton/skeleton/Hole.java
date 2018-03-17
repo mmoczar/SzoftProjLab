@@ -1,7 +1,10 @@
+import java.io.IOException;
 
 public class Hole extends Tile {
 
-	public Hole() {
+	public Hole() throws IOException {
+		Szkeleton.kiir(">", "Hole", "Hole()");
+		Szkeleton.kiir("<", "Hole", "Hole()");
 	}
 	
 	public boolean Accept(Entity e) {

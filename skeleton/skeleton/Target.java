@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Target extends Tile {
@@ -5,8 +6,9 @@ public class Target extends Tile {
 	private ArrayList<Box> boxes = new ArrayList<Box>();
 	
 	
-	public Target() {
-		
+	public Target() throws IOException {
+		Szkeleton.kiir(">", "Target", "Target()");	
+		Szkeleton.kiir("<", "Target", "Target()");
 	}
 
 	public void AddBox(Box b) {

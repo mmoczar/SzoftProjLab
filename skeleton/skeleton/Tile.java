@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 public class Tile {
 	protected Vec2D position;
@@ -8,7 +9,9 @@ public class Tile {
 	protected Tile tLEFT;
 	protected Tile tRIGHT;
 	
-	public Tile() {
+	public Tile() throws IOException {
+		Szkeleton.kiir(">", "Tile", "Tile()");
+		Szkeleton.kiir("<", "Tile", "Tile()");
 	}
 	
 	public Tile(TrapDoor trap) {

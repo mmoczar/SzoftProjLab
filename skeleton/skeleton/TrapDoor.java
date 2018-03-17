@@ -1,9 +1,12 @@
+import java.io.IOException;
 
 public class TrapDoor extends Tile {
 	
 	protected Switch Switch;
 
-	public TrapDoor() {
+	public TrapDoor() throws IOException {
+		Szkeleton.kiir(">", "TrapDoor", "TrapDoor()");	
+		Szkeleton.kiir("<", "TrapDoor", "TrapDoor()");
 	}
 	
 	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
