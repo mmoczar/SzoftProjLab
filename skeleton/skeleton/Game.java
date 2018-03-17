@@ -13,6 +13,7 @@ public class Game {
 	private static String WHfile; //a fajl, ahol a jatekokat tartoljuk.
 	
 	public Game(String file) throws FileNotFoundException, IOException {
+		Szkeleton.kiir("-", "Game konstruktor a jatek indulasakor.", "");
 		Szkeleton.kiir(">", "Game", "Game(file)");
 		WHfile = file;
 		readWHs();
@@ -88,6 +89,7 @@ public class Game {
 				Switch swi = new Switch();
 				TrapDoor trapdoor = new TrapDoor();
 				swi.SetTrapDoor(trapdoor);
+				Szkeleton.kiir("-", "Eddig csak konstruktor hivasok.", "");
 				swi.Accept(box, Direction.DOWN);
 			}
 			
@@ -96,6 +98,7 @@ public class Game {
 				Switch swi = new Switch();
 				TrapDoor trapdoor = new TrapDoor();
 				swi.SetTrapDoor(trapdoor);
+				Szkeleton.kiir("-", "Eddig csak konstruktor hivasok.", "");
 				swi.Accept(worker, Direction.DOWN);
 			}
 			

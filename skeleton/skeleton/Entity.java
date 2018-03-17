@@ -9,7 +9,7 @@ public abstract class Entity {
 	
 	public abstract boolean MovedBy(Entity e);
 	
-	public abstract boolean SwitchAction();
+	public abstract boolean SwitchAction() throws IOException;
 	
 	public abstract void reduceNum();
 	

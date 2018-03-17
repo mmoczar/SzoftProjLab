@@ -16,7 +16,9 @@ public class Switch extends Tile {
 	
 	// entitas tipsatol fuggoen megvaltoztatja a csapoajto allapotat
 	public void Accept(Entity e, Direction d) throws IOException {
+		Szkeleton.kiir(">", "Switch", "Accept(e,d)");
 		if(e.SwitchAction()) SwitchTrap();
+		Szkeleton.kiir("<", "Switch", "Accept(e,d)");
 	}
 	
 	// a csapoajto allapotanak az ellentettjere allitja

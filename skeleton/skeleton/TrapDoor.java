@@ -11,7 +11,9 @@ public class TrapDoor extends Tile {
 		Szkeleton.kiir("<", "TrapDoor", "TrapDoor()");
 	}
 	
-	public boolean GetState() {
+	public boolean GetState() throws IOException {
+		Szkeleton.kiir(">", "TrapDoor", "GetState()");
+		Szkeleton.kiir("<", "TrapDoor", "GetState()");
 		return state;
 	}
 	
