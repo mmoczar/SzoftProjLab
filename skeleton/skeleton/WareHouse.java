@@ -2,10 +2,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class WareHouse {
-	private int numOfBoxes;
-	private int numOfTargets;
-	private int numOfWorkers;
-	private int numOfMovableBoxes;
+	private int numOfBoxes = 0;
+	private int numOfTargets = 0;
+	private int numOfWorkers = 0;
+	private int numOfMovableBoxes = 0;
 	private int height;
 	private int width;
 	
@@ -59,13 +59,15 @@ public class WareHouse {
 			else if(temp_tile[0].equals("Target")) {
 				recenttarget = new Target();
 				tiles[x][y] = recenttarget;
-				
+				numOfTargets++;
 			}
 			
 			else if(temp_tile[0].equals("Box")) {
 				Box currentBox = new Box();
 				tiles[x][y].SetEntity(currentBox);
 				recenttarget.AddBox(currentBox);
+				numOfBoxes++;
+				numOfMovableBoxes++;
 			}
 			
 		}
@@ -94,7 +96,7 @@ public class WareHouse {
 		//Worker elhelyezese a palyan plusz worker tile mezojenek beallitasa
 		w.SetTile(tiles[pos.getX()][pos.getY()]);
 		tiles[pos.getX()][pos.getY()].SetEntity(w);
-
+		numOfWorkers++;
 	}
 	
 	public Tile GetTileAt(Vec2D v) {

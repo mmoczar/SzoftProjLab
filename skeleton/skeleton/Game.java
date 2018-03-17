@@ -1,16 +1,15 @@
-import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Game {
-	private WareHouse currentWarehouse;
-	private WareHouse[] warehouses;
+	private static WareHouse currentWarehouse = null;
+	private static WareHouse[] warehouses;
+	private static int numOfWHs; // a szkeletonhoz. a grafikus feluleten majd ugyis kattintassal valaszt, es nem tud "rosszat", addig is muszaj vedeni valahogy a tulindexelest.
 	
 	public Game(String file) throws FileNotFoundException, IOException {
 		
@@ -21,6 +20,7 @@ public class Game {
 		    line = br.readLine();
 		    //Generikus tomb letrahozasa a megfelelo szamra
 		    warehouses = (WareHouse[]) Array.newInstance(WareHouse.class, Integer.parseInt(line));
+		    numOfWHs = Integer.parseInt(line);
 		    
 		    //Mapok beolvasasa fajlbol, ha uj map, akkor a faljban azt egy + jelzi
 		    ArrayList<String> map = new ArrayList<String>();
@@ -42,16 +42,18 @@ public class Game {
 	
 	public void ShowWHs() {
 		for(int i = 0; i < warehouses.length; i++) {
+			System.out.println("--------------- WH ID: " + i + " ---------------");
 			warehouses[i].draw();
+			System.out.println("");
 		}
 	}
 	
-	public void NewGame(int wh) {
+	public static void NewGame() { //kiszedtem az int parametert, mivel a palya kivalasztasa utan mar tudjuk, melyik palyan folyik a jatek (currentWarehouse), igy felesleges atadni a sorszamat.
 		//Worker hozzaadasa
 		Worker w1 = new Worker();
 		Worker w2 = new Worker();
-		warehouses[wh].AddWorker(w1, new Vec2D(1,1));
-		warehouses[wh].AddWorker(w2, new Vec2D(2,1));
+		currentWarehouse.AddWorker(w1, new Vec2D(1,1));
+		currentWarehouse.AddWorker(w2, new Vec2D(2,1));
 		//w2.Move(w2, Direction.UP);
 		w2.Move(w2, Direction.RIGHT);
 		//w1.Move(null, Direction.DOWN);
@@ -70,17 +72,41 @@ public class Game {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String key = null;
 		do {
-			System.out.println("Start (start)");
-			System.out.println("Show Warehouses (showwh)");
-			System.out.println("Exit (exit)");
-			
+						
 			key = br.readLine();
 			
-			if(key.equals("showwh")) game.ShowWHs();
-			//Palya valasztas
-			else if(key.equals("start")) game.NewGame(1);
+			//parancsok listazasa
+			if(key.equals("help")) {
+				System.out.println("Start (start)");
+				System.out.println("Show current Warehouse (showcwh)");
+				System.out.println("Show Warehouses (showwh)");
+				System.out.println("Exit (exit)");
+			}
 			
-		}while(!key.equals("exit"));
+			//WH-k kilistazasa
+			else if(key.equals("showwh")) game.ShowWHs();
+			
+			//aktualis WH kirajzolasa (amin eppen fut a jatek)
+			else if (key.equals("showcwh")) {
+				if (currentWarehouse == null)
+					System.out.println("Elobb valassz palyat! (start utasitas)");
+				else
+					currentWarehouse.draw();
+			}
+			
+			//Palya valasztas es jatek inditas
+			else if(key.equals("start")) {
+				System.out.print("Melyik palyat valasztod? (0-" + (numOfWHs - 1) + ") ");
+				key = br.readLine();
+				if (Integer.parseInt(key) >= numOfWHs)
+					System.out.println("Nincs ilyen palya.");
+				else {
+					currentWarehouse = warehouses[Integer.parseInt(key)]; // aktualis palya beallitasa
+					NewGame();
+				}
+			}
+			
+		} while(!key.equals("exit"));
 		
 	}
 }

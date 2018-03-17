@@ -1,5 +1,7 @@
 
 public class TrapDoor extends Tile {
+	
+	protected Switch Switch;
 
 	public TrapDoor() {
 	}
