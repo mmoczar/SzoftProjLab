@@ -74,11 +74,11 @@ public class Game {
 			//Palya valasztas es jatek inditas
 			else if(key.equals("start")) {
 				readWHs(); // ujra beolvassuk a fajlt, hogy az eredeti palyaallapotokat kapjuk vissza
-				key = Szkeleton.kiir("?", "Valassz palyat! (0-2)", "");
+				key = Szkeleton.kiir("?", "Valassz palyat! (0-2) ", "");
 				Szkeleton.kiir("-", "currentWareHouse bellitva a megadott palyara ("+key+")", "");
 				NewGame();
 			}
-			Szkeleton.melyseg--;
+			//Szkeleton.melyseg--;
 		} while(!key.equals("exit"));
 		
 	}

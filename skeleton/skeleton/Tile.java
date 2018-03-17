@@ -59,7 +59,7 @@ public class Tile {
 	//Ez a fuggveny, amikor a worker kerdezi az alatta levo mezot, hogy mondja meg a szomszedon van-e Entity
 	public Entity GetEntityAt(Direction d) throws IOException {
 		Szkeleton.kiir(">", "Tile", "GetEntityAt(d)");
-		switch(Szkeleton.kiir("?", "", "")) {
+		switch(Szkeleton.kiir("?", "Mi van arra? (null: semmi, box: Box, worker: Worker) ", "")) {
 		case"null": Szkeleton.kiir("<", "Tile", "GetEntityAt(d)"); return null;
 		case"box": Szkeleton.kiir("<", "Tile", "GetEntityAt(d)");   return new Box();
 		case"worker": Szkeleton.kiir("<", "Tile", "GetEntityAt(d)"); return new Worker();
