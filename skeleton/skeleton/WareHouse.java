@@ -112,4 +112,14 @@ public class WareHouse {
 	public int GetNumOfBoxes() {
 		return numOfBoxes;
 	}
+	
+	public void reduceNumOfBoxes() {
+		numOfBoxes--;
+	}
+	public void reduceNumOfWorkers() {
+		numOfWorkers--;
+	}
+	public void reduceNumOfMovableBoxes() {
+		numOfMovableBoxes--;
+	}
 }

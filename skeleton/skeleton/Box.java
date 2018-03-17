@@ -29,4 +29,10 @@ public class Box extends Entity {
 		
 	}
 
+	@Override
+	public void reduceNum() {
+		Game.getCurrentWH().reduceNumOfBoxes();
+		Game.getCurrentWH().reduceNumOfMovableBoxes();
+	}
+
 }

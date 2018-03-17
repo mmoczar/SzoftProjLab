@@ -61,4 +61,10 @@ public class Worker extends Entity {
 	public void Hi() {
 		System.out.print("W");
 	}
+
+	@Override
+	public void reduceNum() {
+		Game.getCurrentWH().reduceNumOfWorkers();
+		
+	}
 }

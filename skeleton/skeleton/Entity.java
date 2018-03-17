@@ -8,6 +8,8 @@ public abstract class Entity {
 	
 	public abstract boolean SwitchAction();
 	
+	public abstract void reduceNum();
+	
 	//debug
 	
 	public abstract void Hi();

@@ -6,8 +6,11 @@ public class Hole extends Tile {
 	
 	public boolean Accept(Entity e) {
 		entity = e;
+		
+		e.Hi();
+		System.out.println(" leesett!");
+		e.reduceNum();
 		e = null;
-		System.out.println("Entity leesett!");
 		return false;
 		
 	}

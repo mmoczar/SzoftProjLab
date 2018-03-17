@@ -10,10 +10,15 @@ public class Game {
 	private static WareHouse currentWarehouse = null;
 	private static WareHouse[] warehouses;
 	private static int numOfWHs; // a szkeletonhoz. a grafikus feluleten majd ugyis kattintassal valaszt, es nem tud "rosszat", addig is muszaj vedeni valahogy a tulindexelest.
+	private static String WHfile; //a fajl, ahol a jatekokat tartoljuk.
 	
 	public Game(String file) throws FileNotFoundException, IOException {
-		
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+		WHfile = file;
+		readWHs();
+	}
+	
+	private static void readWHs() throws IOException {
+		try (BufferedReader br = new BufferedReader(new FileReader(WHfile))) {
 		    String line;
 		    
 		    //Elso sor beolvasasa, ami egy szam és megmutatja hany raktar lesz
@@ -63,7 +68,11 @@ public class Game {
 	}
 	
 	public void EndGame() {
-		
+		// TODO meg kollene irni
+	}
+	
+	public static WareHouse getCurrentWH() {
+		return currentWarehouse;
 	}
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -96,6 +105,7 @@ public class Game {
 			
 			//Palya valasztas es jatek inditas
 			else if(key.equals("start")) {
+				readWHs(); // ujra beolvassuk a fajlt, hogy az eredeti palyaallapotokat kapjuk vissza
 				System.out.print("Melyik palyat valasztod? (0-" + (numOfWHs - 1) + ") ");
 				key = br.readLine();
 				if (Integer.parseInt(key) >= numOfWHs)
