@@ -66,6 +66,10 @@ public class Game {
 				System.out.println("-   Box on Switch, switch trapdoor's state (bos)");
 				System.out.println("-   Worker on Switch, nothing happens (wos)");
 				System.out.println("-   Entity on TrapDoor, TrapDoor opens -> Entity falls (eot)");
+				System.out.println("-   Box pushes Worker agains tile, Worker dies (ptp)");
+				System.out.println("-   Worker falls in hole (pth)");
+				System.out.println("-   Box falls in hole (bth)");
+				System.out.println("-   Boy arrives to tarrget (bot)");
 				System.out.println("-   Exit (exit)");
 			}
 			
