@@ -54,19 +54,18 @@ public class Game {
 		Game game = new Game("game.txt");
 		
 		
-		String key = null;
+		String key = "help";
 		do {
-			key = Szkeleton.kiir("?", "", "");
-			
-			
+
 			//parancsok listazasa
 			if(key.equals("help")) {
 				System.out.println("-   Start, (start)");
+				System.out.println("-   This menu, (help)");
 				System.out.println("-   Show Warehouses (showwh)");
 				System.out.println("-   Box on Switch, switch trapdoor's state (bos)");
 				System.out.println("-   Worker on Switch, nothing happens (wos)");
 				System.out.println("-   Entity on TrapDoor, TrapDoor opens -> Entity falls (eot)");
-				System.out.println("-   Box pushes Worker agains tile, Worker dies (ptp)");
+				System.out.println("-   Box pushes Worker against pillar, Worker dies (ptp)");
 				System.out.println("-   Worker falls in hole (pth)");
 				System.out.println("-   Box falls in hole (bth)");
 				System.out.println("-   Box moves on intended target (botc)");
@@ -152,6 +151,11 @@ public class Game {
 				Szkeleton.kiir("-", "Eddig csak konstruktor hivasok.", "");
 				target.Accept(box, Direction.DOWN);
 			}
+
+			else {
+				Szkeleton.kiir("-", "Ismeretlen parancs, probald meg a help-et", "");
+			}
+			key = Szkeleton.kiir("?", "", "");
 			
 		} while(!key.equals("exit"));
 		
