@@ -56,13 +56,18 @@ public class WareHouse {
 		return numOfBoxes;
 	}
 	
-	public void reduceNumOfBoxes() {
+	public void reduceNumOfBoxes() throws IOException {
+		Szkeleton.kiir(">", "WareHouse", "reduceNumOfBoxes()");
 		numOfBoxes--;
+		Szkeleton.kiir("<", "WareHouse", "reduceNumOfBoxes()");
 	}
 	public void reduceNumOfWorkers() {
 		numOfWorkers--;
 	}
-	public void reduceNumOfMovableBoxes() {
+	public void reduceNumOfMovableBoxes() throws IOException {
+		Szkeleton.kiir(">", "WareHouse", "reduceNumOfMovableBoxes()");
 		numOfMovableBoxes--;
+		Szkeleton.kiir("<", "WareHouse", "reduceNumOfMovableBoxes()");
+
 	}
 }

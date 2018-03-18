@@ -11,7 +11,7 @@ public abstract class Entity {
 	
 	public abstract boolean SwitchAction() throws IOException;
 	
-	public abstract void reduceNum();
+	public abstract void reduceNum() throws IOException;
 	
 	//debug
 	

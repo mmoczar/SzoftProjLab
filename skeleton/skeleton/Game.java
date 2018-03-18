@@ -61,7 +61,7 @@ public class Game {
 			
 			//parancsok listazasa
 			if(key.equals("help")) {
-				System.out.println("-   Start (start)");
+				System.out.println("-   Start, (start)");
 				System.out.println("-   Show Warehouses (showwh)");
 				System.out.println("-   Box on Switch, switch trapdoor's state (bos)");
 				System.out.println("-   Worker on Switch, nothing happens (wos)");
@@ -69,7 +69,8 @@ public class Game {
 				System.out.println("-   Box pushes Worker agains tile, Worker dies (ptp)");
 				System.out.println("-   Worker falls in hole (pth)");
 				System.out.println("-   Box falls in hole (bth)");
-				System.out.println("-   Boy arrives to tarrget (bot)");
+				System.out.println("-   Box moves on intended target (botc)");
+				System.out.println("-   Box moves on unintended target (botnc)");
 				System.out.println("-   Exit (exit)");
 			}
 			
@@ -135,6 +136,21 @@ public class Game {
 				Szkeleton.kiir("-", "A worker leesik:", "");
 				
 				swi.Accept(new Box(), Direction.DOWN);
+			}
+
+			else if(key.equals("botc")) {
+				Target target = new Target();
+				Box box = new Box();
+				target.AddBox(box);;
+				Szkeleton.kiir("-", "Eddig csak konstruktor hivasok.", "");
+				target.Accept(box, Direction.DOWN);
+			}
+
+			else if(key.equals("botnc")) {
+				Target target = new Target();
+				Box box = new Box();
+				Szkeleton.kiir("-", "Eddig csak konstruktor hivasok.", "");
+				target.Accept(box, Direction.DOWN);
 			}
 			
 		} while(!key.equals("exit"));

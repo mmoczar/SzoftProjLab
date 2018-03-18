@@ -63,9 +63,13 @@ public class Box extends Entity {
 	}
 
 	@Override
-	public void reduceNum() {
+	public void reduceNum() throws IOException {
+		Szkeleton.kiir(">", "Box", "reduceNum()");
+
 		Game.getCurrentWH().reduceNumOfBoxes();
 		Game.getCurrentWH().reduceNumOfMovableBoxes();
+		Szkeleton.kiir("<", "Box", "reduceNum()");
+
 	}
 	public void SetTile(Tile t) {
 		// TODO Auto-generated method stub

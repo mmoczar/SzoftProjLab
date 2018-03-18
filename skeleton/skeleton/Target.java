@@ -3,7 +3,8 @@ import java.util.ArrayList;
 
 public class Target extends Tile {
 	
-	private ArrayList<Box> boxes = new ArrayList<Box>();
+	private ArrayList<Entity> boxes = new ArrayList<Entity>();
+	private WareHouse wh;
 	
 	
 	public Target() throws IOException {
@@ -15,9 +16,13 @@ public class Target extends Tile {
 		boxes.add(b);
 	}
 	
-	public void Accept(Entity e, Direction d) {
-		// TODO Celba eres megiras
-	} 
+	public void Accept(Entity e, Direction d) throws IOException {
+		Szkeleton.kiir(">", "Target", "Accept()");
+		if (boxes.contains(e)) {
+			e.reduceNum();
+		}
+		Szkeleton.kiir("<", "Target", "Accept()");
+	}
 	
 	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
 		tUP = up;
