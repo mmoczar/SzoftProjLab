@@ -17,8 +17,8 @@ public class TrapDoor extends Tile {
 		return state;
 	}
 	
-	public void SetState(boolean s) {
-		state = s;
+	public void SetState() {
+		state = !state;
 	}
 	
 	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
@@ -35,7 +35,7 @@ public class TrapDoor extends Tile {
 	// eloszor ralep az entitas, es ha nyitva van, akkor leejti
 	public void Accept(Entity e, Direction d) throws IOException {
 		super.Accept(e, d);
-		if(!state) DropEntity(e); // TODO Nem a true a nyitott allapot??? (bence)
+		if(state) DropEntity(e); // ha nyitva, leejti
 	}
 	
 	public void DropEntity(Entity e) throws IOException {

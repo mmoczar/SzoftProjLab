@@ -24,7 +24,7 @@ public class Switch extends Tile {
 	// a csapoajto allapotanak az ellentettjere allitja
 	public void SwitchTrap() throws IOException {
 		Szkeleton.kiir(">", "Switch", "SwitchTrap");
-		trapdoor.SetState(!trapdoor.GetState());
+		trapdoor.SetState();
 		// trapdoor.GetState(): true ha nyitva
 		if(trapdoor.GetState() && trapdoor.entity != null) trapdoor.DropEntity(trapdoor.GetEntityAt()); // ha a csapoajto nyitva es allnak rajta, leejti
 		Szkeleton.kiir("<", "Switch", "SwitchTrap()");
