@@ -1,5 +1,8 @@
 import java.io.IOException;
 
+/**
+ * A a játék mozgó részei
+ */
 public abstract class Entity {
 	protected Tile tile;
 	

@@ -1,15 +1,20 @@
 import java.io.IOException;
 
+/**
+ * A csapóajtókat állító mező
+ */
 public class Switch extends Tile {
 	
 	// kapcsolohoz tartozo csapoajto
 	private TrapDoor trapdoor;
-	
+
+	// Default konstruktor
 	public Switch() throws IOException {
 		Szkeleton.kiir(">", "Switch", "Switch()");	
 		Szkeleton.kiir("<", "Switch", "Switch()");	
 	}
-	
+
+	// A csapóajtó beállitása
 	public void SetTrapDoor(TrapDoor td) {
 		trapdoor = td;
 	}
@@ -29,14 +34,9 @@ public class Switch extends Tile {
 		if(trapdoor.GetState() && trapdoor.entity != null) trapdoor.DropEntity(trapdoor.GetEntityAt()); // ha a csapoajto nyitva es allnak rajta, leejti
 		Szkeleton.kiir("<", "Switch", "SwitchTrap()");
 	}
-	
-	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
-		tUP = up;
-		tDOWN = down;
-		tLEFT = left;
-		tRIGHT = right;
-	}
 
+
+	// Debug fuggveny
 	public void Hi() {
 		System.out.print("S");
 	}

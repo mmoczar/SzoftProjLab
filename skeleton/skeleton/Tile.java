@@ -1,5 +1,8 @@
 import java.io.IOException;
 
+/**
+ * A pálya alapelemeit reprezentáló osztály
+ */
 public class Tile {
 	protected Vec2D position;
 	protected Entity entity = null;
@@ -8,7 +11,8 @@ public class Tile {
 	protected Tile tDOWN;
 	protected Tile tLEFT;
 	protected Tile tRIGHT;
-	
+
+	// Default konstruktor
 	public Tile() throws IOException {
 		Szkeleton.kiir(">", "Tile", "Tile()");
 		Szkeleton.kiir("<", "Tile", "Tile()");
@@ -16,7 +20,8 @@ public class Tile {
 	
 	public Tile(TrapDoor trap) {
 	}
-	
+
+	// A Tile-on lévő Entity beállítása
 	public void SetEntity(Entity e) throws IOException {
 		Szkeleton.kiir(">", "Tile", "SetEntity(e)");
 		entity = e;
@@ -38,12 +43,14 @@ public class Tile {
 
 		
 	}
-	
+
+	// Entity eltávolítása a mezőről
 	public void Remove(Entity e) throws IOException {
 		Szkeleton.kiir(">", "Tile", "Remove(e)");
 		Szkeleton.kiir("<", "Tile", "Remove(e)");
 	}
-	
+
+	// Szomszéd beállítása
 	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
 		tUP = up;
 		tDOWN = down;

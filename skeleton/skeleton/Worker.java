@@ -1,18 +1,23 @@
 import java.io.IOException;
 
+
+/**
+ * A játékos álltal mozgatott Entity
+ */
 public class Worker extends Entity {
 
 	
 	private int numOfPlacedBoxes;
 	private Entity byEntity;
 
+	// Default konstruktor
 	public Worker() throws IOException {
 		Szkeleton.kiir(">", "Worker", "Worker()");
 		Szkeleton.kiir("<", "Worker", "Worker()");
 	}
 
+	// Tile beállítása
 	public void SetTile(Tile t) throws IOException {
-		//Tile beallotsa
 		Szkeleton.kiir(">", "Worker", "SetTile(t)");
 		Szkeleton.kiir("<", "Worker", "SetTile(t)");
 		tile = t;
@@ -102,7 +107,7 @@ public class Worker extends Entity {
 	}
 
 	@Override
-	public void reduceNum() {
+	public void reduceNum() throws IOException {
 		Game.getCurrentWH().reduceNumOfWorkers();
 		
 	}

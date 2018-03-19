@@ -1,33 +1,32 @@
 import java.io.IOException;
 
+
+// A kapcsolóval aktivált lyukakat reprezentálja
 public class TrapDoor extends Tile {
 	
 	// alapbol zarva
 	private boolean state = false;
 	//protected Switch Switch;
 
+	// Default konstruktor
 	public TrapDoor() throws IOException {
 		Szkeleton.kiir(">", "TrapDoor", "TrapDoor()");	
 		Szkeleton.kiir("<", "TrapDoor", "TrapDoor()");
 	}
-	
+
+	// Csapóajtó állapotának lekérdése
 	public boolean GetState() throws IOException {
 		Szkeleton.kiir(">", "TrapDoor", "GetState()");
 		Szkeleton.kiir("<", "TrapDoor", "GetState(): "+ state);
 		return state;
 	}
-	
+
+	// Csapóajtó állapotának átváltása
 	public void SetState() {
 		state = !state;
 	}
 	
-	public void setNeighbor(Tile up, Tile down, Tile left, Tile right) {
-		tUP = up;
-		tDOWN = down;
-		tLEFT = left;
-		tRIGHT = right;
-	}
-	
+	// Debug fn
 	public void Hi() {
 		System.out.print("T");
 	}
@@ -37,7 +36,8 @@ public class TrapDoor extends Tile {
 		super.Accept(e, d);
 		if(state) DropEntity(e); // ha nyitva, leejti
 	}
-	
+
+	// A mezőn lévő enity leejtése
 	public void DropEntity(Entity e) throws IOException {
 		Szkeleton.kiir(">", "TrapDoor", "DropEntity(e)");
 		Remove(e);

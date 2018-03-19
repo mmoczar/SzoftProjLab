@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Segédosztály a fv hívások követéséhez
+ */
 public class Szkeleton {
 	public static int melyseg = 1;
 	//Kiir, illetve, ha inputot varunk, akkor azt bekeri a felhasznalotol.

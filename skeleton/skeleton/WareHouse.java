@@ -2,6 +2,10 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+
+/**
+ * A pályát reprezentáló osztály
+ */
 public class WareHouse {
 	private int numOfBoxes = 0;
 	private int numOfTargets = 0;
@@ -9,9 +13,11 @@ public class WareHouse {
 	private int numOfMovableBoxes = 0;
 	private int height;
 	private int width;
-	
+
+
 	private Tile[][] tiles = new Tile[2][2];
-	
+
+	// Konstruktor
 	public WareHouse(ArrayList<String> map) throws IOException {
 		Szkeleton.kiir(">", "WareHouse", "WareHouse(map)");
 		
@@ -32,7 +38,8 @@ public class WareHouse {
 			System.out.println("");
 			}
 	}
-	
+
+	// Worker hozzáadása a pályához
 	public void AddWorker(Worker w, Vec2D pos) throws IOException { 
 		Szkeleton.kiir(">", "WareHouse", "AddWorker(w, pos)");
 		//Worker elhelyezese a palyan plusz worker tile mezojenek beallitasa
@@ -41,7 +48,8 @@ public class WareHouse {
 		t.SetEntity(w);
 		Szkeleton.kiir("<", "WareHouse", "AddWorker(w, pos)");
 	}
-	
+
+
 	public Tile GetTileAt(Vec2D v) {
 		return null;
 		
@@ -51,19 +59,27 @@ public class WareHouse {
 		return null;
 		
 	}
-	
+
+	// A pályán lévő dobozok száma
 	public int GetNumOfBoxes() {
 		return numOfBoxes;
 	}
-	
+
+	// A pályán lévő dobozok számaának csökkentése
 	public void reduceNumOfBoxes() throws IOException {
 		Szkeleton.kiir(">", "WareHouse", "reduceNumOfBoxes()");
 		numOfBoxes--;
 		Szkeleton.kiir("<", "WareHouse", "reduceNumOfBoxes()");
 	}
-	public void reduceNumOfWorkers() {
+
+	// A pályán lévő munkások számaának csökkentése
+	public void reduceNumOfWorkers() throws IOException {
+		Szkeleton.kiir(">", "WareHouse", "reduceNumOfWorkers()");
 		numOfWorkers--;
+		Szkeleton.kiir("<", "WareHouse", "reduceNumOfWorkers()");
 	}
+
+	// Mozgatható dobozok száma
 	public void reduceNumOfMovableBoxes() throws IOException {
 		Szkeleton.kiir(">", "WareHouse", "reduceNumOfMovableBoxes()");
 		numOfMovableBoxes--;

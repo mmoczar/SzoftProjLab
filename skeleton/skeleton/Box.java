@@ -1,11 +1,15 @@
 import java.io.IOException;
 
+/**
+ * Doboz
+ */
 public class Box extends Entity {
 	
 	private Target target;
 	private Worker worker;
 	
-	
+
+	// Doboz mozog
 	@Override
 	public boolean Move(Entity e, Direction d) throws IOException {
 		Szkeleton.kiir(">", "Box", "Move()");
@@ -41,6 +45,7 @@ public class Box extends Entity {
 		return false;
 	}
 
+	// Dobozt elmozgatják
 	@Override
 	public boolean MovedBy(Entity e) throws IOException {
 		Szkeleton.kiir(">", "Box", "MovedBy()");
@@ -56,12 +61,14 @@ public class Box extends Entity {
 		return true;
 	}
 
+	// Debug fv
 	@Override
 	public void Hi() {
 		System.out.print("B");
 		
 	}
 
+	// Doboz eltünésekor
 	@Override
 	public void reduceNum() throws IOException {
 		Szkeleton.kiir(">", "Box", "reduceNum()");
@@ -71,11 +78,13 @@ public class Box extends Entity {
 		Szkeleton.kiir("<", "Box", "reduceNum()");
 
 	}
+	// Tile beállítása
 	public void SetTile(Tile t) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	// Oszlopnak ütközik
 	@Override
 	public boolean ToPillar() {
 		return false;
