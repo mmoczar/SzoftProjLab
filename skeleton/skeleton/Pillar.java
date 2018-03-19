@@ -11,6 +11,7 @@ public class Pillar extends Tile {
 	//oszlop acceptje
 	public boolean Accept(Entity e) throws IOException {
 		Szkeleton.kiir(">", "Pillar", "Accept(e)");
+		//Megivja a nekiszalado entity-re a ToPillar fuggvenyet
 		if(e.ToPillar()) {
 			Szkeleton.kiir("<", "Pillar", "Accept(e): true");
 			return true;

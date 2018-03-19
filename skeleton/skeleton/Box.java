@@ -9,11 +9,18 @@ public class Box extends Entity {
 	@Override
 	public boolean Move(Entity e, Direction d) throws IOException {
 		Szkeleton.kiir(">", "Box", "Move()");
+		// If else - ek a tesztesetek szetvalasztasara
+		//Playermove (playermove)
 		if(d == Direction.UP) {
+		
+		//Letrehozza a szomszedos Tile-t
+		//Ellenorzi hogy az adott iranyban van-e valaki
 		Tile tile = new Tile();
 		Entity nb = tile.GetEntityAt(Direction.UP);
 	
+		//Amikor a szomszedos mezon nincs mas entity
 		if(nb == null) {
+			//A lepes sikeressegenek ellenorzese
 			if(tile.Accept(this))
 			{
 				Szkeleton.kiir("<", "Box", "Move(): true");
@@ -22,8 +29,11 @@ public class Box extends Entity {
 			Szkeleton.kiir("<", "Box", "Move(): false");
 			return false;
 		}
+		//Amikor van a szomszedos mezon masik entity
 		else {
+			//A tolhatosag vizsgalata
 			if(nb.MovedBy(e)) {
+				//A szomszedos entity mozgatasa
 				if(nb.Move(this, Direction.UP)) {
 					Szkeleton.kiir("<", "Box", "Move(): true");
 					return true;
@@ -31,6 +41,8 @@ public class Box extends Entity {
 			}
 		}
 		}
+		
+		//Teszteset amikor a box Hole-ra mozog
 		if(d == Direction.DOWN) {
 			Tile tile = new Hole();
 			tile.Accept(this);
@@ -41,6 +53,7 @@ public class Box extends Entity {
 		return false;
 	}
 
+	//Mozgathatosag vizsgalata, a Box barmi altal mozgathato
 	@Override
 	public boolean MovedBy(Entity e) throws IOException {
 		Szkeleton.kiir(">", "Box", "MovedBy()");
@@ -54,12 +67,6 @@ public class Box extends Entity {
 		Szkeleton.kiir(">", "Box", "SwitchAction()");
 		Szkeleton.kiir("<", "Box", "SwitchAction(): box");
 		return true;
-	}
-
-	@Override
-	public void Hi() {
-		System.out.print("B");
-		
 	}
 
 	@Override
@@ -77,8 +84,16 @@ public class Box extends Entity {
 	}
 
 	@Override
+	
+	//Pillarra mozgas nem lehetseges a doboznal
 	public boolean ToPillar() {
 		return false;
+	}
+
+	@Override
+	public void Hi() {
+		// TODO Auto-generated method stub
+		
 	}
 
 
