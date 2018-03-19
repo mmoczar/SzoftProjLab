@@ -62,6 +62,7 @@ public class Game {
 				System.out.println("-   Start, (start)");
 				System.out.println("-   This menu, (help)");
 				System.out.println("-   Show Warehouses (showwh)");
+				System.out.println("-   Playaer move and pull different entitys (playermove)");
 				System.out.println("-   Box on Switch, switch trapdoor's state (bos)");
 				System.out.println("-   Worker on Switch, nothing happens (wos)");
 				System.out.println("-   Entity on TrapDoor, TrapDoor opens -> Entity falls (eot)");
@@ -78,22 +79,34 @@ public class Game {
 			
 			//Player mozgások - tolások
 			else if(key.equals("playermove")) {
+				//Uj worker letrehozasa a teszt kedveert
 				Worker player = new Worker();
+				//Worker mozgatasa, null parameter azert mert a mozgast kezdo workert nem tulja senki
+				//Direction.UP - mogzgas iranya, jelenleg a tesztesetektol fugg
 				player.Move(null, Direction.UP);
 			} 
 			
 			else if(key.equals("pth")) {
+				//Uj worker letrehozasa a teszt kedveert
 				Worker player = new Worker();
+				//Worker mozgatasa, null parameter azert mert a mozgast kezdo workert nem tulja senki
+				//Direction.DOWN - mogzgas iranya, jelenleg a tesztesetektol fugg
 				player.Move(null, Direction.DOWN);
 			} 
 			
 			else if(key.equals("bth")) {
+				//Uj box letrehozasa a teszt kedveert
 				Box box = new Box();
+				//Box mozgatasa a Hole-ra, null a teszt kedveert(menet kozben a worker referenciaja)
 				box.Move(null, Direction.DOWN);
 			} 
 			
 			else if(key.equals("ptp")) {
+				//Uj worker letrehozasa a teszt kedveert
 				Worker player = new Worker();
+				//Worker mozgatasa, new Box() parameter azert mert a mozgast a worker kozvetetten vegzi
+				//a program futasa soran mindig Worker referenciaval, jelen esetben Box-al (csak az szamit hogy nem null)
+				//Direction.DOWN - mogzgas iranya, jelenleg a tesztesetektol fugg
 				player.Move(new Box(), Direction.RIGHT);
 			} 
 			
