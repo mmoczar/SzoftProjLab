@@ -19,6 +19,16 @@ public class Tile {
 	
 	public Tile(TrapDoor trap) {
 	}
+	
+	public Tile GetNbTile(Direction d) {
+		switch(d){
+		case UP: return tUP; 
+		case DOWN: return tDOWN; 
+		case LEFT: return tLEFT; 
+		case RIGHT: return tRIGHT;
+		default: return null;
+		}
+	}
 
 	// A Tile-on lévő Entity beállítása
 	public void SetEntity(Entity e) throws IOException {
@@ -28,36 +38,30 @@ public class Tile {
 	
 	//Szomszedos Tile keri ezt az Acceptet
 	public boolean Accept(Entity e) throws IOException {
-		entity = e;
-		e.SetTile(this);
-		System.out.println("Sikeres Mozgás");
-		return false;
+		return true;
 		
 	}
 	//Worker vagy Box keri ezt az Acceptet
-	public void Accept(Entity e, Direction d) throws IOException { // TODO Ide nem kene mas fuggvenyhivas? (bence)
-		boolean isPillar = false;
-		
-		//Mozgas iranyaba elfogadat kerni
-		switch(d) {
-		case UP: isPillar = tUP.Accept(e); break;
-		case DOWN: isPillar = tDOWN.Accept(e); break;
-		case LEFT: isPillar = tLEFT.Accept(e); break;
-		case RIGHT: isPillar = tRIGHT.Accept(e); break;
-		default:
-			break;
+	public boolean Accept(Entity e, Direction d) throws IOException { // TODO Ide nem kene mas fuggvenyhivas? (bence)
+		if(entity == null) {
+			entity = e;
+			
+			e.SetTile(this);
+			System.out.println("Sikeres Accept");
+			return true;
+		}
+		else {
+			return entity.Move(e, d);
 		}
 		
-		//kitorolni az elmozgott entity referenciajat
-		if(!isPillar) entity = null;
-
+		
 
 		
 	}
 
 	// Entity eltávolítása a mezőről
 	public void Remove(Entity e) throws IOException {
-
+		entity = null;
 	}
 
 	// Szomszéd beállítása

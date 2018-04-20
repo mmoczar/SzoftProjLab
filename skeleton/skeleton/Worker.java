@@ -19,28 +19,25 @@ public class Worker extends Entity {
 	// Tile beállítása
 	public void SetTile(Tile t) throws IOException {
 		tile = t;
+		System.out.println("SET");
+		if(tile == null) System.out.println("Hazudtam");
 	}
 	
 	//Worker mozgatasa
 	@Override
 	public boolean Move(Entity e, Direction d) throws IOException {
-		//Ellenorzi hogy az adott iranyban van-e valaki
-		Entity nb = tile.GetEntityAt(d); 
-		if(nb == null){
-			System.out.println("Mellttem nincs semmi");
-			tile.Accept(this, d);
+		Tile temp = tile;
+
+		if(temp.GetNbTile(d).Accept(this, d)){
+			System.out.println("Sikeres mozgas");
+			temp.Remove(this);
+			return true;
 		}
 		else {
-			System.out.println("Itt van valami");
-			if(nb.MovedBy(e)) {
-				System.out.println("El tudom tolni");
-				nb.Move(this, d);
-				tile.Accept(this, d);
-			} 
-			else System.out.println("Nem tudom tolni");
+			System.out.println("Sikertelen mozgas");
+			return false;
 		} 
 		
-		return false;
 				
 	}
 	
@@ -54,7 +51,7 @@ public class Worker extends Entity {
 	// Worker tolhatosaganak ellenorzese
 	@Override
 	public boolean MovedBy(Entity e) throws IOException {
-		
+		if(e == null) return false;
 		return true;
 		
 	}

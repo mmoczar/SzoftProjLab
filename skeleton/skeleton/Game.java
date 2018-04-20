@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -58,12 +57,16 @@ public class Game {
 	public static void NewGame(int wh) throws IOException { 
 		currentWarehouse = warehouses[wh];
 		Worker w1 = new Worker("Mario");
+		Worker w2 = new Worker("Luighi");
 		currentWarehouse.AddWorker(w1, 3, 6);
+		//currentWarehouse.AddWorker(w2, 4, 5);
 		currentWarehouse.draw();
 		
-		w1.Move(null, Direction.UP);
+		w1.Move(null, Direction.LEFT);
 		
 		currentWarehouse.draw();
+		
+		//w1.Move(null, Direction.DOWN);
 	}
 	
 	

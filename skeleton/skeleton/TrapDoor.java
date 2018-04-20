@@ -30,9 +30,10 @@ public class TrapDoor extends Tile {
 	}
 	
 	// eloszor ralep az entitas, es ha nyitva van, akkor leejti
-	public void Accept(Entity e, Direction d) throws IOException {
+	public boolean Accept(Entity e, Direction d) throws IOException {
 		super.Accept(e, d);
 		if(state) DropEntity(e); // ha nyitva, leejti
+		return true;
 	}
 
 	// A mezőn lévő enity leejtése
