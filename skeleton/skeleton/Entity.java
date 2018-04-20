@@ -19,6 +19,8 @@ public abstract class Entity {
 	//debug
 	
 	public abstract void Hi();
+	
+	public abstract String Hello();
 
 	public abstract boolean ToPillar() throws IOException;
 }

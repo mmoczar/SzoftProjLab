@@ -73,5 +73,17 @@ public class Tile {
 	public Vec2D pos() {
 		return position;
 	}
+
+	public String Hello() {
+		return null;
+	}
+
+	public Tile getTD() {
+		return null;
+	}
+
+	public boolean getState() {
+		return false;
+	}
 	
 }

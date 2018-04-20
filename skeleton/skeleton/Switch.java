@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Switch extends Tile {
 	
 	// kapcsolohoz tartozo csapoajto
-	private TrapDoor trapdoor;
+	protected TrapDoor trapdoor;
 
 	// Default konstruktor
 	public Switch(TrapDoor recent) throws IOException {
@@ -35,5 +35,13 @@ public class Switch extends Tile {
 	// Debug fuggveny
 	public void Hi() {
 		System.out.print("S");
+	}
+	
+	public String Hello() {
+		return "Switch";
+	}
+	
+	public Tile getTD() {
+		return trapdoor;
 	}
 }
