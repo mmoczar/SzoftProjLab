@@ -2,28 +2,53 @@ import java.io.IOException;
 
 
 /**
- * A játékos álltal mozgatott Entity
+ * Egy munkast reprezental. A jatekos ennek iranyitasaval tolhatja a ladakat a megfelelo iranyba.
  */
 public class Worker extends Entity {
-
+	/**
+	 * A jatekos neve
+	 */
 	private String name;
+	/**
+	 * A munkas altal helyere tett ladak szama.
+	 */
 	private int numOfPlacedBoxes;
-	private Entity byEntity;
-	private Tile tile;
 
-	// Default konstruktor
+	//TODO kitalalni, hogy mire jo.
+	private Entity byEntity;
+<<<<<<< HEAD
+	private Tile tile;
+=======
+	private double power;
+>>>>>>> 1d247a64c97996a93641253ba67961c7d55d962f
+
+	/**
+	 * Default konstruktor
+	 * @param name
+	 * @throws IOException
+	 */
 	public Worker(String name) throws IOException {
 		this.name = name;
 	}
 
-	// Tile beállítása
+	/**
+	 * Tile beallitasa
+	 * @param t
+	 * @throws IOException
+	 */
 	public void SetTile(Tile t) throws IOException {
 		tile = t;
 		System.out.println("SET");
 		if(tile == null) System.out.println("Hazudtam");
 	}
-	
-	//Worker mozgatasa
+
+	/**
+	 * A munkas mozgatasa.
+	 * @param e
+	 * @param d
+	 * @return A munkás el tud-e mozogni.
+	 * @throws IOException
+	 */
 	@Override
 	public boolean Move(Entity e, Direction d) throws IOException {
 		Tile temp = tile;
@@ -40,42 +65,75 @@ public class Worker extends Entity {
 		
 				
 	}
-	
-	// a munkas nem hat a kapcsolora
+
+	/**
+	 * A munkas nem hat a kapcsolora.
+	 * @return Mindig hamis.
+	 * @throws IOException
+	 */
 	@Override
 	public boolean SwitchAction() throws IOException {
 
 		return false;
 	}
 
-	// Worker tolhatosaganak ellenorzese
+	/**
+	 * A munkas tolhatosaganak ellenorzese.
+	 * @param e
+	 * @return A munkast el lehet-e tolni.
+	 * @throws IOException
+	 */
 	@Override
 	public boolean MovedBy(Entity e) throws IOException {
 		if(e == null) return false;
 		return true;
 		
 	}
-	
+
+	/**
+	 * A munkas meghal.
+	 */
 	public void Die() {
 		
 	}
-	
+
+	/**
+	 * Egy lada helyere lokesekor noveli a munkás helyre tett ladainak szamat.
+	 */
 	public void AddPlacedBox() {
 		numOfPlacedBoxes++;
 	}
-	
-	
+
+	/**
+	 * Debug fuggveny.
+	 */
 	public void Hi() {
 		System.out.print("W");
 	}
+	
+	public void setPower(double p) {
+		power = p;
+	}
+	
+	public double getPower() {
+		return power;
+	}
 
+	/**
+	 * Csokkenti az aktualisan a Warehouse-ban levo Worker-ek szamat.
+	 * @throws IOException
+	 */
 	@Override
 	public void reduceNum() throws IOException {
 		Game.getCurrentWH().reduceNumOfWorkers();
 		
 	}
 
-	//Pillarnak lepes
+	/**
+	 * Pillarnak lepes.
+	 * @return
+	 * @throws IOException
+	 */
 	@Override
 	public boolean ToPillar() throws IOException {
 		

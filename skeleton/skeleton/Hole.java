@@ -2,22 +2,35 @@ import java.io.IOException;
 
 
 /**
- * Az entity-ket elnyelő Tile
+ * Az entity-ket elnyelo Tile
  */
 public class Hole extends Tile {
 
-	// Default konstruktor
+	/**
+	 * Default konstruktor
+	 * @throws IOException
+	 */
 	public Hole() throws IOException {
 
 	}
 
-	// A Hole-ra érkező entity-ket kezeli
+	// A Hole-ra erkezo entity-ket kezeli
+
+	/**
+	 * Kezei a lyukra érkezni akaró entityket
+	 * @param e	az entity
+	 * @return	ide mozoghat-e az entity
+	 * @throws IOException
+	 */
 	public boolean Accept(Entity e) throws IOException {
 
 		return false;
 		
 	}
-	// Debug fv
+
+	/**
+	 * debug fv
+	 */
 	public void Hi() {
 		System.out.print("H");
 	}
