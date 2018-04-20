@@ -21,21 +21,16 @@ public class Game {
 	 * Raktarak szama.
 	 */
 	private static int numOfWHs; // a szkeletonhoz. a grafikus feluleten majd ugyis kattintassal valaszt, es nem tud "rosszat", addig is muszaj vedeni valahogy a tulindexelest.
-<<<<<<< HEAD
 	/**
 	 * A fajl, ahol a jatekokat taroljuk.
 	 */
-	private static String WHfile = "game.txt"; //a fajl, ahol a jatekokat tartoljuk.
+	private static String WHfile; //a fajl, ahol a jatekokat tartoljuk.
 	/**
 	 * Az osztaly konstruktora, ami beolvassa kulso fajlokbol a palyakat.
 	 * @param file a kivalasztott palya
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-=======
-	private static String WHfile; //a fajl, ahol a jatekokat tartoljuk.
-	
->>>>>>> dd89ec5f3012436e67bc109994442b924c599eaf
 	public Game(String file) throws FileNotFoundException, IOException {
 		WHfile = file;
 	}
@@ -71,28 +66,11 @@ public class Game {
 		}
 		
 	}
-<<<<<<< HEAD
+	
 	/**
 	 * Kilistazza a beolvasott palyakat.
 	 * @throws IOException
 	 */
-	public void ShowWHs() throws IOException {
-		
-	}
-	
-	/**
-	 * Elinditja a jatekot a parameterul kapott palyaval.
-	 * @throws IOException
-	 */
-	public static void NewGame() throws IOException { 
-
-	}
-	
-	/**
-	 * Kiirja a gyoztes jatekost es a szerzett pontokat.
-	 */
-=======
-	
 	public static void ShowWHs() throws IOException {
 		for(int i = 0; i < warehouses.length; i++) {
 			System.out.println("--------------- WH ID: " + i + " ---------------");
@@ -102,16 +80,19 @@ public class Game {
 		
 	}
 	
-
+	/**
+	 * Elinditja a jatekot a parameterul kapott palyaval.
+	 * @throws IOException
+	 */
 	public static void NewGame(int wh) throws IOException { 
 		currentWarehouse = warehouses[wh];
 		currentWarehouse.AddWorker(new Worker("Mario"), 3, 6);
 		currentWarehouse.draw();
 	}
 	
-	
-
->>>>>>> dd89ec5f3012436e67bc109994442b924c599eaf
+	/**
+	 * Kiirja a gyoztes jatekost es a szerzett pontokat.
+	 */
 	public void EndGame() {
 		// TODO meg kollene irni
 	}

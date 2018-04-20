@@ -16,6 +16,7 @@ public class Worker extends Entity {
 
 	//TODO kitalalni, hogy mire jo.
 	private Entity byEntity;
+	private double power;
 
 	/**
 	 * Default konstruktor
@@ -92,6 +93,14 @@ public class Worker extends Entity {
 	 */
 	public void Hi() {
 		System.out.print("W");
+	}
+	
+	public void setPower(double p) {
+		power = p;
+	}
+	
+	public double getPower() {
+		return power;
 	}
 
 	/**
