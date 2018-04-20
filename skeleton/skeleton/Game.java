@@ -10,10 +10,10 @@ public class Game {
 	private static WareHouse currentWarehouse;
 	private static WareHouse[] warehouses;
 	private static int numOfWHs; // a szkeletonhoz. a grafikus feluleten majd ugyis kattintassal valaszt, es nem tud "rosszat", addig is muszaj vedeni valahogy a tulindexelest.
-	private static String WHfile = "game.txt"; //a fajl, ahol a jatekokat tartoljuk.
+	private static String WHfile; //a fajl, ahol a jatekokat tartoljuk.
 	
 	public Game(String file) throws FileNotFoundException, IOException {
-		
+		WHfile = file;
 	}
 	
 	private static void readWHs() throws IOException {
