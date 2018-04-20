@@ -60,7 +60,7 @@ public class Tile {
 		return true;
 		
 	}
-<<<<<<< HEAD
+	
 	//Worker vagy Box keri ezt az Acceptet
 	public boolean Accept(Entity e, Direction d) throws IOException { // TODO Ide nem kene mas fuggvenyhivas? (bence)
 		if(entity == null) {
@@ -73,9 +73,8 @@ public class Tile {
 		else {
 			return entity.Move(e, d);
 		}
+	}
 		
-		
-=======
 
 	/**
 	 * Kezeli az adott iránybol érkező ra erkezo entityket
@@ -83,25 +82,14 @@ public class Tile {
 	 * @param d	az irany
 	 * @throws IOException
 	 */
-	public void Accept(Entity e, Direction d) throws IOException { // TODO Ide nem kene mas fuggvenyhivas? (bence)
->>>>>>> 1d247a64c97996a93641253ba67961c7d55d962f
-
 		
-	}
-
-<<<<<<< HEAD
-	// Entity eltávolítása a mezőről
-	public void Remove(Entity e) throws IOException {
-		entity = null;
-=======
 
 	/**
 	 * Entity eltavolítasa a mezorol
 	 * @throws IOException
 	 */
 	public void Remove() throws IOException {
-
->>>>>>> 1d247a64c97996a93641253ba67961c7d55d962f
+		entity = null;
 	}
 
 

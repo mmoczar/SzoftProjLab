@@ -43,11 +43,8 @@ public class TrapDoor extends Tile {
 	public void Hi() {
 		System.out.print("T");
 	}
-<<<<<<< HEAD
 	
 	// eloszor ralep az entitas, es ha nyitva van, akkor leejti
-	public boolean Accept(Entity e, Direction d) throws IOException {
-=======
 
 	/**
 	 * Eloszor ralep az entitas, es ha nyitva van, akkor leejti
@@ -55,8 +52,7 @@ public class TrapDoor extends Tile {
 	 * @param d
 	 * @throws IOException
 	 */
-	public void Accept(Entity e, Direction d) throws IOException {
->>>>>>> 1d247a64c97996a93641253ba67961c7d55d962f
+	public boolean Accept(Entity e, Direction d) throws IOException {
 		super.Accept(e, d);
 		if(state) DropEntity(e); // ha nyitva, leejti
 		return true;

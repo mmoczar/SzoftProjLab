@@ -16,11 +16,8 @@ public class Worker extends Entity {
 
 	//TODO kitalalni, hogy mire jo.
 	private Entity byEntity;
-<<<<<<< HEAD
-	private Tile tile;
-=======
+	Tile tile;
 	private double power;
->>>>>>> 1d247a64c97996a93641253ba67961c7d55d962f
 
 	/**
 	 * Default konstruktor
