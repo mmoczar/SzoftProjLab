@@ -2,16 +2,24 @@ import java.io.IOException;
 
 
 /**
- * Az oszlopokat reprezentáló osztály
+ * Az oszlopokat reprezentalo osztaly
  */
 public class Pillar extends Tile {
-	
-	// Default konstruktor
+
+	/**
+	 * Default konstruktor
+	 * @throws IOException
+	 */
 	public Pillar() throws IOException {
 
 	}
 
-	//oszlop acceptje
+	/**
+	 * Az ososztaly Accept fuggvenyet definialja felul oly modon, hogy sosem fogad el ra erkezo entitast.
+	 * @param e	az entity
+	 * @return
+	 * @throws IOException
+	 */
 	public boolean Accept(Entity e) throws IOException {
 
 		return false;
@@ -29,8 +37,10 @@ public class Pillar extends Tile {
 	public Entity GetEntityAt() {
 		return null;
 	}
-	
-	// Debug fuggveny
+
+	/**
+	 * Debug fuggveny
+	 */
 	public void Hi() {
 		System.out.print("X");
 	}

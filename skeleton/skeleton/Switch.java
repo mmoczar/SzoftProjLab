@@ -19,8 +19,8 @@ public class Switch extends Tile {
 	}
 	
 	// entitas tipsatol fuggoen megvaltoztatja a csapoajto allapotat
-	public void Accept(Entity e, Direction d) throws IOException {
-
+	public boolean Accept(Entity e, Direction d) throws IOException {
+		return true;
 	}
 	
 	// a csapoajto allapotanak az ellentettjere allitja
