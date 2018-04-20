@@ -44,6 +44,10 @@ public class TrapDoor extends Tile {
 		System.out.print("T");
 	}
 	
+	public String Hello() {
+		return "TrapDoor";
+	}
+	
 	// eloszor ralep az entitas, es ha nyitva van, akkor leejti
 
 	/**

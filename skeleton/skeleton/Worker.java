@@ -108,6 +108,10 @@ public class Worker extends Entity {
 		System.out.print("W");
 	}
 	
+	public String Hello() {
+		return "Worker";
+	}
+	
 	public void setPower(double p) {
 		power = p;
 	}

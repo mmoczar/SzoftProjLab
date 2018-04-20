@@ -55,6 +55,10 @@ public class Box extends Entity {
 		System.out.print("B");
 	}
 
+	public String Hello() {
+		return "Box";
+	}
+	
 	// Doboz eltünésekor
 	@Override
 	public void reduceNum() throws IOException {
