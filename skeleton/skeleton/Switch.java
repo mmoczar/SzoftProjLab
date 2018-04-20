@@ -25,7 +25,10 @@ public class Switch extends Tile {
 	
 	// a csapoajto allapotanak az ellentettjere allitja
 	public void SwitchTrap() throws IOException {
-
+		if (trapdoor == null) {
+			return;
+		}
+		trapdoor.SetState();
 	}
 
 
