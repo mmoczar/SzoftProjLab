@@ -99,8 +99,8 @@ public class WareHouse {
 	}
 
 	// Worker hozzáadása a pályához
-	public void AddWorker(Worker w, Vec2D pos) throws IOException { 
-		
+	public void AddWorker(Worker w, int x, int y) throws IOException { 
+		tiles[x][y].SetEntity(w);
 	}
 
 

@@ -45,14 +45,22 @@ public class Game {
 		
 	}
 	
-	public void ShowWHs() throws IOException {
+	public static void ShowWHs() throws IOException {
+		for(int i = 0; i < warehouses.length; i++) {
+			System.out.println("--------------- WH ID: " + i + " ---------------");
+			warehouses[i].draw();
+			System.out.println("");
+		}
 		
 	}
 	
 
 	public static void NewGame() throws IOException { 
-
+		currentWarehouse.AddWorker(new Worker("Mario"), 3, 6);
+		ShowWHs();
 	}
+	
+	
 
 	public void EndGame() {
 		// TODO meg kollene irni
@@ -65,6 +73,11 @@ public class Game {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Game game = new Game("game.txt");
 		game.readWHs();
+		game.ShowWHs();
+		
+		currentWarehouse = game.warehouses[0];
+		game.NewGame();
+		
 		
 		
 	}

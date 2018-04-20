@@ -22,7 +22,7 @@ public class Tile {
 
 	// A Tile-on lévő Entity beállítása
 	public void SetEntity(Entity e) throws IOException {
-
+		entity = e;
 	}
 	
 	//Szomszedos Tile keri ezt az Acceptet
@@ -66,7 +66,7 @@ public class Tile {
 	}
 	 // Debug fuggveny
 	public void Hi() {
-		if(entity == null) System.out.print("O");
+		if(entity == null) System.out.print(" ");
 		else entity.Hi();
 	}
 	
