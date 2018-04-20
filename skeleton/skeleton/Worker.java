@@ -6,13 +6,13 @@ import java.io.IOException;
  */
 public class Worker extends Entity {
 
-	
+	private String name;
 	private int numOfPlacedBoxes;
 	private Entity byEntity;
 
 	// Default konstruktor
-	public Worker() throws IOException {
-
+	public Worker(String name) throws IOException {
+		this.name = name;
 	}
 
 	// Tile beállítása
@@ -24,7 +24,7 @@ public class Worker extends Entity {
 	@Override
 	public boolean Move(Entity e, Direction d) throws IOException {
 			
-			return false;
+		return false;
 				
 	}
 	

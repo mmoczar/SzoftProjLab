@@ -99,8 +99,8 @@ public class WareHouse {
 	}
 
 	// Worker hozzáadása a pályához
-	public void AddWorker(Worker w, Vec2D pos) throws IOException { 
-		
+	public void AddWorker(Worker w, int x, int y) throws IOException { 
+		tiles[x][y].SetEntity(w);
 	}
 
 
@@ -121,17 +121,18 @@ public class WareHouse {
 
 	// A pályán lévő dobozok számaának csökkentése
 	public void reduceNumOfBoxes() throws IOException {
+		numOfBoxes--;
 		
 	}
 
 	// A pályán lévő munkások számaának csökkentése
 	public void reduceNumOfWorkers() throws IOException {
+		numOfWorkers--;
 		
 	}
 
 	// Mozgatható dobozok száma
 	public void reduceNumOfMovableBoxes() throws IOException {
-		
-
+		numOfMovableBoxes--;
 	}
 }

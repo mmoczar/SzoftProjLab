@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -22,6 +21,7 @@ public class Game {
 	 * Raktarak szama.
 	 */
 	private static int numOfWHs; // a szkeletonhoz. a grafikus feluleten majd ugyis kattintassal valaszt, es nem tud "rosszat", addig is muszaj vedeni valahogy a tulindexelest.
+<<<<<<< HEAD
 	/**
 	 * A fajl, ahol a jatekokat taroljuk.
 	 */
@@ -32,8 +32,12 @@ public class Game {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
+=======
+	private static String WHfile; //a fajl, ahol a jatekokat tartoljuk.
+	
+>>>>>>> dd89ec5f3012436e67bc109994442b924c599eaf
 	public Game(String file) throws FileNotFoundException, IOException {
-		
+		WHfile = file;
 	}
 	/**
 	 * Beolvassa a raktarakat.
@@ -67,6 +71,7 @@ public class Game {
 		}
 		
 	}
+<<<<<<< HEAD
 	/**
 	 * Kilistazza a beolvasott palyakat.
 	 * @throws IOException
@@ -86,6 +91,27 @@ public class Game {
 	/**
 	 * Kiirja a gyoztes jatekost es a szerzett pontokat.
 	 */
+=======
+	
+	public static void ShowWHs() throws IOException {
+		for(int i = 0; i < warehouses.length; i++) {
+			System.out.println("--------------- WH ID: " + i + " ---------------");
+			warehouses[i].draw();
+			System.out.println("");
+		}
+		
+	}
+	
+
+	public static void NewGame(int wh) throws IOException { 
+		currentWarehouse = warehouses[wh];
+		currentWarehouse.AddWorker(new Worker("Mario"), 3, 6);
+		currentWarehouse.draw();
+	}
+	
+	
+
+>>>>>>> dd89ec5f3012436e67bc109994442b924c599eaf
 	public void EndGame() {
 		// TODO meg kollene irni
 	}
@@ -106,6 +132,11 @@ public class Game {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Game game = new Game("game.txt");
 		game.readWHs();
+		game.ShowWHs();
+		
+		
+		game.NewGame(0);
+		
 		
 		
 	}
