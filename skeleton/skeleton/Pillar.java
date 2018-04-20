@@ -8,19 +8,12 @@ public class Pillar extends Tile {
 	
 	// Default konstruktor
 	public Pillar() throws IOException {
-		Szkeleton.kiir(">", "Pillar", "Pillar()");
-		Szkeleton.kiir("<", "Pillar", "Pillar()");
+
 	}
 
 	//oszlop acceptje
 	public boolean Accept(Entity e) throws IOException {
-		Szkeleton.kiir(">", "Pillar", "Accept(e)");
-		//Megivja a nekiszalado entity-re a ToPillar fuggvenyet
-		if(e.ToPillar()) {
-			Szkeleton.kiir("<", "Pillar", "Accept(e): true");
-			return true;
-		}
-		Szkeleton.kiir("<", "Pillar", "Accept(e): false");
+
 		return false;
 	}
 

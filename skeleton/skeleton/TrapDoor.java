@@ -10,14 +10,12 @@ public class TrapDoor extends Tile {
 
 	// Default konstruktor
 	public TrapDoor() throws IOException {
-		Szkeleton.kiir(">", "TrapDoor", "TrapDoor()");	
-		Szkeleton.kiir("<", "TrapDoor", "TrapDoor()");
+
 	}
 
 	// Csapóajtó állapotának lekérdése
 	public boolean GetState() throws IOException {
-		Szkeleton.kiir(">", "TrapDoor", "GetState()");
-		Szkeleton.kiir("<", "TrapDoor", "GetState(): "+ state);
+
 		return state;
 	}
 
@@ -39,9 +37,7 @@ public class TrapDoor extends Tile {
 
 	// A mezőn lévő enity leejtése
 	public void DropEntity(Entity e) throws IOException {
-		Szkeleton.kiir(">", "TrapDoor", "DropEntity(e)");
-		Remove(e);
-		Szkeleton.kiir("<", "TrapDoor", "DropEntity(e)");
+
 	}
 	
 }

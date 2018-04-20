@@ -14,8 +14,7 @@ public class Target extends Tile {
 	
 	// Default konstruktor
 	public Target() throws IOException {
-		Szkeleton.kiir(">", "Target", "Target()");	
-		Szkeleton.kiir("<", "Target", "Target()");
+
 	}
 
 	// Doboz hozzárendelése a célhoz
@@ -25,11 +24,7 @@ public class Target extends Tile {
 
 	// A célra érkező entity-ket kezeli
 	public void Accept(Entity e, Direction d) throws IOException {
-		Szkeleton.kiir(">", "Target", "Accept()");
-		if (boxes.contains(e)) {
-			e.reduceNum();
-		}
-		Szkeleton.kiir("<", "Target", "Accept()");
+
 	}
 
 	// Debug fv
