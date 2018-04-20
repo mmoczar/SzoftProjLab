@@ -57,7 +57,12 @@ public class Game {
 
 	public static void NewGame(int wh) throws IOException { 
 		currentWarehouse = warehouses[wh];
-		currentWarehouse.AddWorker(new Worker("Mario"), 3, 6);
+		Worker w1 = new Worker("Mario");
+		currentWarehouse.AddWorker(w1, 3, 6);
+		currentWarehouse.draw();
+		
+		w1.Move(null, Direction.UP);
+		
 		currentWarehouse.draw();
 	}
 	
@@ -75,8 +80,6 @@ public class Game {
 		Game game = new Game("game.txt");
 		game.readWHs();
 		game.ShowWHs();
-		
-		
 		game.NewGame(0);
 		
 		

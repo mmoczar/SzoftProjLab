@@ -9,6 +9,7 @@ public class Worker extends Entity {
 	private String name;
 	private int numOfPlacedBoxes;
 	private Entity byEntity;
+	private Tile tile;
 
 	// Default konstruktor
 	public Worker(String name) throws IOException {
@@ -17,14 +18,29 @@ public class Worker extends Entity {
 
 	// Tile beállítása
 	public void SetTile(Tile t) throws IOException {
-
+		tile = t;
 	}
 	
 	//Worker mozgatasa
 	@Override
 	public boolean Move(Entity e, Direction d) throws IOException {
-			
-			return false;
+		//Ellenorzi hogy az adott iranyban van-e valaki
+		Entity nb = tile.GetEntityAt(d); 
+		if(nb == null){
+			System.out.println("Mellttem nincs semmi");
+			tile.Accept(this, d);
+		}
+		else {
+			System.out.println("Itt van valami");
+			if(nb.MovedBy(e)) {
+				System.out.println("El tudom tolni");
+				nb.Move(this, d);
+				tile.Accept(this, d);
+			} 
+			else System.out.println("Nem tudom tolni");
+		} 
+		
+		return false;
 				
 	}
 	

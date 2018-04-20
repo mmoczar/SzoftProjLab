@@ -23,17 +23,33 @@ public class Tile {
 	// A Tile-on lévő Entity beállítása
 	public void SetEntity(Entity e) throws IOException {
 		entity = e;
+		e.SetTile(this);
 	}
 	
 	//Szomszedos Tile keri ezt az Acceptet
 	public boolean Accept(Entity e) throws IOException {
-
-		return true;
+		entity = e;
+		e.SetTile(this);
+		System.out.println("Sikeres Mozgás");
+		return false;
 		
 	}
 	//Worker vagy Box keri ezt az Acceptet
 	public void Accept(Entity e, Direction d) throws IOException { // TODO Ide nem kene mas fuggvenyhivas? (bence)
-
+		boolean isPillar = false;
+		
+		//Mozgas iranyaba elfogadat kerni
+		switch(d) {
+		case UP: isPillar = tUP.Accept(e); break;
+		case DOWN: isPillar = tDOWN.Accept(e); break;
+		case LEFT: isPillar = tLEFT.Accept(e); break;
+		case RIGHT: isPillar = tRIGHT.Accept(e); break;
+		default:
+			break;
+		}
+		
+		//kitorolni az elmozgott entity referenciajat
+		if(!isPillar) entity = null;
 
 
 		
@@ -60,7 +76,14 @@ public class Tile {
 	
 	//Ez a fuggveny, amikor a worker kerdezi az alatta levo mezot, hogy mondja meg a szomszedon van-e Entity
 	public Entity GetEntityAt(Direction d) throws IOException {
-		
+		switch(d) {
+		case UP: return tUP.GetEntityAt(); 
+		case DOWN: return tDOWN.GetEntityAt(); 
+		case LEFT: return tLEFT.GetEntityAt(); 
+		case RIGHT: return tRIGHT.GetEntityAt();
+		default:
+			break;
+		}
 		return null;
 		
 	}
