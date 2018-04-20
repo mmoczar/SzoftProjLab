@@ -23,8 +23,8 @@ public class Target extends Tile {
 	}
 
 	// A célra érkező entity-ket kezeli
-	public void Accept(Entity e, Direction d) throws IOException {
-
+	public boolean Accept(Entity e, Direction d) throws IOException {
+		return true;
 	}
 
 	// Debug fv
