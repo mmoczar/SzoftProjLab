@@ -4,20 +4,44 @@ import java.util.ArrayList;
 
 
 /**
- * A pályát reprezentáló osztály
+ * A palyat reprezentalo osztaly.
  */
 public class WareHouse {
+	/**
+	 * L�d�k sz�ma.
+	 */
 	private int numOfBoxes = 0;
+	/**
+	 * Celmezok szama.
+	 */
 	private int numOfTargets = 0;
+	/**
+	 * Munkasok szama.
+	 */
 	private int numOfWorkers = 0;
+	/**
+	 * Mozgathato ladak szama.
+	 */
 	private int numOfMovableBoxes = 0;
+	/**
+	 * Raktar magassaga (mezo darab).
+	 */
 	private int height;
+	/**
+	 * Raktar szelessege (mezo darab).
+	 */
 	private int width;
 
-
+	/**
+	 * Mezok, melyek a raktarat alkotjak.
+	 */
 	private Tile[][] tiles;
 
-	// Konstruktor
+	/**
+	 * Az osztaly konstruktora.
+	 * @param map Egy '+' jelig beolvasott palya.
+	 * @throws IOException
+	 */
 	public WareHouse(ArrayList<String> map) throws IOException {
 		String[] dimension = map.get(0).split(" ");
 		width = Integer.parseInt(dimension[0]);
@@ -88,7 +112,9 @@ public class WareHouse {
 		
 		
 	}
-	//Konzolos kirajzolas
+	/**
+	 * Kirajzol a konzolra.
+	 */
 	public void draw() {
 		for(int i= height-1; i>=0; i--) {
 			for(int j = 0; j<width; j++) {
@@ -98,40 +124,66 @@ public class WareHouse {
 			}
 	}
 
-	// Worker hozzáadása a pályához
+	/**
+	 * Hozzaadja a munkast a palyahoz.
+	 * @param w munkas
+	 * @param x x koordinata
+	 * @param y y koordinata
+	 * @throws IOException
+	 */
 	public void AddWorker(Worker w, int x, int y) throws IOException { 
 		tiles[x][y].SetEntity(w);
+		w.tile = tiles[x][y];
 	}
 
-
+	/**
+	 * Visszaadja a megkapott koordinatara eso mezot.
+	 * @param v koordinata
+	 * @return a koordinatan levo mezo
+	 */
 	public Tile GetTileAt(Vec2D v) {
-		return null;
+		return tiles[v.getX()][v.getY()];
 		
 	}
-	
+	/**
+	 * Visszaadja a raktar meretet (N x M).
+	 * @return raktar merete
+	 */
 	public Vec2D GetDimension() {
-		return null;
+		return new Vec2D(width, height);
 		
 	}
 
-	// A pályán lévő dobozok száma
+	/**
+	 * A raktarban levo ladak szama.
+	 * @return ladak szama
+	 */
 	public int GetNumOfBoxes() {
 		return numOfBoxes;
 	}
 
-	// A pályán lévő dobozok számaának csökkentése
+	/**
+	 * A palyan levo ladak szamat csokkenti.
+	 * @throws IOException
+	 */
 	public void reduceNumOfBoxes() throws IOException {
 		numOfBoxes--;
 		
 	}
 
-	// A pályán lévő munkások számaának csökkentése
+	/**
+	 * A palyan levo munkasok szamat csokkenti.
+	 * @throws IOException
+	 */
 	public void reduceNumOfWorkers() throws IOException {
 		numOfWorkers--;
 		
 	}
 
-	// Mozgatható dobozok száma
+	/**
+	 * A palyan levo mozgathato ladak szamat csokkenti.
+	 * @throws IOException
+	 */
 	public void reduceNumOfMovableBoxes() throws IOException {
 		numOfMovableBoxes--;
 	}
