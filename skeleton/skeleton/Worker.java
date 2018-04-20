@@ -9,6 +9,7 @@ public class Worker extends Entity {
 	private String name;
 	private int numOfPlacedBoxes;
 	private Entity byEntity;
+	private double power;
 
 	// Default konstruktor
 	public Worker(String name) throws IOException {
@@ -54,6 +55,14 @@ public class Worker extends Entity {
 	
 	public void Hi() {
 		System.out.print("W");
+	}
+	
+	public void setPower(double p) {
+		power = p;
+	}
+	
+	public double getPower() {
+		return power;
 	}
 
 	@Override

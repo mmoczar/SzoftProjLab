@@ -101,16 +101,17 @@ public class WareHouse {
 	// Worker hozzáadása a pályához
 	public void AddWorker(Worker w, int x, int y) throws IOException { 
 		tiles[x][y].SetEntity(w);
+		w.tile = tiles[x][y];
 	}
 
 
 	public Tile GetTileAt(Vec2D v) {
-		return null;
+		return tiles[v.getX()][v.getY()];
 		
 	}
 	
 	public Vec2D GetDimension() {
-		return null;
+		return new Vec2D(width, height);
 		
 	}
 
