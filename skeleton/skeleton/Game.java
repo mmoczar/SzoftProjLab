@@ -55,9 +55,10 @@ public class Game {
 	}
 	
 
-	public static void NewGame() throws IOException { 
+	public static void NewGame(int wh) throws IOException { 
+		currentWarehouse = warehouses[wh];
 		currentWarehouse.AddWorker(new Worker("Mario"), 3, 6);
-		ShowWHs();
+		currentWarehouse.draw();
 	}
 	
 	
@@ -75,8 +76,8 @@ public class Game {
 		game.readWHs();
 		game.ShowWHs();
 		
-		currentWarehouse = game.warehouses[0];
-		game.NewGame();
+		
+		game.NewGame(0);
 		
 		
 		
