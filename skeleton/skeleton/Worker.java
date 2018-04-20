@@ -52,7 +52,7 @@ public class Worker extends Entity {
 
 		if(temp.GetNbTile(d).Accept(this, d)){
 			System.out.println("Sikeres mozgas");
-			temp.Remove(this);
+			temp.Remove(/*this*/);
 			return true;
 		}
 		else {
