@@ -82,6 +82,7 @@ public class Game {
 	
 	/**
 	 * Elinditja a jatekot a parameterul kapott palyaval.
+	 * @param wh raktar, mellyel uj jatek indul
 	 * @throws IOException
 	 */
 	public static void NewGame(int wh) throws IOException { 
