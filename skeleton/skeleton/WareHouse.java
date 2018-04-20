@@ -133,6 +133,7 @@ public class WareHouse {
 	 */
 	public void AddWorker(Worker w, int x, int y) throws IOException { 
 		tiles[x][y].SetEntity(w);
+		w.tile = tiles[x][y];
 	}
 
 	/**
@@ -141,7 +142,7 @@ public class WareHouse {
 	 * @return a koordinatan levo mezo
 	 */
 	public Tile GetTileAt(Vec2D v) {
-		return null;
+		return tiles[v.getX()][v.getY()];
 		
 	}
 	/**
@@ -149,7 +150,7 @@ public class WareHouse {
 	 * @return raktar merete
 	 */
 	public Vec2D GetDimension() {
-		return null;
+		return new Vec2D(width, height);
 		
 	}
 
