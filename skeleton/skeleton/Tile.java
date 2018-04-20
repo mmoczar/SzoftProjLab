@@ -26,6 +26,16 @@ public class Tile {
 	 */
 	public Tile(TrapDoor trap) {
 	}
+	
+	public Tile GetNbTile(Direction d) {
+		switch(d){
+		case UP: return tUP; 
+		case DOWN: return tDOWN; 
+		case LEFT: return tLEFT; 
+		case RIGHT: return tRIGHT;
+		default: return null;
+		}
+	}
 
 
 	/**
@@ -35,6 +45,7 @@ public class Tile {
 	 */
 	public void SetEntity(Entity e) throws IOException {
 		entity = e;
+		e.SetTile(this);
 	}
 	
 	//Szomszedos Tile keri ezt az Acceptet
@@ -46,10 +57,25 @@ public class Tile {
 	 * @throws IOException
 	 */
 	public boolean Accept(Entity e) throws IOException {
-
 		return true;
 		
 	}
+<<<<<<< HEAD
+	//Worker vagy Box keri ezt az Acceptet
+	public boolean Accept(Entity e, Direction d) throws IOException { // TODO Ide nem kene mas fuggvenyhivas? (bence)
+		if(entity == null) {
+			entity = e;
+			
+			e.SetTile(this);
+			System.out.println("Sikeres Accept");
+			return true;
+		}
+		else {
+			return entity.Move(e, d);
+		}
+		
+		
+=======
 
 	/**
 	 * Kezeli az adott iránybol érkező ra erkezo entityket
@@ -58,10 +84,16 @@ public class Tile {
 	 * @throws IOException
 	 */
 	public void Accept(Entity e, Direction d) throws IOException { // TODO Ide nem kene mas fuggvenyhivas? (bence)
+>>>>>>> 1d247a64c97996a93641253ba67961c7d55d962f
 
 		
 	}
 
+<<<<<<< HEAD
+	// Entity eltávolítása a mezőről
+	public void Remove(Entity e) throws IOException {
+		entity = null;
+=======
 
 	/**
 	 * Entity eltavolítasa a mezorol
@@ -69,6 +101,7 @@ public class Tile {
 	 */
 	public void Remove() throws IOException {
 
+>>>>>>> 1d247a64c97996a93641253ba67961c7d55d962f
 	}
 
 
@@ -106,7 +139,14 @@ public class Tile {
 	 * @throws IOException
 	 */
 	public Entity GetEntityAt(Direction d) throws IOException {
-		
+		switch(d) {
+		case UP: return tUP.GetEntityAt(); 
+		case DOWN: return tDOWN.GetEntityAt(); 
+		case LEFT: return tLEFT.GetEntityAt(); 
+		case RIGHT: return tRIGHT.GetEntityAt();
+		default:
+			break;
+		}
 		return null;
 		
 	}

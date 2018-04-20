@@ -86,8 +86,17 @@ public class Game {
 	 */
 	public static void NewGame(int wh) throws IOException { 
 		currentWarehouse = warehouses[wh];
-		currentWarehouse.AddWorker(new Worker("Mario"), 3, 6);
+		Worker w1 = new Worker("Mario");
+		Worker w2 = new Worker("Luighi");
+		currentWarehouse.AddWorker(w1, 3, 6);
+		//currentWarehouse.AddWorker(w2, 4, 5);
 		currentWarehouse.draw();
+		
+		w1.Move(null, Direction.LEFT);
+		
+		currentWarehouse.draw();
+		
+		//w1.Move(null, Direction.DOWN);
 	}
 	
 	/**
@@ -114,8 +123,6 @@ public class Game {
 		Game game = new Game("game.txt");
 		game.readWHs();
 		game.ShowWHs();
-		
-		
 		game.NewGame(0);
 		
 		

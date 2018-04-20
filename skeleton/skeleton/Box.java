@@ -34,7 +34,6 @@ public class Box extends Entity {
 	@Override
 	public void Hi() {
 		System.out.print("B");
-		
 	}
 
 	// Doboz eltünésekor

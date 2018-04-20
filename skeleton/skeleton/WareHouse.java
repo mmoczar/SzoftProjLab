@@ -133,7 +133,11 @@ public class WareHouse {
 	 */
 	public void AddWorker(Worker w, int x, int y) throws IOException { 
 		tiles[x][y].SetEntity(w);
+<<<<<<< HEAD
+		w.SetTile(tiles[x][y]);
+=======
 		w.tile = tiles[x][y];
+>>>>>>> 1d247a64c97996a93641253ba67961c7d55d962f
 	}
 
 	/**

@@ -16,7 +16,11 @@ public class Worker extends Entity {
 
 	//TODO kitalalni, hogy mire jo.
 	private Entity byEntity;
+<<<<<<< HEAD
+	private Tile tile;
+=======
 	private double power;
+>>>>>>> 1d247a64c97996a93641253ba67961c7d55d962f
 
 	/**
 	 * Default konstruktor
@@ -33,7 +37,9 @@ public class Worker extends Entity {
 	 * @throws IOException
 	 */
 	public void SetTile(Tile t) throws IOException {
-
+		tile = t;
+		System.out.println("SET");
+		if(tile == null) System.out.println("Hazudtam");
 	}
 
 	/**
@@ -45,8 +51,18 @@ public class Worker extends Entity {
 	 */
 	@Override
 	public boolean Move(Entity e, Direction d) throws IOException {
-			
-		return false;
+		Tile temp = tile;
+
+		if(temp.GetNbTile(d).Accept(this, d)){
+			System.out.println("Sikeres mozgas");
+			temp.Remove(this);
+			return true;
+		}
+		else {
+			System.out.println("Sikertelen mozgas");
+			return false;
+		} 
+		
 				
 	}
 
@@ -69,7 +85,7 @@ public class Worker extends Entity {
 	 */
 	@Override
 	public boolean MovedBy(Entity e) throws IOException {
-		
+		if(e == null) return false;
 		return true;
 		
 	}
