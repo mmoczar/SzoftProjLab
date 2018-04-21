@@ -90,11 +90,12 @@ public class Game {
 		Worker w1 = new Worker("Mario");
 		Worker w2 = new Worker("Luighi");
 		currentWarehouse.AddWorker(w1, 2, 6);
-		//currentWarehouse.AddWorker(w2, 4, 5);
+		currentWarehouse.AddWorker(w2, 2, 4);
 		currentWarehouse.draw();
 		
 		w1.Move(null, Direction.LEFT, w1);
 		w1.Move(null, Direction.LEFT, w1);
+		
 		
 		currentWarehouse.draw();
 		

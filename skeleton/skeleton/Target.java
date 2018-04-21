@@ -24,19 +24,33 @@ public class Target extends Tile {
 
 	// A célra érkező entity-ket kezeli
 	public boolean Accept(Entity e, Direction d, Worker w) throws IOException {
-		if(e.getTarget() == this) {
-			e.SetTile(this);
-			System.out.println("Sikeres Accept");
-			System.out.println("Sikeres Target");
-			w.AddPlacedBox();
-			return true;
+		if(entity == null) {
+			if(e.getTarget() == this) {
+				e.SetTile(this);
+				System.out.println("Sikeres Accept");
+				System.out.println("Sikeres Target");
+				w.AddPlacedBox();
+				return true;
+			}
+			else return super.Accept(e, d, w);
 		}
-		else
-			return super.Accept(e, d, w);
+		
+		else {
+			if(entity.Move(e, d, w)) {
+				e.SetTile(this);
+				System.out.println("Sikeres Accept");
+				System.out.println("Sikeres Target");
+				w.AddPlacedBox();
+				return true;
+			}
+			else return false;
+		}
+			
 	}
 
 	// Debug fv
 	public void Hi() {
-		System.out.print("D");
+		if(entity == null) System.out.print("D");
+		else entity.Hi();
 	}
 }
