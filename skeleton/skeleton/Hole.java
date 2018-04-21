@@ -11,7 +11,7 @@ public class Hole extends Tile {
 	 * @throws IOException
 	 */
 	public Hole() throws IOException {
-
+		
 	}
 
 	// A Hole-ra erkezo entity-ket kezeli

@@ -11,13 +11,14 @@ public class Tile {
 	protected Tile tDOWN;
 	protected Tile tLEFT;
 	protected Tile tRIGHT;
-
+	
+	protected double res;
 	/**
 	 * Default konstruktor
 	 * @throws IOException
 	 */
 	public Tile() throws IOException {
-
+		
 	}
 
 	/**
@@ -25,6 +26,13 @@ public class Tile {
 	 * @param trap
 	 */
 	public Tile(TrapDoor trap) {
+	}
+	
+	public void setRes(double resistance) {
+		res = resistance;
+	}
+	public double getRes() {
+		return res;
 	}
 	
 	public Tile GetNbTile(Direction d) {

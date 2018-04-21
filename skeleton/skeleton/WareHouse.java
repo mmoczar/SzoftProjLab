@@ -47,6 +47,15 @@ public class WareHouse {
 		width = Integer.parseInt(dimension[0]);
 		height = Integer.parseInt(dimension[1]);
 		map.remove(0);
+		
+		//resistance set-----
+		double resistance;
+		String[] res_string;
+		res_string = map.get(0).split(" ");
+		resistance = Double.parseDouble(res_string[1]);
+		map.remove(0);
+		//--------------------
+		
 		//Generikus tomb beallitasa
 		tiles = (Tile[][]) Array.newInstance(Tile.class, Integer.parseInt(dimension[0]),Integer.parseInt(dimension[1]));
 		
@@ -109,6 +118,7 @@ public class WareHouse {
 		for(int i= 1; i<height-1; i++) {
 			for(int j = 1; j<width-1; j++) {
 				tiles[i][j].setNeighbor(tiles[i+1][j], tiles[i-1][j], tiles[i][j-1], tiles[i][j+1]);
+				tiles[i][j].setRes(resistance);
 			}
 		}
 		
