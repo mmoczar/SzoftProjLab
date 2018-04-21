@@ -13,6 +13,9 @@ public class Box extends Entity {
 	 */
 	private Worker worker;
 	
+	private Tile tile;
+	
+
 
 	// Doboz mozog
 	/**
@@ -22,8 +25,18 @@ public class Box extends Entity {
 	 * @return sikerult-e elmozogni
 	 */
 	@Override
-	public boolean Move(Entity e, Direction d) throws IOException {
-		return false;
+	public boolean Move(Entity e, Direction d, Worker w) throws IOException {
+		Tile temp = tile;
+		
+		if(temp.GetNbTile(d).Accept(this, d, w)){
+			System.out.println("Sikeres mozgas");
+			temp.Remove(/*this*/);
+			return true;
+		}
+		else {
+			System.out.println("Sikertelen mozgas");
+			return false;
+		} 
 	}
 
 	// Dobozt elmozgatjak
@@ -72,8 +85,7 @@ public class Box extends Entity {
 	 * @param t beallitando mezo
 	 */
 	public void SetTile(Tile t) {
-		// TODO Auto-generated method stub
-		
+		tile = t;	
 	}
 
 	// Oszlopnak ütközik
@@ -85,6 +97,16 @@ public class Box extends Entity {
 	public boolean ToPillar() {
 		return false;
 	}
+
+	@Override
+	public Target getTarget(){
+		return target;
+	}
+	
+	public void setTarget(Target t){
+		target = t;
+	}
+
 
 
 

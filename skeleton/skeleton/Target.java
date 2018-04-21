@@ -23,8 +23,16 @@ public class Target extends Tile {
 	}
 
 	// A célra érkező entity-ket kezeli
-	public boolean Accept(Entity e, Direction d) throws IOException {
-		return true;
+	public boolean Accept(Entity e, Direction d, Worker w) throws IOException {
+		if(e.getTarget() == this) {
+			e.SetTile(this);
+			System.out.println("Sikeres Accept");
+			System.out.println("Sikeres Target");
+			w.AddPlacedBox();
+			return true;
+		}
+		else
+			return super.Accept(e, d, w);
 	}
 
 	// Debug fv

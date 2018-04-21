@@ -23,7 +23,7 @@ public abstract class Entity {
 	 * @return sikerult-e elmozogni
 	 * @throws IOException
 	 */
-	public abstract boolean Move (Entity e, Direction d) throws IOException;
+	public abstract boolean Move (Entity e, Direction d, Worker w) throws IOException;
 	
 	/**
 	 * Visszaadja, hogy el tudtak-e tolni.
@@ -51,6 +51,8 @@ public abstract class Entity {
 	public abstract void Hi();
 	
 	public abstract String Hello();
+	
+	public abstract Target getTarget();
 
 	public abstract boolean ToPillar() throws IOException;
 }

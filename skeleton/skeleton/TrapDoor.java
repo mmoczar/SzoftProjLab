@@ -56,8 +56,8 @@ public class TrapDoor extends Tile {
 	 * @param d
 	 * @throws IOException
 	 */
-	public boolean Accept(Entity e, Direction d) throws IOException {
-		super.Accept(e, d);
+	public boolean Accept(Entity e, Direction d, Worker w) throws IOException {
+		super.Accept(e, d, w);
 		if(state) DropEntity(e); // ha nyitva, leejti
 		return true;
 	}

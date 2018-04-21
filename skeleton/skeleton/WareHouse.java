@@ -95,6 +95,8 @@ public class WareHouse {
 			else if(temp_tile[0].equals("Box")) {
 				Box currentBox = new Box();
 				tiles[x][y].SetEntity(currentBox);
+				currentBox.SetTile(tiles[x][y]);
+				currentBox.setTarget(recenttarget);
 				recenttarget.AddBox(currentBox);
 				numOfBoxes++;
 				numOfMovableBoxes++;
@@ -134,7 +136,6 @@ public class WareHouse {
 	public void AddWorker(Worker w, int x, int y) throws IOException { 
 		tiles[x][y].SetEntity(w);
 		w.SetTile(tiles[x][y]);
-		w.tile = tiles[x][y];
 	}
 
 	/**

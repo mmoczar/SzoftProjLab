@@ -62,17 +62,15 @@ public class Tile {
 	}
 	
 	//Worker vagy Box keri ezt az Acceptet
-	public boolean Accept(Entity e, Direction d) throws IOException { // TODO Ide nem kene mas fuggvenyhivas? (bence)
-		if(entity == null) {
+	public boolean Accept(Entity e, Direction d, Worker w) throws IOException { // TODO Ide nem kene mas fuggvenyhivas? (bence)
+		if(entity == null || entity.Move(e, d, w)) {
 			entity = e;
 			
 			e.SetTile(this);
 			System.out.println("Sikeres Accept");
 			return true;
 		}
-		else {
-			return entity.Move(e, d);
-		}
+		else return false;
 	}
 		
 

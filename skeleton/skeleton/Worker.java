@@ -12,7 +12,7 @@ public class Worker extends Entity {
 	/**
 	 * A munkas altal helyere tett ladak szama.
 	 */
-	private int numOfPlacedBoxes;
+	private int numOfPlacedBoxes = 0;
 
 	//TODO kitalalni, hogy mire jo.
 	private Entity byEntity;
@@ -35,8 +35,6 @@ public class Worker extends Entity {
 	 */
 	public void SetTile(Tile t) throws IOException {
 		tile = t;
-		System.out.println("SET");
-		if(tile == null) System.out.println("Hazudtam");
 	}
 
 	/**
@@ -47,10 +45,10 @@ public class Worker extends Entity {
 	 * @throws IOException
 	 */
 	@Override
-	public boolean Move(Entity e, Direction d) throws IOException {
+	public boolean Move(Entity e, Direction d, Worker w) throws IOException {
 		Tile temp = tile;
 
-		if(temp.GetNbTile(d).Accept(this, d)){
+		if(temp.GetNbTile(d).Accept(this, d, w)){
 			System.out.println("Sikeres mozgas");
 			temp.Remove(/*this*/);
 			return true;
@@ -99,6 +97,8 @@ public class Worker extends Entity {
 	 */
 	public void AddPlacedBox() {
 		numOfPlacedBoxes++;
+		System.out.println(name + " - betolt egy dobozt a megfelelo targetre");
+		System.out.println("Pontja: "+ numOfPlacedBoxes);
 	}
 
 	/**
@@ -139,5 +139,10 @@ public class Worker extends Entity {
 	public boolean ToPillar() throws IOException {
 		
 		return false;
+	}
+
+	@Override
+	public Target getTarget() {
+		return null;
 	}
 }
