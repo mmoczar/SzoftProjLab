@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 public class Teszter {
 	private class Eset {
 		protected String bFile, kFile, nev;
@@ -43,14 +44,17 @@ public class Teszter {
 	
 	//filelista beolvasasa a teszt/in illetve a teszt/out mappakbol
 	public Teszter() throws IOException {
-		String dir = "/tesztek/";
+		String dir =System.getProperty("user.dir")+ "/tesztek/";
 		File inFolder = new File(dir + "in/");
 		File[] inFiles = inFolder.listFiles();
-		System.out.println(inFiles[0].getName());
+		System.out.println(inFiles[0].getCanonicalPath());
 		
 		for (File f: inFiles) {
-			String fn = f.getName().split(".")[0];
-			esetek.add(new Eset(dir + "in/" + fn + ".in", dir + "out/" + fn + ".in", fn));
+			String fn = f.getName();
+			int pos = fn.lastIndexOf(".");
+			fn = fn.substring(0, pos);
+			System.out.println(fn);
+			esetek.add(new Eset(dir + "in/" + fn + ".in", dir + "out/" + fn + ".out", fn));
 		}
 	}
 	
