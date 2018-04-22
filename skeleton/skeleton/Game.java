@@ -16,7 +16,7 @@ public class Game {
 	/**
 	 * A palya fajlokbol beolvasott palyak tarolasa.
 	 */
-	private static WareHouse[] warehouses;
+	private WareHouse[] warehouses;
 	/**
 	 * Raktarak szama.
 	 */
@@ -24,7 +24,7 @@ public class Game {
 	/**
 	 * A fajl, ahol a jatekokat taroljuk.
 	 */
-	private static String WHfile; //a fajl, ahol a jatekokat tartoljuk.
+	private String WHfile; //a fajl, ahol a jatekokat tartoljuk.
 	/**
 	 * Az osztaly konstruktora, ami beolvassa kulso fajlokbol a palyakat.
 	 * @param file a kivalasztott palya
@@ -33,12 +33,13 @@ public class Game {
 	 */
 	public Game(String file) throws FileNotFoundException, IOException {
 		WHfile = file;
+		readWHs();
 	}
 	/**
 	 * Beolvassa a raktarakat.
 	 * @throws IOException
 	 */
-	private static void readWHs() throws IOException {
+	private void readWHs() throws IOException {
 		try (BufferedReader br = new BufferedReader(new FileReader(WHfile))) {
 		    String line;
 		    
@@ -71,7 +72,7 @@ public class Game {
 	 * Kilistazza a beolvasott palyakat.
 	 * @throws IOException
 	 */
-	public static void ShowWHs() throws IOException {
+	public void ShowWHs() throws IOException {
 		for(int i = 0; i < warehouses.length; i++) {
 			System.out.println("--------------- WH ID: " + i + " ---------------");
 			warehouses[i].draw();
@@ -85,10 +86,8 @@ public class Game {
 	 * @param wh raktar, mellyel uj jatek indul
 	 * @throws IOException
 	 */
-	public static void NewGame(int wh) throws IOException { 
+	public void NewGame(int wh) throws IOException { 
 		currentWarehouse = warehouses[wh];
-
-		currentWarehouse.draw();
 		
 		//w1.Move(null, Direction.DOWN);
 	}
@@ -104,7 +103,7 @@ public class Game {
 	 * Visszaadja az aktualis raktarat.
 	 * @return aktualis raktar
 	 */
-	public static WareHouse getCurrentWH() {
+	public WareHouse getCurrentWH() {
 		return currentWarehouse;
 	}
 	/**

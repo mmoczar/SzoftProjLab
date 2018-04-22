@@ -42,18 +42,19 @@ public class Teszter {
 	
 	private ArrayList<Eset> esetek = new ArrayList<Eset>();
 	
+	
+	
 	//filelista beolvasasa a teszt/in illetve a teszt/out mappakbol
 	public Teszter() throws IOException {
 		String dir =System.getProperty("user.dir")+ "/tesztek/";
 		File inFolder = new File(dir + "in/");
 		File[] inFiles = inFolder.listFiles();
-		System.out.println(inFiles[0].getCanonicalPath());
 		
 		for (File f: inFiles) {
 			String fn = f.getName();
 			int pos = fn.lastIndexOf(".");
 			fn = fn.substring(0, pos);
-			System.out.println(fn);
+		
 			esetek.add(new Eset(dir + "in/" + fn + ".in", dir + "out/" + fn + ".out", fn));
 		}
 	}
@@ -97,6 +98,7 @@ public class Teszter {
 	
 	public void Teszteles(int _melyik_teszt) throws Exception {
 		Eset teszt = esetek.get(_melyik_teszt);
+		Game game = new Game("game.txt");
 		ArrayList<Worker> workers = new ArrayList<>();
 		ArrayList<String> generaltKimenet = new ArrayList<>();
 		while (!teszt.bemenet.isEmpty() ) {
@@ -104,20 +106,21 @@ public class Teszter {
 			Vec2D d = null;
 			int szamol = 0;
 			String[] cmd = teszt.bemenet.get(0).split(" ");
-			 
+			teszt.bemenet.remove(0);
+			System.out.println(teszt.bemenet.size());
 			switch (cmd[0]) {
 			case "loadWH":
-				Game.NewGame(Integer.parseInt(cmd[1]));
+				game.NewGame(Integer.parseInt(cmd[1])-1);
 				break;
 			case "placeWorker":
-				if (workers.get(Integer.parseInt(cmd[1])) == null) {
-					workers.add(Integer.parseInt(cmd[1]), new Worker("W"+cmd[1], 1));
-				}
-				w = workers.get(Integer.parseInt(cmd[1]));
+				Worker temp_worker = new Worker("W"+cmd[1], 1); 
+				workers.add(temp_worker);
+				
+				w = temp_worker;
 				if (w.tile != null)
 					w.tile.Remove();
 				String[] XY = cmd[2].split(", ");
-				Game.getCurrentWH().AddWorker(w, Integer.parseInt(XY[0]), Integer.parseInt(XY[1]));
+				game.getCurrentWH().AddWorker(w, Integer.parseInt(XY[0]), Integer.parseInt(XY[1]));
 				break;
 			case "moveWorker":
 				w = workers.get(Integer.parseInt(cmd[1]));
@@ -127,11 +130,11 @@ public class Teszter {
 				//TODO kimeneti tombbe beleirni a sikeres mozgas textet. vagy azt, hogy sikertelen. attol fugg.
 				break;
 			case "listEntities":
-				d = Game.getCurrentWH().GetDimension();
+				d = game.getCurrentWH().GetDimension();
 				szamol = 1;
 				for (int x = 0; x < d.getX(); x++) {
 					for (int y = 0; y < d.getY(); y++) {
-						Tile ct = Game.getCurrentWH().GetTileAt(new Vec2D(x,y));
+						Tile ct = game.getCurrentWH().GetTileAt(new Vec2D(x,y));
 						if (ct.GetEntityAt() != null) {
 							String s = szamol + ". " + x + " " + y + " " + ct.GetEntityAt().Hello();
 							generaltKimenet.add(s);
@@ -147,11 +150,11 @@ public class Teszter {
 				w.setPower(Integer.parseInt(cmd[2]));
 				break;
 			case "listTSs":
-				d = Game.getCurrentWH().GetDimension();
+				d = game.getCurrentWH().GetDimension();
 				szamol = 1;
 				for (int x = 0; x < d.getX(); x++) {
 					for (int y = 0; y < d.getY(); y++) {
-						Tile ct = Game.getCurrentWH().GetTileAt(new Vec2D(x,y));
+						Tile ct = game.getCurrentWH().GetTileAt(new Vec2D(x,y));
 						if (ct.Hello() == "Switch") {
 							String s = szamol + ". " + "TrapDoor " + ct.getTD().position.getX() + ", " + ct.getTD().position.getY() + " ";
 							if (ct.getTD().getState() == true)
