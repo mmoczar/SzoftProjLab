@@ -17,14 +17,14 @@ public class Worker extends Entity {
 	//TODO kitalalni, hogy mire jo.
 	private Entity byEntity;
 	Tile tile;
-	private double power;
+	private int power;
 
 	/**
 	 * Default konstruktor
 	 * @param name
 	 * @throws IOException
 	 */
-	public Worker(String name, double pow) throws IOException {
+	public Worker(String name, int pow) throws IOException {
 		this.name = name;
 		power = pow;
 	}
@@ -48,7 +48,7 @@ public class Worker extends Entity {
 	@Override
 	public boolean Move(Entity e, Direction d, Worker w) throws IOException {
 		Tile temp = tile;
-		double pow_temp = power;
+		int pow_temp = power;
 
 		if(temp.GetNbTile(d).Accept(this, d, w)){
 			System.out.println("Sikeres mozgas");
@@ -118,11 +118,11 @@ public class Worker extends Entity {
 		return "Worker";
 	}
 	
-	public void setPower(double p) {
+	public void setPower(int p) {
 		power = p;
 	}
 	
-	public double getPower() {
+	public int getPower() {
 		return power;
 	}
 

@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.operations.Mod;
+
 import java.io.IOException;
 
 /**
@@ -12,7 +14,7 @@ public class Tile {
 	protected Tile tLEFT;
 	protected Tile tRIGHT;
 	
-	protected double res;
+	protected Modifier res;
 	/**
 	 * Default konstruktor
 	 * @throws IOException
@@ -28,10 +30,10 @@ public class Tile {
 	public Tile(TrapDoor trap) {
 	}
 	
-	public void setRes(double resistance) {
+	public void setRes(Modifier resistance) {
 		res = resistance;
 	}
-	public double getRes() {
+	public Modifier getRes() {
 		return res;
 	}
 	
