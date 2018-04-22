@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,6 +46,8 @@ public class Teszter {
 		String dir = "/tesztek/";
 		File inFolder = new File(dir + "in/");
 		File[] inFiles = inFolder.listFiles();
+		System.out.println(inFiles[0].getName());
+		
 		for (File f: inFiles) {
 			String fn = f.getName().split(".")[0];
 			esetek.add(new Eset(dir + "in/" + fn + ".in", dir + "out/" + fn + ".in", fn));
@@ -176,5 +179,9 @@ public class Teszter {
 			Teszteles(i);
 	}
 	
+	public static void main(String[] args) throws Exception {
+		Teszter teszter = new Teszter();
+		teszter.Teszteles(1);
+	}
 	// TODO menu!
 }

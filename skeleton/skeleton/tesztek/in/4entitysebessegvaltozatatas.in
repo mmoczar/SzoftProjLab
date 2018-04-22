@@ -1,0 +1,8 @@
+loadWH 1
+placeWorker 1 1, 5
+placeWorker 2 5, 3
+placeWorker 3 2, 4
+placeWorker 4 6, 6
+moveWorker 1 2, 5
+setWorkerPower 1 1.2
+moveWorker 1 3, 5

@@ -113,13 +113,5 @@ public class Game {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-		Game game = new Game("game.txt");
-		game.readWHs();
-		game.ShowWHs();
-		game.NewGame(0);
-		
-		
-		
-	}
+
 }
