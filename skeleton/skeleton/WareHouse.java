@@ -114,6 +114,9 @@ public class WareHouse {
 				tiles[x][y] = recenttarget;
 				numOfTargets++;
 			}
+			else if(temp_tile[0].equals("Pillar")) {
+				tiles[x][y] = new Pillar();
+			}
 			
 			else if(temp_tile[0].equals("Box")) {
 				Box currentBox = new Box();
