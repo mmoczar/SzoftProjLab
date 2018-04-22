@@ -44,20 +44,15 @@ public class WareHouse {
 	 */
 	public WareHouse(ArrayList<String> map) throws IOException {
 		String[] dimension = map.get(0).split(" ");
-		width = Integer.parseInt(dimension[0]);
-		height = Integer.parseInt(dimension[1]);
+		width = Integer.parseInt(dimension[0])+2;
+		height = Integer.parseInt(dimension[1])+2;
 		map.remove(0);
 		
 		//resistance set-----
-		double resistance;
-		String[] res_string;
-		res_string = map.get(0).split(" ");
-		resistance = Double.parseDouble(res_string[1]);
-		map.remove(0);
 		//--------------------
 		
 		//Generikus tomb beallitasa
-		tiles = (Tile[][]) Array.newInstance(Tile.class, Integer.parseInt(dimension[0]),Integer.parseInt(dimension[1]));
+		tiles = (Tile[][]) Array.newInstance(Tile.class, Integer.parseInt(dimension[0]) + 2,Integer.parseInt(dimension[1]) + 2);
 		
 		//Alap feltoltes Pillarokkal es Tileokkal. Pillarok a szelen
 		for(int i= 0; i<height; i++) {
@@ -110,6 +105,9 @@ public class WareHouse {
 				numOfBoxes++;
 				numOfMovableBoxes++;
 			}
+			else if(temp_tile[0].equals("setTileResistance")) {
+				tiles[x][y].setRes(Double.parseDouble(temp_tile[3]));
+			}
 			
 		}
 		
@@ -118,7 +116,6 @@ public class WareHouse {
 		for(int i= 1; i<height-1; i++) {
 			for(int j = 1; j<width-1; j++) {
 				tiles[i][j].setNeighbor(tiles[i+1][j], tiles[i-1][j], tiles[i][j-1], tiles[i][j+1]);
-				tiles[i][j].setRes(resistance);
 			}
 		}
 		
