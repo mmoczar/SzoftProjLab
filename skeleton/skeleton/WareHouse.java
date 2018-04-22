@@ -44,8 +44,8 @@ public class WareHouse {
 	 */
 	public WareHouse(ArrayList<String> map) throws IOException {
 		String[] dimension = map.get(0).split(" ");
-		width = Integer.parseInt(dimension[0]);
-		height = Integer.parseInt(dimension[1]);
+		width = Integer.parseInt(dimension[0])+2;
+		height = Integer.parseInt(dimension[1])+2;
 		map.remove(0);
 		
 		//resistance set-----
@@ -70,7 +70,7 @@ public class WareHouse {
 		//--------------------
 		
 		//Generikus tomb beallitasa
-		tiles = (Tile[][]) Array.newInstance(Tile.class, Integer.parseInt(dimension[0]),Integer.parseInt(dimension[1]));
+		tiles = (Tile[][]) Array.newInstance(Tile.class, Integer.parseInt(dimension[0]) + 2,Integer.parseInt(dimension[1]) + 2);
 		
 		//Alap feltoltes Pillarokkal es Tileokkal. Pillarok a szelen
 		for(int i= 0; i<height; i++) {
@@ -124,7 +124,7 @@ public class WareHouse {
 				numOfBoxes++;
 				numOfMovableBoxes++;
 			}
-			
+
 		}
 		
 		

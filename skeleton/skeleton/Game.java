@@ -87,21 +87,7 @@ public class Game {
 	 */
 	public static void NewGame(int wh) throws IOException { 
 		currentWarehouse = warehouses[wh];
-		Worker w1 = new Worker("Mario", 5);
-		Worker w2 = new Worker("Luighi", 7);
-		currentWarehouse.AddWorker(w1, 1, 5);
-		currentWarehouse.AddWorker(w2, 3, 5);
-		currentWarehouse.draw();
-		
-		//w1.Move(null, Direction.LEFT, w1);
-		//w1.Move(null, Direction.LEFT, w1);
-		w2.Move(null, Direction.DOWN, w2);
-		w2.Move(null, Direction.DOWN, w2);
-	
-		//w1.Move(null, Direction.UP, w1);
-	
-		
-		
+
 		currentWarehouse.draw();
 		
 		//w1.Move(null, Direction.DOWN);
