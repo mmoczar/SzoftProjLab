@@ -126,16 +126,27 @@ public class Teszter {
 				
 				break;
 			case "moveWorker":
+				Direction direction = null;
 				w = workers.get(Integer.parseInt(cmd[1]));
 				if (w == null)
 					throw new Exception("Nem letezik a mozgatni kivant worker.");
 				System.out.println(cmd[2]);
 				switch(cmd[2]) {
-					case"up": w.Move(null, Direction.UP, w); break;
-					case"down": w.Move(null, Direction.DOWN, w); break;
-					case"left": w.Move(null, Direction.LEFT, w); break;
-					case"right": w.Move(null, Direction.RIGHT, w); break;
+					case"up": direction =  Direction.UP; break;
+					case"down": direction =  Direction.DOWN; break;
+					case"left": direction =  Direction.LEFT; break;
+					case"right": direction =  Direction.RIGHT; break;
 				}
+				
+				if(w.Move(null, direction, w)) {
+					String s = "Sikeres mozgas, sebesseg: 1";
+					generaltKimenet.add(s);
+				}
+				else {
+					String s = "Sikertelen mozgas";
+					generaltKimenet.add(s);
+				}
+				
 				break;
 			case "listEntities":
 				d = Game.getCurrentWH().GetDimension();
