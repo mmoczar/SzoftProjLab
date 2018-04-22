@@ -137,7 +137,7 @@ public class Teszter {
 				w = workers.get(Integer.parseInt(cmd[1]));
 				if (w == null)
 					throw new Exception("Nem letezik az allitani kivant worker.");
-				w.setPower(Double.parseDouble(cmd[2]));
+				w.setPower(Integer.parseInt(cmd[2]));
 				break;
 			case "listTSs":
 				d = Game.getCurrentWH().GetDimension();

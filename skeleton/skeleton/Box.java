@@ -30,7 +30,22 @@ public class Box extends Entity {
 		
 		if(w.getPower() != 0 && temp.GetNbTile(d).Accept(this, d, w)){
 			System.out.println("Sikeres mozgas");
-			w.setPower(w.getPower() - tile.getRes());
+			int res;
+			switch (tile.getRes()) {
+				case REGULAR:
+					res = 2;
+					break;
+				case OIL:
+					res = 1;
+					break;
+				case HONEY:
+					res = 3;
+					break;
+					default:
+						res = 2;
+			}
+			w.setPower(w.getPower() - res);
+
 			temp.Remove(/*this*/);
 			return true;
 		}
@@ -43,7 +58,7 @@ public class Box extends Entity {
 	// Dobozt elmozgatjak
 	/**
 	 * Visszaadja, hogy el tudtak-e tolni.
-	 * @param entitas, mely tolja
+	 * @param e entitas, mely tolja
 	 * @return el tudtak-e tolni
 	 */
 	@Override

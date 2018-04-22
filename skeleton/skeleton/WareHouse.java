@@ -49,10 +49,23 @@ public class WareHouse {
 		map.remove(0);
 		
 		//resistance set-----
-		double resistance;
+		Modifier resistance;
 		String[] res_string;
 		res_string = map.get(0).split(" ");
-		resistance = Double.parseDouble(res_string[1]);
+		int tmp = Integer.parseInt(res_string[1]);
+		switch (tmp) {
+			case 1:
+				resistance = Modifier.OIL;
+				break;
+			case 2:
+				resistance = Modifier.REGULAR;
+				break;
+			case 3:
+				resistance = Modifier.HONEY;
+				break;
+				default:
+					resistance = Modifier.REGULAR;
+		}
 		map.remove(0);
 		//--------------------
 		
@@ -64,6 +77,7 @@ public class WareHouse {
 			for(int j = 0; j<width; j++) {
 				if(i == 0 || i == height-1 || j == 0 || j == width-1) tiles[i][j] = new Pillar();
 				else tiles[i][j] = new Tile();
+				tiles[i][j].setRes(Modifier.REGULAR);
 			}
 		}
 		
