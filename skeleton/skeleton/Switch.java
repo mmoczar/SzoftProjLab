@@ -19,17 +19,26 @@ public class Switch extends Tile {
 	}
 	
 	// entitas tipsatol fuggoen megvaltoztatja a csapoajto allapotat
-	public boolean Accept(Entity e, Direction d) throws IOException {
-		return true;
+	public boolean Accept(Entity e, Direction d, Worker w) throws IOException {
+		if(entity == null || entity.Move(e, d, w)) {
+			entity = e;
+			e.SetTile(this);
+			System.out.println("Sikeres Accept");
+			
+			if(entity.SwitchAction() && !trapdoor.GetState()) {
+				trapdoor.SetState(true);
+			}
+			else if (entity.SwitchAction() && trapdoor.GetState()) {
+				trapdoor.SetState(true);
+			}
+			else trapdoor.SetState(false);
+			
+			
+			return true;
+		}
+		else return false;
 	}
 	
-	// a csapoajto allapotanak az ellentettjere allitja
-	public void SwitchTrap() throws IOException {
-		if (trapdoor == null) {
-			return;
-		}
-		trapdoor.SetState();
-	}
 
 
 	// Debug fuggveny

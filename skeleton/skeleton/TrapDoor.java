@@ -33,8 +33,9 @@ public class TrapDoor extends Tile {
 	/**
 	 * Csapoajto allapotanak atvaltasa
 	 */
-	public void SetState() {
-		state = !state;
+	public void SetState(boolean tostate) {
+		state = tostate;
+		System.out.println("Change Trapdoor to "+ state);
 	}
 
 	/**
@@ -57,9 +58,12 @@ public class TrapDoor extends Tile {
 	 * @throws IOException
 	 */
 	public boolean Accept(Entity e, Direction d, Worker w) throws IOException {
-		super.Accept(e, d, w);
-		if(state) DropEntity(e); // ha nyitva, leejti
-		return true;
+		
+		if(state) { 
+			DropEntity(e); // ha nyitva, leejti
+			return true;
+		}
+		else return super.Accept(e, d, w);
 	}
 
 	/**
@@ -68,7 +72,7 @@ public class TrapDoor extends Tile {
 	 * @throws IOException
 	 */
 	public void DropEntity(Entity e) throws IOException {
-
+		
 	}
 	
 }
