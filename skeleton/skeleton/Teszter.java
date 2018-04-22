@@ -44,7 +44,7 @@ public class Teszter {
 	
 	//filelista beolvasasa a teszt/in illetve a teszt/out mappakbol
 	public Teszter() throws IOException {
-		String dir =System.getProperty("user.dir")+ "/tesztek/";
+		String dir = System.getProperty("user.dir")+ "/tesztek/";
 		File inFolder = new File(dir + "in/");
 		File[] inFiles = inFolder.listFiles();
 		System.out.println(inFiles[0].getCanonicalPath());

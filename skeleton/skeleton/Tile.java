@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 57987139ca3ee1c091553ee8905b33a61d0a9eb7
 
 import java.io.IOException;
 
