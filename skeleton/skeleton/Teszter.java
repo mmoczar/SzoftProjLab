@@ -95,6 +95,7 @@ public class Teszter {
 		while (!teszt.bemenet.isEmpty() ) {
 			Worker w = null;
 			Vec2D d = null;
+			int szamol = 0;
 			String[] cmd = teszt.bemenet.get(0).split(" ");
 			 
 			switch (cmd[0]) {
@@ -120,12 +121,14 @@ public class Teszter {
 				break;
 			case "listEntities":
 				d = Game.getCurrentWH().GetDimension();
+				szamol = 1;
 				for (int x = 0; x < d.getX(); x++) {
 					for (int y = 0; y < d.getY(); y++) {
 						Tile ct = Game.getCurrentWH().GetTileAt(new Vec2D(x,y));
 						if (ct.GetEntityAt() != null) {
-							String s = x + " " + y + " " + ct.GetEntityAt().Hello();
+							String s = szamol + ". " + x + " " + y + " " + ct.GetEntityAt().Hello();
 							generaltKimenet.add(s);
+							szamol++;
 						}
 					}
 				}
@@ -138,17 +141,19 @@ public class Teszter {
 				break;
 			case "listTSs":
 				d = Game.getCurrentWH().GetDimension();
+				szamol = 1;
 				for (int x = 0; x < d.getX(); x++) {
 					for (int y = 0; y < d.getY(); y++) {
 						Tile ct = Game.getCurrentWH().GetTileAt(new Vec2D(x,y));
 						if (ct.Hello() == "Switch") {
-							String s = "TrapDoor " + ct.getTD().position.getX() + ", " + ct.getTD().position.getY() + " ";
+							String s = szamol + ". " + "TrapDoor " + ct.getTD().position.getX() + ", " + ct.getTD().position.getY() + " ";
 							if (ct.getTD().getState() == true)
 								s += "nyitott";
 							else
 								s += "zart";
 							s += " Switch: " + ct.position.getX() + ", " + ct.position.getY();
 							generaltKimenet.add(s);
+							szamol++;
 						}
 					}
 				}
