@@ -103,11 +103,11 @@ public class Teszter {
 				break;
 			case "placeWorker":
 				if (workers.get(Integer.parseInt(cmd[1])) == null) {
-					workers.add(Integer.parseInt(cmd[1]), new Worker("W"+cmd[1]));
+					workers.add(Integer.parseInt(cmd[1]), new Worker("W"+cmd[1], 1));
 				}
 				w = workers.get(Integer.parseInt(cmd[1]));
 				if (w.tile != null)
-					w.tile.Remove(w);
+					w.tile.Remove();
 				String[] XY = cmd[2].split(", ");
 				Game.getCurrentWH().AddWorker(w, Integer.parseInt(XY[0]), Integer.parseInt(XY[1]));
 				break;
