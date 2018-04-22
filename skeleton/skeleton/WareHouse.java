@@ -94,8 +94,8 @@ public class WareHouse {
 			String[] temp_tile = map.get(i).split(" ");
 			int x,y;
 			
-			x = Integer.parseInt(temp_tile[2]);
-			y = Integer.parseInt(temp_tile[1]);
+			x = Integer.parseInt(temp_tile[1]);
+			y = Integer.parseInt(temp_tile[2]);
 			
 			if(temp_tile[0].equals("Hole")) tiles[x][y] = new Hole();
 			
