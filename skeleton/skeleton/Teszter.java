@@ -107,7 +107,7 @@ public class Teszter {
 			int szamol = 0;
 			String[] cmd = teszt.bemenet.get(0).split(" ");
 			teszt.bemenet.remove(0);
-			System.out.println(teszt.bemenet.size());
+	
 			switch (cmd[0]) {
 			case "loadWH":
 				game.NewGame(Integer.parseInt(cmd[1])-1);
@@ -119,8 +119,10 @@ public class Teszter {
 				w = temp_worker;
 				if (w.tile != null)
 					w.tile.Remove();
-				String[] XY = cmd[2].split(", ");
-				Game.getCurrentWH().AddWorker(w, Integer.parseInt(XY[0]), Integer.parseInt(XY[1]));
+				String[] XY = cmd[2].split(",");
+
+				
+				Game.getCurrentWH().AddWorker(w, Integer.parseInt(XY[0]), Integer.parseInt(cmd[3]));
 				
 				break;
 			case "moveWorker":
@@ -151,11 +153,11 @@ public class Teszter {
 				w.setPower(Integer.parseInt(cmd[2]));
 				break;
 			case "listTSs":
-				d = game.getCurrentWH().GetDimension();
+				d = Game.getCurrentWH().GetDimension();
 				szamol = 1;
 				for (int x = 0; x < d.getX(); x++) {
 					for (int y = 0; y < d.getY(); y++) {
-						Tile ct = game.getCurrentWH().GetTileAt(new Vec2D(x,y));
+						Tile ct = Game.getCurrentWH().GetTileAt(new Vec2D(x,y));
 						if (ct.Hello() == "Switch") {
 							String s = szamol + ". " + "TrapDoor " + ct.getTD().position.getX() + ", " + ct.getTD().position.getY() + " ";
 							if (ct.getTD().getState() == true)
@@ -189,7 +191,7 @@ public class Teszter {
 	
 	public static void main(String[] args) throws Exception {
 		Teszter teszter = new Teszter();
-		teszter.Teszteles(1);
+		teszter.Teszteles(0);
 	}
 	// TODO menu!
 }
