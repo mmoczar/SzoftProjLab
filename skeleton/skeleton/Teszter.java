@@ -129,8 +129,13 @@ public class Teszter {
 				w = workers.get(Integer.parseInt(cmd[1]));
 				if (w == null)
 					throw new Exception("Nem letezik a mozgatni kivant worker.");
-				//TODO mozgatas a megadott koordinatakra. Gondolom, ki kene szamitani az iranyt is...
-				//TODO kimeneti tombbe beleirni a sikeres mozgas textet. vagy azt, hogy sikertelen. attol fugg.
+				System.out.println(cmd[2]);
+				switch(cmd[2]) {
+					case"up": w.Move(null, Direction.UP, w); break;
+					case"down": w.Move(null, Direction.DOWN, w); break;
+					case"left": w.Move(null, Direction.LEFT, w); break;
+					case"right": w.Move(null, Direction.RIGHT, w); break;
+				}
 				break;
 			case "listEntities":
 				d = Game.getCurrentWH().GetDimension();
