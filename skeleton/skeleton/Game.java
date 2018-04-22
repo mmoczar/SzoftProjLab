@@ -103,7 +103,7 @@ public class Game {
 	 * Visszaadja az aktualis raktarat.
 	 * @return aktualis raktar
 	 */
-	public WareHouse getCurrentWH() {
+	public static WareHouse getCurrentWH() {
 		return currentWarehouse;
 	}
 	/**

@@ -120,7 +120,8 @@ public class Teszter {
 				if (w.tile != null)
 					w.tile.Remove();
 				String[] XY = cmd[2].split(", ");
-				game.getCurrentWH().AddWorker(w, Integer.parseInt(XY[0]), Integer.parseInt(XY[1]));
+				Game.getCurrentWH().AddWorker(w, Integer.parseInt(XY[0]), Integer.parseInt(XY[1]));
+				
 				break;
 			case "moveWorker":
 				w = workers.get(Integer.parseInt(cmd[1]));
@@ -130,11 +131,11 @@ public class Teszter {
 				//TODO kimeneti tombbe beleirni a sikeres mozgas textet. vagy azt, hogy sikertelen. attol fugg.
 				break;
 			case "listEntities":
-				d = game.getCurrentWH().GetDimension();
+				d = Game.getCurrentWH().GetDimension();
 				szamol = 1;
 				for (int x = 0; x < d.getX(); x++) {
 					for (int y = 0; y < d.getY(); y++) {
-						Tile ct = game.getCurrentWH().GetTileAt(new Vec2D(x,y));
+						Tile ct = Game.getCurrentWH().GetTileAt(new Vec2D(x,y));
 						if (ct.GetEntityAt() != null) {
 							String s = szamol + ". " + x + " " + y + " " + ct.GetEntityAt().Hello();
 							generaltKimenet.add(s);
