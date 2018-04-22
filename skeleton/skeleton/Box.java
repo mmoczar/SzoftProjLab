@@ -28,8 +28,9 @@ public class Box extends Entity {
 	public boolean Move(Entity e, Direction d, Worker w) throws IOException {
 		Tile temp = tile;
 		
-		if(temp.GetNbTile(d).Accept(this, d, w)){
+		if(w.getPower() != 0 && temp.GetNbTile(d).Accept(this, d, w)){
 			System.out.println("Sikeres mozgas");
+			w.setPower(w.getPower() - tile.getRes());
 			temp.Remove(/*this*/);
 			return true;
 		}

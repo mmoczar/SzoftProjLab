@@ -24,8 +24,9 @@ public class Worker extends Entity {
 	 * @param name
 	 * @throws IOException
 	 */
-	public Worker(String name) throws IOException {
+	public Worker(String name, double pow) throws IOException {
 		this.name = name;
+		power = pow;
 	}
 
 	/**
@@ -47,10 +48,15 @@ public class Worker extends Entity {
 	@Override
 	public boolean Move(Entity e, Direction d, Worker w) throws IOException {
 		Tile temp = tile;
+		double pow_temp = power;
 
 		if(temp.GetNbTile(d).Accept(this, d, w)){
 			System.out.println("Sikeres mozgas");
 			temp.Remove(/*this*/);
+			
+			System.out.println(power);
+			
+			power = pow_temp;
 			return true;
 		}
 		else {
