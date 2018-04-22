@@ -108,6 +108,11 @@ public class Box extends Entity {
 		target = t;
 	}
 
+	@Override
+	public void Die() {
+		System.out.println("Eltuntem...");
+	}
+
 
 
 

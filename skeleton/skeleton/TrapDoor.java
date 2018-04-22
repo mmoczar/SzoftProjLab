@@ -72,7 +72,8 @@ public class TrapDoor extends Tile {
 	 * @throws IOException
 	 */
 	public void DropEntity(Entity e) throws IOException {
-		
+		entity = null;
+		e.Die();
 	}
 	
 }

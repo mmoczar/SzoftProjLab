@@ -22,9 +22,11 @@ public class Hole extends Tile {
 	 * @return	ide mozoghat-e az entity
 	 * @throws IOException
 	 */
-	public boolean Accept(Entity e) throws IOException {
-
-		return false;
+	public boolean Accept(Entity e, Direction d, Worker w) throws IOException {
+		entity = null;
+		e.Die();
+		
+		return true;
 		
 	}
 

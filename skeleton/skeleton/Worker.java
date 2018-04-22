@@ -95,7 +95,7 @@ public class Worker extends Entity {
 	 * A munkas meghal.
 	 */
 	public void Die() {
-		
+		System.out.println(name + ": Meghaltam...");
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class Worker extends Entity {
 	@Override
 	public boolean ToPillar() throws IOException {
 		
-		return false;
+		return true;
 	}
 
 	@Override

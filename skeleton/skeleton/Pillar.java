@@ -20,8 +20,11 @@ public class Pillar extends Tile {
 	 * @return
 	 * @throws IOException
 	 */
-	public boolean Accept(Entity e) throws IOException {
-
+	public boolean Accept(Entity e, Direction d, Worker w) throws IOException {
+		if(e != w && e.ToPillar()) {
+			e.Die();
+			return true;
+		}
 		return false;
 	}
 

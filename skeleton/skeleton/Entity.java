@@ -55,4 +55,6 @@ public abstract class Entity {
 	public abstract Target getTarget();
 
 	public abstract boolean ToPillar() throws IOException;
+	
+	public abstract void Die();
 }

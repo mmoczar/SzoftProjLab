@@ -29,6 +29,8 @@ public class Target extends Tile {
 				e.SetTile(this);
 				System.out.println("Sikeres Accept");
 				System.out.println("Sikeres Target");
+				entity = null;
+				e.Die();
 				w.AddPlacedBox();
 				return true;
 			}
@@ -40,6 +42,8 @@ public class Target extends Tile {
 				e.SetTile(this);
 				System.out.println("Sikeres Accept");
 				System.out.println("Sikeres Target");
+				entity = null;
+				e.Die();
 				w.AddPlacedBox();
 				return true;
 			}
