@@ -1,7 +1,5 @@
 import java.io.IOException;
 
-import com.sun.org.apache.bcel.internal.generic.GOTO_W;
-
 
 /**
  * Egy munkast reprezental. A jatekos ennek iranyitasaval tolhatja a ladakat a megfelelo iranyba.
