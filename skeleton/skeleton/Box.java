@@ -30,19 +30,19 @@ public class Box extends Entity {
 		
 		if(w.getPower() != 0 && temp.GetNbTile(d).Accept(this, d, w)){
 			System.out.println("Sikeres mozgas");
-			int res;
+			double res;
 			switch (tile.getRes()) {
 				case REGULAR:
-					res = 2;
-					break;
-				case OIL:
 					res = 1;
 					break;
+				case OIL:
+					res = 0.5;
+					break;
 				case HONEY:
-					res = 3;
+					res = 2;
 					break;
 					default:
-						res = 2;
+						res = 1;
 			}
 			w.setPower(w.getPower() - res);
 
