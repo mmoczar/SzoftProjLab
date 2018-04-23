@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class WareHouse {
 	/**
-	 * Ládák száma.
+	 * Lï¿½dï¿½k szï¿½ma.
 	 */
 	private int numOfBoxes = 0;
 	/**
@@ -49,24 +49,7 @@ public class WareHouse {
 		map.remove(0);
 		
 		//resistance set-----
-		Modifier resistance;
-		String[] res_string;
-		res_string = map.get(0).split(" ");
-		int tmp = Integer.parseInt(res_string[1]);
-		switch (tmp) {
-			case 1:
-				resistance = Modifier.OIL;
-				break;
-			case 2:
-				resistance = Modifier.REGULAR;
-				break;
-			case 3:
-				resistance = Modifier.HONEY;
-				break;
-				default:
-					resistance = Modifier.REGULAR;
-		}
-		map.remove(0);
+
 		//--------------------
 		
 		//Generikus tomb beallitasa
@@ -127,6 +110,20 @@ public class WareHouse {
 				numOfBoxes++;
 				numOfMovableBoxes++;
 			}
+			else if(temp_tile[0].equals("setTileResistance")) {
+				Modifier resist = null;
+				switch(temp_tile[3]) {
+				case "0.5": resist = Modifier.OIL; 
+					break;
+				case "1.0": resist = Modifier.REGULAR; 
+					break;
+				case "1.5": resist = Modifier.HONEY; 
+					break;
+				}
+				
+				
+				tiles[Integer.parseInt(temp_tile[1])][Integer.parseInt(temp_tile[2])].setRes(resist);
+			}
 
 		}
 		
@@ -135,7 +132,7 @@ public class WareHouse {
 		for(int i= 1; i<height-1; i++) {
 			for(int j = 1; j<width-1; j++) {
 				tiles[i][j].setNeighbor(tiles[i+1][j], tiles[i-1][j], tiles[i][j-1], tiles[i][j+1]);
-				tiles[i][j].setRes(resistance);
+				tiles[i][j].setRes(Modifier.REGULAR);
 			}
 		}
 		

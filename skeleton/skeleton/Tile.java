@@ -20,7 +20,7 @@ public class Tile {
 	 * @throws IOException
 	 */
 	public Tile() throws IOException {
-		
+		res = Modifier.REGULAR;
 	}
 
 	/**

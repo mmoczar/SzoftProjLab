@@ -54,6 +54,8 @@ public class Worker extends Entity {
 		double pow_temp = power;
 
 		if(temp.GetNbTile(d).Accept(this, d, w)){
+			System.out.println(temp.GetNbTile(d).getRes());
+			
 			System.out.println("Sikeres mozgas, sebesseg: "+(power/got_resistance));
 			temp.Remove(/*this*/);
 			
