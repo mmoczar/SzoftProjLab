@@ -1,8 +1,8 @@
 loadWH 1
-placeWorker 1 6, 4
-placeWorker 2 5, 3
-placeWorker 3 2, 4
-placeWorker 4 6, 6
+placeWorker 1 6 4
+placeWorker 2 5 3
+placeWorker 3 2 4
+placeWorker 4 6 6
 moveWorker 1 right
 listEntities
 +
