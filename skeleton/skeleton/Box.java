@@ -128,6 +128,12 @@ public class Box extends Entity {
 		System.out.println("Eltuntem...");
 	}
 
+	@Override
+	public int getScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 

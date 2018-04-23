@@ -41,7 +41,7 @@ public class Tester {
 		
 		String[] temp;
 		
-		
+		game.ShowWHs();
 		
 		for(int i = 0; i < test_in.size(); i++) {
 			
@@ -69,14 +69,18 @@ public class Tester {
 					
 					
 					Worker w1 = test_workers.get(0);
+					int pre_score = w1.getScore();
 					if(w1.Move(null, d, w1)) {
-						test_result.add("Sikeres mozgas, sebesseg: 1");
+						test_result.add("Sikeres mozgas, sebesseg: "+ w1.getSpeed());
 						System.out.println("+");
 					}
 					else {
 						test_result.add("Sikertelen mozgas");
 						
 					}
+					
+					if(pre_score != w1.getScore()) 
+						test_result.add("Box a Target mezojere ert. Odamozgatta: "+w1.name+" - Pontszama: "+ w1.getScore());
 					
 					break;
 				case"listEntities":
@@ -93,6 +97,30 @@ public class Tester {
 						}
 					break;
 				
+				case "listTSs":
+					WareHouse tmp = Game.getCurrentWH();
+					
+					for (int x = 0; x < tmp.GetDimension().getX(); x++) {
+						for (int y = 0; y < tmp.GetDimension().getY(); y++) {
+							Tile ct = tmp.GetTileAt(new Vec2D(x,y));
+							//System.out.println(ct.Hello());
+							if (ct.Hello().equals("Switch")) {
+								TrapDoor td = ct.getTD();
+								String s = "TrapDoor " + td.position.getX() + ", " + td.position.getY() + " ";
+								if (td.GetState() == true)
+									s += "nyitott";
+								else
+									s += "zart";
+								s += " Switch: " + ct.position.getX() + ", " + ct.position.getY();
+								test_result.add(s);
+								
+							}
+						}
+					}
+					break;
+				case"setWorkerPower":
+					test_workers.get(0).setPower(Double.parseDouble(temp[2]));
+				
 			}
 			
 			
@@ -100,6 +128,11 @@ public class Tester {
 			
 			
 		}
+		for(int i= 0; i < test_result.size(); i++) {
+			System.out.println(test_result.get(i));
+		}
+		
+		game.ShowWHs();
 	}
 	
 	public boolean test_validate() {
@@ -120,7 +153,7 @@ public class Tester {
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Tester test = new Tester();
-		test.test_in("1.test");
+		test.test_in("9.test");
 		test.test_run();
 		if(test.test_validate()) System.out.println("OK");
 

@@ -9,7 +9,7 @@ public class TrapDoor extends Tile {
 	/**
 	 * Alapbol zarva
 	 */
-	private boolean state = false;
+	private boolean state;
 	//protected Switch Switch;
 
 	/**
@@ -26,7 +26,7 @@ public class TrapDoor extends Tile {
 	 * @throws IOException
 	 */
 	public boolean GetState() throws IOException {
-
+		System.out.println(state);
 		return state;
 	}
 
@@ -35,7 +35,7 @@ public class TrapDoor extends Tile {
 	 */
 	public void SetState(boolean tostate) {
 		state = tostate;
-		System.out.println("Change Trapdoor to "+ state);
+		System.out.println("Change Trapdoor to "+ state + position.toString());
 	}
 
 	/**

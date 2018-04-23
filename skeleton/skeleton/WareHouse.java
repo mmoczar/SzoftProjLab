@@ -61,6 +61,7 @@ public class WareHouse {
 				if(i == 0 || i == height-1 || j == 0 || j == width-1) tiles[i][j] = new Pillar();
 				else tiles[i][j] = new Tile();
 				tiles[i][j].setRes(Modifier.REGULAR);
+				tiles[i][j].position = new Vec2D(i,j);
 			}
 		}
 		
@@ -77,28 +78,32 @@ public class WareHouse {
 			String[] temp_tile = map.get(i).split(" ");
 			int x,y;
 			
-			x = Integer.parseInt(temp_tile[1]);
-			y = Integer.parseInt(temp_tile[2]);
+			y = Integer.parseInt(temp_tile[1]);
+			x = Integer.parseInt(temp_tile[2]);
 			
 			if(temp_tile[0].equals("Hole")) tiles[x][y] = new Hole();
 			
 			else if(temp_tile[0].equals("Trapdoor")) {
 				recenttrap = new TrapDoor();
 				tiles[x][y] = recenttrap;
+				tiles[x][y].position = new Vec2D(x,y);
 			}
 			
 			else if(temp_tile[0].equals("Switch")) {
 				tiles[x][y] = new Switch(recenttrap);
 				recenttrap = null;
+				tiles[x][y].position = new Vec2D(x,y);
 			}
 			
 			else if(temp_tile[0].equals("Target")) {
 				recenttarget = new Target();
 				tiles[x][y] = recenttarget;
 				numOfTargets++;
+				tiles[x][y].position = new Vec2D(x,y);
 			}
 			else if(temp_tile[0].equals("Pillar")) {
 				tiles[x][y] = new Pillar();
+				tiles[x][y].position = new Vec2D(x,y);
 			}
 			
 			else if(temp_tile[0].equals("Box")) {
@@ -109,6 +114,7 @@ public class WareHouse {
 				recenttarget.AddBox(currentBox);
 				numOfBoxes++;
 				numOfMovableBoxes++;
+				tiles[x][y].position = new Vec2D(x,y);
 			}
 			else if(temp_tile[0].equals("setTileResistance")) {
 				Modifier resist = null;
@@ -123,6 +129,7 @@ public class WareHouse {
 				
 				
 				tiles[Integer.parseInt(temp_tile[1])][Integer.parseInt(temp_tile[2])].setRes(resist);
+				tiles[x][y].position = new Vec2D(x,y);
 			}
 
 		}

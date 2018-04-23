@@ -16,6 +16,10 @@ public abstract class Entity {
 			got_resistance = res;
 	}
 	
+	
+	public abstract int getScore();
+	
+	
 	/**
 	 * Beallitja a mezot, amelyikre lepett.
 	 * @param t mezo

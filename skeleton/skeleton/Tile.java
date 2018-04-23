@@ -180,10 +180,10 @@ public class Tile {
 	}
 
 	public String Hello() {
-		return null;
+		return "";
 	}
 
-	public Tile getTD() {
+	public TrapDoor getTD() {
 		return null;
 	}
 

@@ -27,13 +27,14 @@ public class Switch extends Tile {
 			
 			if(entity.SwitchAction() && !trapdoor.GetState()) {
 				trapdoor.SetState(true);
+				
 			}
 			else if (entity.SwitchAction() && trapdoor.GetState()) {
-				trapdoor.SetState(true);
+				trapdoor.SetState(false);
 			}
 			else trapdoor.SetState(false);
 			
-			
+			System.out.println(trapdoor.GetState());
 			return true;
 		}
 		else return false;
@@ -49,8 +50,8 @@ public class Switch extends Tile {
 	public String Hello() {
 		return "Switch";
 	}
-	
-	public Tile getTD() {
+	@Override
+	public TrapDoor getTD() {
 		return trapdoor;
 	}
 }

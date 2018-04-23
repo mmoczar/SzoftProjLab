@@ -8,7 +8,7 @@ public class Worker extends Entity {
 	/**
 	 * A jatekos neve
 	 */
-	private String name;
+	public String name;
 	/**
 	 * A munkas altal helyere tett ladak szama.
 	 */
@@ -30,6 +30,8 @@ public class Worker extends Entity {
 		power = pow;
 	}
 
+	
+	
 	/**
 	 * Tile beallitasa
 	 * @param t
@@ -39,6 +41,9 @@ public class Worker extends Entity {
 		tile = t;
 	}
 	
+	public double getSpeed() {
+		return power/got_resistance;
+	}
 	
 
 	/**
@@ -56,7 +61,7 @@ public class Worker extends Entity {
 		if(temp.GetNbTile(d).Accept(this, d, w)){
 			System.out.println(temp.GetNbTile(d).getRes());
 			
-			System.out.println("Sikeres mozgas, sebesseg: "+(power/got_resistance));
+			//System.out.println("Sikeres mozgas, sebesseg: "+(power/got_resistance));
 			temp.Remove(/*this*/);
 			
 			//System.out.println(power);
@@ -156,4 +161,13 @@ public class Worker extends Entity {
 	public Target getTarget() {
 		return null;
 	}
+
+
+
+	@Override
+	public int getScore() {
+		// TODO Auto-generated method stub
+	    return numOfPlacedBoxes;
+	}
+
 }
