@@ -54,7 +54,7 @@ public class Worker extends Entity {
 			System.out.println("Sikeres mozgas");
 			temp.Remove(/*this*/);
 			
-			System.out.println(power);
+			//System.out.println(power);
 			
 			power = pow_temp;
 			return true;

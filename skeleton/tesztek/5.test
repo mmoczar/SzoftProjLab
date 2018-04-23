@@ -4,6 +4,9 @@ placeWorker 2 5, 3
 placeWorker 3 2, 4
 placeWorker 4 6, 6
 setBoxPower 2, 3 2
-moveWorker 1 2, 3
+moveWorker 1 down
 setWorkerPower 1 2
-moveWorker 1 2, 3
+moveWorker 1 down
++
+Sikertelen mozgas.
+Sikeres mozgas, sebesseg: 1
