@@ -1,12 +1,12 @@
 loadWH 1
 listTSs
-placeWorker 1 5, 1
-placeWorker 2 5, 3
-placeWorker 3 2, 4
-placeWorker 4 6, 6
+placeWorker 1 5 1
+placeWorker 2 5 3
+placeWorker 3 2 4
+placeWorker 4 6 6
 moveWorker 1 up
 listTSs
-placeWorker 1 4, 3
+placeWorker 1 4 3
 moveWorker 1 left
 listTSs
 +
