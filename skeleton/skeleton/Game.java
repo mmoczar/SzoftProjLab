@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
- * A jatek elinditasat, befejezeset, a palya fajlok beolvasasat és a jatekos altali palya valasztast teszi lehetove.
+ * A jatek elinditasat, befejezeset, a palya fajlok beolvasasat ï¿½s a jatekos altali palya valasztast teszi lehetove.
  */
 public class Game {
 	/**
@@ -112,5 +112,5 @@ public class Game {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-
+	
 }

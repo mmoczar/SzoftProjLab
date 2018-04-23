@@ -77,6 +77,21 @@ public class Tile {
 			entity = e;
 			
 			e.SetTile(this);
+			double pushres;
+			switch (res) {
+			case REGULAR:
+				pushres = 1;
+				break;
+			case OIL:
+				pushres = 0.5;
+				break;
+			case HONEY:
+				pushres = 2;
+				break;
+				default:
+					pushres = 1;
+		}
+			w.PushTileResistance(pushres);
 			System.out.println("Sikeres Accept");
 			return true;
 		}

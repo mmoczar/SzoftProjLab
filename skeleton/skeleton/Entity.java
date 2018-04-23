@@ -9,6 +9,13 @@ public abstract class Entity {
 	 */
 	protected Tile tile;
 	
+	protected double got_resistance = 0;
+	
+	public void PushTileResistance(double res) {
+		if (res > got_resistance)
+			got_resistance = res;
+	}
+	
 	/**
 	 * Beallitja a mezot, amelyikre lepett.
 	 * @param t mezo

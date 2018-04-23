@@ -1,5 +1,7 @@
 import java.io.IOException;
 
+import com.sun.org.apache.bcel.internal.generic.GOTO_W;
+
 
 /**
  * Egy munkast reprezental. A jatekos ennek iranyitasaval tolhatja a ladakat a megfelelo iranyba.
@@ -17,7 +19,8 @@ public class Worker extends Entity {
 	//TODO kitalalni, hogy mire jo.
 	private Entity byEntity;
 	Tile tile;
-	private int power;
+	private double power;
+	
 
 	/**
 	 * Default konstruktor
@@ -37,6 +40,8 @@ public class Worker extends Entity {
 	public void SetTile(Tile t) throws IOException {
 		tile = t;
 	}
+	
+	
 
 	/**
 	 * A munkas mozgatasa.
@@ -48,10 +53,10 @@ public class Worker extends Entity {
 	@Override
 	public boolean Move(Entity e, Direction d, Worker w) throws IOException {
 		Tile temp = tile;
-		int pow_temp = power;
+		double pow_temp = power;
 
 		if(temp.GetNbTile(d).Accept(this, d, w)){
-			System.out.println("Sikeres mozgas");
+			System.out.println("Sikeres mozgas, sebesseg: "+(power/got_resistance));
 			temp.Remove(/*this*/);
 			
 			//System.out.println(power);
@@ -118,11 +123,11 @@ public class Worker extends Entity {
 		return "Worker";
 	}
 	
-	public void setPower(int p) {
-		power = p;
+	public void setPower(double d) {
+		power = d;
 	}
 	
-	public int getPower() {
+	public double getPower() {
 		return power;
 	}
 
