@@ -207,7 +207,7 @@ public class Teszter {
 	
 	public static void main(String[] args) throws Exception {
 		Teszter teszter = new Teszter();
-		teszter.Teszteles(0);
+		teszter.Teszteles(1);
 	}
 	// TODO menu!
 }
