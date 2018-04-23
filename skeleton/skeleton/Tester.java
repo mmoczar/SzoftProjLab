@@ -105,7 +105,7 @@ public class Tester {
 	}
 	
 	public boolean test_validate() {
-		test_result.remove(0);
+		//test_result.remove(0);
 		if(test_out.size() != test_result.size()) return false;
 		for(int i = 0; i< test_out.size(); i++) {
 			for(int j = 0; j < test_result.size(); j++) {
