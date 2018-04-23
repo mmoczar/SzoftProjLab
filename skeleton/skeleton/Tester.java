@@ -17,11 +17,9 @@ public class Tester {
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 		    String line;
-		    
+		    boolean flag = false;
 		    //Elso sor beolvasasa, ami egy szam és megmutatja hany raktar lesz
-		    while ((line = br.readLine()) != null) {
-		    		
-		    		boolean flag = false;
+		    while ((line = br.readLine()) != null) {		 
 		    		if(line.equals("+")) {
 		    			flag = true;
 		    		}
@@ -105,13 +103,16 @@ public class Tester {
 	}
 	
 	public boolean test_validate() {
-		test_result.remove(0);
+		boolean contains = false;
 		if(test_out.size() != test_result.size()) return false;
 		for(int i = 0; i< test_out.size(); i++) {
 			for(int j = 0; j < test_result.size(); j++) {
-				if(!test_out.get(i).equals(test_result.get(j)));
-					return false;
+				if(test_out.get(i).equals(test_result.get(j))) contains = true;		
 			}
+			
+			if(!contains) return false;
+			else contains = false;
+			
 		}
 		return true;
 	}
@@ -121,7 +122,6 @@ public class Tester {
 		test.test_in("1.test");
 		test.test_run();
 		if(test.test_validate()) System.out.println("OK");
-		else System.out.println("NO");
 
 	}
 
