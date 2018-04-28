@@ -138,7 +138,7 @@ public class WareHouse {
 		//Szomszedok beallitasa a perem kivetelevel
 		for(int i= 1; i<height-1; i++) {
 			for(int j = 1; j<width-1; j++) {
-				tiles[i][j].setNeighbor(tiles[i+1][j], tiles[i-1][j], tiles[i][j-1], tiles[i][j+1]);
+				tiles[i][j].setNeighbor(tiles[i-1][j], tiles[i+1][j], tiles[i][j-1], tiles[i][j+1]);
 				tiles[i][j].setRes(Modifier.REGULAR);
 			}
 		}
@@ -167,6 +167,7 @@ public class WareHouse {
 	public void AddWorker(Worker w, int x, int y) throws IOException { 
 		tiles[x][y].SetEntity(w);
 		w.SetTile(tiles[x][y]);
+		numOfWorkers++;
 	}
 
 	/**
@@ -195,6 +196,10 @@ public class WareHouse {
 		return numOfBoxes;
 	}
 
+	public int GetNumOfWorkers() {
+		return numOfWorkers;
+	}
+	
 	/**
 	 * A palyan levo ladak szamat csokkenti.
 	 * @throws IOException
@@ -219,5 +224,19 @@ public class WareHouse {
 	 */
 	public void reduceNumOfMovableBoxes() throws IOException {
 		numOfMovableBoxes--;
+	}
+	
+	
+	public String guiHandler() {
+		String s = "";
+		
+		for(int i= 1; i<height-1; i++) {
+			for(int j = 1; j<width-1; j++) {
+				s += tiles[i][j].Hello();
+			}
+		}
+		
+		
+		return s;
 	}
 }

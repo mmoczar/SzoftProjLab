@@ -47,4 +47,8 @@ public class Pillar extends Tile {
 	public void Hi() {
 		System.out.print("X");
 	}
+	
+	public String Hello() {
+		return "P";
+	}
 }

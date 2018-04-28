@@ -105,7 +105,13 @@ public class Worker extends Entity {
 	 * A munkas meghal.
 	 */
 	public void Die() {
-		//System.out.println(name + ": Meghaltam...");
+		tile = null;
+		try {
+			Game.getCurrentWH().reduceNumOfWorkers();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -125,7 +131,7 @@ public class Worker extends Entity {
 	}
 	
 	public String Hello() {
-		return "Worker";
+		return "W";
 	}
 	
 	public void setPower(double d) {

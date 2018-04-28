@@ -57,4 +57,9 @@ public class Target extends Tile {
 		if(entity == null) System.out.print("D");
 		else entity.Hi();
 	}
+	
+	public String Hello() {
+		if(entity != null) return entity.Hello();
+		return "D";
+	}
 }

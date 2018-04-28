@@ -93,6 +93,7 @@ public class Tile {
 		}
 			w.PushTileResistance(pushres);
 			//System.out.println("Sikeres Accept");
+			//Remove();
 			return true;
 		}
 		else return false;
@@ -180,7 +181,8 @@ public class Tile {
 	}
 
 	public String Hello() {
-		return "";
+		if(entity == null) return "T";
+		else return entity.Hello();
 	}
 
 	public TrapDoor getTD() {
