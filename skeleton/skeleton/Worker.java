@@ -8,7 +8,7 @@ public class Worker extends Entity {
 	/**
 	 * A jatekos neve
 	 */
-	private String name;
+	public String name;
 	/**
 	 * A munkas altal helyere tett ladak szama.
 	 */
@@ -51,7 +51,7 @@ public class Worker extends Entity {
 		int pow_temp = power;
 
 		if(temp.GetNbTile(d).Accept(this, d, w)){
-			System.out.println("Sikeres mozgas");
+			
 			temp.Remove(/*this*/);
 			
 			System.out.println(power);
@@ -60,7 +60,7 @@ public class Worker extends Entity {
 			return true;
 		}
 		else {
-			System.out.println("Sikertelen mozgas");
+			
 			return false;
 		} 
 		

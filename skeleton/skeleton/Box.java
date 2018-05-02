@@ -29,7 +29,7 @@ public class Box extends Entity {
 		Tile temp = tile;
 		
 		if(w.getPower() != 0 && temp.GetNbTile(d).Accept(this, d, w)){
-			System.out.println("Sikeres mozgas");
+			
 			int res;
 			switch (tile.getRes()) {
 				case REGULAR:
@@ -50,7 +50,7 @@ public class Box extends Entity {
 			return true;
 		}
 		else {
-			System.out.println("Sikertelen mozgas");
+			
 			return false;
 		} 
 	}

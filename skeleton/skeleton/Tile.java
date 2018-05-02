@@ -77,7 +77,6 @@ public class Tile {
 			entity = e;
 			
 			e.SetTile(this);
-			System.out.println("Sikeres Accept");
 			return true;
 		}
 		else return false;
