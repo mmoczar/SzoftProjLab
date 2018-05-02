@@ -46,7 +46,7 @@ public class TrapDoor extends Tile {
 	}
 	
 	public String Hello() {
-		return "C";
+		return "TrapDoor";
 	}
 	
 	// eloszor ralep az entitas, es ha nyitva van, akkor leejti

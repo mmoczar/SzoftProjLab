@@ -48,7 +48,7 @@ public class Switch extends Tile {
 	}
 	
 	public String Hello() {
-		return "S";
+		return "Switch";
 	}
 	@Override
 	public TrapDoor getTD() {

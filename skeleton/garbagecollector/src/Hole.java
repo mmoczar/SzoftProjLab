@@ -36,7 +36,4 @@ public class Hole extends Tile {
 	public void Hi() {
 		System.out.print("H");
 	}
-	public String Hello() {
-		return "H";
-	}
 }

@@ -77,8 +77,6 @@ public class Tile {
 			entity = e;
 			
 			e.SetTile(this);
-<<<<<<< HEAD
-=======
 			double pushres;
 			switch (res) {
 			case REGULAR:
@@ -95,8 +93,6 @@ public class Tile {
 		}
 			w.PushTileResistance(pushres);
 			//System.out.println("Sikeres Accept");
-			//Remove();
->>>>>>> f3b5c839106206baef98dc2367dbc8293450b07d
 			return true;
 		}
 		else return false;
@@ -184,8 +180,7 @@ public class Tile {
 	}
 
 	public String Hello() {
-		if(entity == null) return "T";
-		else return entity.Hello();
+		return "";
 	}
 
 	public TrapDoor getTD() {

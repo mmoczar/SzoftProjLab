@@ -59,13 +59,9 @@ public class Worker extends Entity {
 		double pow_temp = power;
 
 		if(temp.GetNbTile(d).Accept(this, d, w)){
-<<<<<<< HEAD
-			
-=======
 			//System.out.println(temp.GetNbTile(d).getRes());
 			
 			//System.out.println("Sikeres mozgas, sebesseg: "+(power/got_resistance));
->>>>>>> f3b5c839106206baef98dc2367dbc8293450b07d
 			temp.Remove(/*this*/);
 			
 			//System.out.println(power);
@@ -74,11 +70,7 @@ public class Worker extends Entity {
 			return true;
 		}
 		else {
-<<<<<<< HEAD
-			
-=======
 			//System.out.println("Sikertelen mozgas");
->>>>>>> f3b5c839106206baef98dc2367dbc8293450b07d
 			return false;
 		} 
 		
@@ -113,13 +105,7 @@ public class Worker extends Entity {
 	 * A munkas meghal.
 	 */
 	public void Die() {
-		tile = null;
-		try {
-			Game.getCurrentWH().reduceNumOfWorkers();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//System.out.println(name + ": Meghaltam...");
 	}
 
 	/**
@@ -139,7 +125,7 @@ public class Worker extends Entity {
 	}
 	
 	public String Hello() {
-		return "W";
+		return "Worker";
 	}
 	
 	public void setPower(double d) {
