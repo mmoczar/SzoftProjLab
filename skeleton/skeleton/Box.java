@@ -27,8 +27,13 @@ public class Box extends Entity {
 		Tile temp = tile;
 		
 		if(w.getPower() != 0 && temp.GetNbTile(d).Accept(this, d, w)){
+<<<<<<< HEAD
+			
+			int res;
+=======
 			//System.out.println("Sikeres mozgas");
 			double res;
+>>>>>>> f3b5c839106206baef98dc2367dbc8293450b07d
 			switch (tile.getRes()) {
 				case REGULAR:
 					res = 1;
@@ -51,7 +56,11 @@ public class Box extends Entity {
 			return true;
 		}
 		else {
+<<<<<<< HEAD
+			
+=======
 			//System.out.println("Sikertelen mozgas");
+>>>>>>> f3b5c839106206baef98dc2367dbc8293450b07d
 			return false;
 		} 
 	}

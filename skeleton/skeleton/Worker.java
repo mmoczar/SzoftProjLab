@@ -59,9 +59,13 @@ public class Worker extends Entity {
 		double pow_temp = power;
 
 		if(temp.GetNbTile(d).Accept(this, d, w)){
+<<<<<<< HEAD
+			
+=======
 			//System.out.println(temp.GetNbTile(d).getRes());
 			
 			//System.out.println("Sikeres mozgas, sebesseg: "+(power/got_resistance));
+>>>>>>> f3b5c839106206baef98dc2367dbc8293450b07d
 			temp.Remove(/*this*/);
 			
 			//System.out.println(power);
@@ -70,7 +74,11 @@ public class Worker extends Entity {
 			return true;
 		}
 		else {
+<<<<<<< HEAD
+			
+=======
 			//System.out.println("Sikertelen mozgas");
+>>>>>>> f3b5c839106206baef98dc2367dbc8293450b07d
 			return false;
 		} 
 		
