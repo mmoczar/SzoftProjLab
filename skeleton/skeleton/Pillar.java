@@ -48,6 +48,7 @@ public class Pillar extends Tile {
 		System.out.print("X");
 	}
 	
+	@Override
 	public String Hello() {
 		return "P";
 	}

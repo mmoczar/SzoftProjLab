@@ -64,6 +64,8 @@ public abstract class Entity {
 	public abstract String Hello();
 	
 	public abstract Target getTarget();
+	
+	public abstract Tile getTile();  //itt is meg lehet valositani kesobb
 
 	public abstract boolean ToPillar() throws IOException;
 	

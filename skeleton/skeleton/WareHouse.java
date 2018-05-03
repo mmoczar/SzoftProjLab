@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -36,6 +37,9 @@ public class WareHouse {
 	 * Mezok, melyek a raktarat alkotjak.
 	 */
 	private Tile[][] tiles;
+	
+	private List<Entity> boxes;
+	private List<Entity> workers;
 
 	/**
 	 * Az osztaly konstruktora.
@@ -43,6 +47,8 @@ public class WareHouse {
 	 * @throws IOException
 	 */
 	public WareHouse(ArrayList<String> map) throws IOException {
+		boxes = new ArrayList<Entity>();
+		workers = new ArrayList<Entity>();
 		String[] dimension = map.get(0).split(" ");
 		width = Integer.parseInt(dimension[0])+2;
 		height = Integer.parseInt(dimension[1])+2;
@@ -78,10 +84,13 @@ public class WareHouse {
 			String[] temp_tile = map.get(i).split(" ");
 			int x,y;
 			
-			y = Integer.parseInt(temp_tile[1]);
-			x = Integer.parseInt(temp_tile[2]);
+			x = Integer.parseInt(temp_tile[1]);
+			y = Integer.parseInt(temp_tile[2]);
 			
-			if(temp_tile[0].equals("Hole")) tiles[x][y] = new Hole();
+			if(temp_tile[0].equals("Hole")) {
+				tiles[x][y] = new Hole();
+				tiles[x][y].position = new Vec2D(x,y);
+			} 
 			
 			else if(temp_tile[0].equals("Trapdoor")) {
 				recenttrap = new TrapDoor();
@@ -112,6 +121,7 @@ public class WareHouse {
 				currentBox.SetTile(tiles[x][y]);
 				currentBox.setTarget(recenttarget);
 				recenttarget.AddBox(currentBox);
+				boxes.add(currentBox);
 				numOfBoxes++;
 				numOfMovableBoxes++;
 				tiles[x][y].position = new Vec2D(x,y);
@@ -167,6 +177,7 @@ public class WareHouse {
 	public void AddWorker(Worker w, int x, int y) throws IOException { 
 		tiles[x][y].SetEntity(w);
 		w.SetTile(tiles[x][y]);
+		workers.add(w);
 		numOfWorkers++;
 	}
 
@@ -198,6 +209,14 @@ public class WareHouse {
 
 	public int GetNumOfWorkers() {
 		return numOfWorkers;
+	}
+	
+	public List<Entity> getBoxes(){
+		return boxes;
+	}
+	
+	public List<Entity> getWorkers(){
+		return workers;
 	}
 	
 	/**

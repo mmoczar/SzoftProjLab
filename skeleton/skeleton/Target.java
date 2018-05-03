@@ -59,7 +59,6 @@ public class Target extends Tile {
 	}
 	
 	public String Hello() {
-		if(entity != null) return entity.Hello();
 		return "D";
 	}
 }

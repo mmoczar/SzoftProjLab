@@ -145,7 +145,9 @@ public class Box extends Entity {
 		return 0;
 	}
 
-
+	public Tile getTile() {
+		return tile;
+	}
 
 
 

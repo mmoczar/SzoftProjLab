@@ -175,5 +175,9 @@ public class Worker extends Entity {
 		// TODO Auto-generated method stub
 	    return numOfPlacedBoxes;
 	}
+	
+	public Tile getTile() {
+		return tile;
+	}
 
 }

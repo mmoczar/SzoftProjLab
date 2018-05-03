@@ -181,8 +181,7 @@ public class Tile {
 	}
 
 	public String Hello() {
-		if(entity == null) return "T";
-		else return entity.Hello();
+		return "T";	
 	}
 
 	public TrapDoor getTD() {
