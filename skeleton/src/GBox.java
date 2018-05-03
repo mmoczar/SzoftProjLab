@@ -10,6 +10,8 @@ public class GBox extends Drawable{
 	private Image img;
 	private int z_index;
 	
+	
+	
 	public GBox(Entity e){
 		super((e.getTile().pos().getX()-1)*100,(e.getTile().pos().getY()-1)*100,100,100);
 		ent = e;
@@ -19,13 +21,18 @@ public class GBox extends Drawable{
 		setFill(new ImagePattern(img));
 		resize(100,100);
 		//System.out.println(tile.pos().getX());
-		
+	
 		//setStroke(Color.BLACK);
 	}
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
+		tile = ent.getTile();
+		this.relocate((tile.pos().getX()-1)*100, (tile.pos().getY()-1)*100);
 		
+	}
+	
+	public boolean getAlive() {
+		return ent.getAlive();
 	}
 
 }

@@ -25,7 +25,8 @@ public class GWorker extends Drawable {
 	
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
+		tile = ent.getTile();
+		this.relocate((tile.pos().getX()-1)*100, (tile.pos().getY()-1)*100);
 		
 	}
 

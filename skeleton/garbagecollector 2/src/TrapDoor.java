@@ -29,11 +29,6 @@ public class TrapDoor extends Tile {
 		System.out.println(state);
 		return state;
 	}
-	
-	public boolean getState() {
-		//System.out.println(state);
-		return state;
-	}
 
 	/**
 	 * Csapoajto allapotanak atvaltasa
@@ -51,7 +46,7 @@ public class TrapDoor extends Tile {
 	}
 	
 	public String Hello() {
-		return "C";
+		return "TrapDoor";
 	}
 	
 	// eloszor ralep az entitas, es ha nyitva van, akkor leejti

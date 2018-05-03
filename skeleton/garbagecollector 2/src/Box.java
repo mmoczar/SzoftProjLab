@@ -11,6 +11,8 @@ public class Box extends Entity {
 	/**
 	 * A tolast megkezdo munkas.
 	 */
+	private Worker worker;
+	
 	private Tile tile;
 	
 
@@ -27,10 +29,8 @@ public class Box extends Entity {
 		Tile temp = tile;
 		
 		if(w.getPower() != 0 && temp.GetNbTile(d).Accept(this, d, w)){
-
 			//System.out.println("Sikeres mozgas");
 			double res;
-
 			switch (tile.getRes()) {
 				case REGULAR:
 					res = 1;
@@ -47,18 +47,13 @@ public class Box extends Entity {
 			w.setPower(w.getPower() - res);
 
 			temp.Remove(/*this*/);
-			
-			//TODO movable boxok kezel�se
-			
 			return true;
 		}
 		else {
-
+			//System.out.println("Sikertelen mozgas");
 			return false;
 		} 
 	}
-	
-	
 
 	// Dobozt elmozgatjak
 	/**
@@ -90,19 +85,16 @@ public class Box extends Entity {
 	}
 
 	public String Hello() {
-		return "B";
+		return "Box";
 	}
 	
 	// Doboz eltünésekor
 	@Override
 	public void reduceNum() throws IOException {
 
-		//TODO: WTF
+
 
 	}
-	
-	
-	
 	// Tile beállítása
 	/**
 	 * Beallitja azt a mezot, amelyiken a lada van.
@@ -131,15 +123,9 @@ public class Box extends Entity {
 		target = t;
 	}
 
-	
+	@Override
 	public void Die() {
-		try {
-			super.Die();
-			Game.getCurrentWH().reduceNumOfBoxes();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//System.out.println("Eltuntem...");
 	}
 
 	@Override
@@ -148,9 +134,7 @@ public class Box extends Entity {
 		return 0;
 	}
 
-	public Tile getTile() {
-		return tile;
-	}
+
 
 
 

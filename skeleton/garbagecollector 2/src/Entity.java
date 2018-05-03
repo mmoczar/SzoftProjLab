@@ -11,8 +11,6 @@ public abstract class Entity {
 	
 	protected double got_resistance = 0;
 	
-	protected boolean isAlive = true;
-	
 	public void PushTileResistance(double res) {
 		if (res > got_resistance)
 			got_resistance = res;
@@ -66,16 +64,8 @@ public abstract class Entity {
 	public abstract String Hello();
 	
 	public abstract Target getTarget();
-	
-	public abstract Tile getTile();  //itt is meg lehet valositani kesobb
 
 	public abstract boolean ToPillar() throws IOException;
 	
-	public void Die() {
-	isAlive = false;	
-	}
-	
-	public boolean getAlive() {
-		return isAlive;
-	}
+	public abstract void Die();
 }

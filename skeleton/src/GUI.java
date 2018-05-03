@@ -88,12 +88,24 @@ public class GUI extends Application {
 	
 	
 	private void onUpdate(Stage stage) {
+		
+		List<Drawable> removeable = new ArrayList<Drawable>();
+		
+		root.getChildren().clear();
+		
+		
+		
+		
 		for(Drawable dr: drawables) {
 			dr.draw();
-			root.getChildren().add(dr);
-			//System.out.println("T");
+			if(!dr.getAlive()) removeable.add(dr);
 		}
 		
+		for(Drawable rm: removeable) {
+			drawables.remove(rm);
+		}
+		
+		root.getChildren().addAll(drawables);
 		
 	}
 	
@@ -112,16 +124,15 @@ public class GUI extends Application {
            public void handle(KeyEvent event) {
         	   try {
                switch (event.getCode()) {
-                   case UP:    
-				
-					w1.Move(w1, Direction.LEFT, w1);
-					onUpdate(stage);
-                	   break;
-                   case DOWN:  //goSouth = true; break;
-                   case LEFT:  //goWest  = true; break;
-                   case RIGHT: //goEast  = true; break;
+                   case UP: w1.Move(w1, Direction.LEFT, w1);  System.out.println("asd");break;
+                   case DOWN: w1.Move(w1, Direction.RIGHT, w1); break;
+                   case LEFT:  w1.Move(w1, Direction.UP, w1); break;
+                   case RIGHT: w1.Move(w1, Direction.DOWN, w1); break;
                    case SHIFT: //running = true; break;
+                	   
+                	   
                }
+               onUpdate(stage);
         	   }
         	   catch (IOException e) {
 					// TODO Auto-generated catch block

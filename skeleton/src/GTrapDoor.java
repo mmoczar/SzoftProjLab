@@ -1,5 +1,6 @@
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -23,8 +24,12 @@ public class GTrapDoor extends Drawable {
 
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
-		
+	
+		if(tile.getState()) {
+			setFill(Color.TRANSPARENT);
+			System.out.println("Open");
+		} 
+		else setFill(new ImagePattern(img));
 	}
 
 }
