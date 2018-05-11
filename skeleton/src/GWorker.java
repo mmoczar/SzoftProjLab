@@ -26,7 +26,7 @@ public class GWorker extends Drawable {
 	@Override
 	public void draw() {
 		tile = ent.getTile();
-		this.relocate((tile.pos().getX()-1)*100, (tile.pos().getY()-1)*100);
+		this.relocate((tile.pos().getX()-1)*100,(tile.pos().getY()-1)*100);
 		
 	}
 

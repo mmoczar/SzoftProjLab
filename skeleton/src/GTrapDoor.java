@@ -1,9 +1,11 @@
+import com.sun.prism.paint.Color;
+
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
+@SuppressWarnings("restriction")
 public class GTrapDoor extends Drawable {
 	private Tile tile;
 	private Image img;
@@ -24,12 +26,20 @@ public class GTrapDoor extends Drawable {
 
 	@Override
 	public void draw() {
-	
 		if(tile.getState()) {
-			setFill(Color.TRANSPARENT);
-			System.out.println("Open");
-		} 
-		else setFill(new ImagePattern(img));
+			img = new Image("file:hole.jpg");
+			setFill(new ImagePattern(img));
+		}
+		else {
+			img = new Image("file:trapdoor.png");
+			setFill(new ImagePattern(img));
+		}
+		
+	}
+	
+	
+	public void change() {
+		
 	}
 
 }

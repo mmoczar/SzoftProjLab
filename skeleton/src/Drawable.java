@@ -8,8 +8,7 @@ public abstract class Drawable extends Rectangle {
 
 	public abstract void draw();
 	
-	
-	public boolean getAlive() {
-		return true;
+	public boolean getisDead() {
+		return false;
 	}
 }
