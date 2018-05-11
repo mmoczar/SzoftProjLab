@@ -1,168 +1,213 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage; 
 import javafx.scene.shape.Rectangle;
 
-public class GUI extends Application { 
+public class GUI extends Application implements Initializable  {
+
 	
-	public int size = 100;
+	//----- Status ------
+	private List<StatusLabel> workerstatus;
 	
-	public int height = 6;
-	public int width = 6;
-	int z = 100;
-	private static Game game;
+	//----- Workers
+	private List<Entity> workers;
+	//----- Kirajzolhato objektumok
+	private List<Drawable> drawables;
+	//----- Aktualis wh
+	private int cwh;
 	
-	private Pane root;
+
+	//Az ablak ket oldala
+	 @FXML private Pane gamePane;
+	 @FXML private Pane statusPane;
+	 
+	 
+	 
+	 //FXML fajlban benne van hogy ez akkor hivodik meg ha lenyomnak egy billentyut
+	 //AD-HOC megoldas eventhandlerrel kene
+	 @FXML
+	 public void Move(KeyEvent key) throws IOException {
+		 
+		if(workers != null) {
+		 
+		 switch(key.getCode()) {
+		 //Worker 1
+		 	case UP: workers.get(0).Move(null, Direction.LEFT, (Worker)workers.get(0)); break;
+		 	case DOWN: workers.get(0).Move(null, Direction.RIGHT, (Worker)workers.get(0));break;
+		 	case LEFT: workers.get(0).Move(null, Direction.UP, (Worker)workers.get(0));break;
+		 	case RIGHT: workers.get(0).Move(null, Direction.DOWN, (Worker)workers.get(0));break;
+		 	
+		 //Worker 2
+		 	case W: System.out.println("UP");break;
+		 	case S: System.out.println("UP");break;
+		 	case A: System.out.println("UP");break;
+		 	case D: System.out.println("UP");break;
+		 
+		 //Worker 3
+		 	case U: System.out.println("UP");break;
+		 	case K: System.out.println("UP");break;
+		 	case J: System.out.println("UP");break;
+		 	case L: System.out.println("UP");break;
+		default:
+			break;
+		 	
+		 }
+		onUpdate();
+		updateStatus();
+	 }
+	 }
 	
-	
-	private Image tile_img = new Image("file:tile.jpg");
-	private Image box_img = new Image("file:box.png");
-	private Image target_img = new Image("file:target.png");
-	private Image hole_img = new Image("file:hole.jpg");
-	private Image pillar_img = new Image("file:pillar.jpg");
-	
-	
-	private Parent createContent() {
-		root = new Pane();
-		root.setPrefSize(600, 600);
+	 
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		
-		AnimationTimer timer = new AnimationTimer() {
-			@Override
-			public void handle(long now) {
-			
-				if(Game.getCurrentWH().GetNumOfWorkers() == 0) this.stop();
-				System.out.println(Game.getCurrentWH().GetNumOfBoxes());
-				onUpdate();
-			}	
-		};
+	}
+
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
 		
-		timer.start();
-		
-		return root;
 	}
 	
 	
-	private void onUpdate() {
-	    RePaint(Game.getCurrentWH().guiHandler());
-	    //System.out.println(z);
+	//Inicializalas
+	public void initGame() {
 		
-	}
-	
-   @Override 
-   public void start(Stage stage) throws FileNotFoundException, IOException, InterruptedException { 
-	   
-	   Worker w1 = new Worker("Mario",10);
-	   Game.getCurrentWH().AddWorker(w1, 1, 2);
-	   stage.setScene(new Scene(createContent()));
-	   
-	   stage.getScene().setOnKeyPressed(e -> {
-		   try {
-           if (e.getCode() == KeyCode.LEFT) {
+		//Eloszor lekerjuk a munkas listat
+		workers = Game.getCurrentWH().getWorkers();
+		//Utana a rajzolhato dolgoknak csinalunk egy listet
+		drawables = new ArrayList<Drawable>();
+		WareHouse wh = Game.getCurrentWH();
+		
+		
+		//Vegigmegyunk a wh-n es minden tile-hoz letrehozzuk a megfelelo GTile-t
+		for(int y = 1; y < Game.getCurrentWH().GetDimension().getX()-1; y++) {
+			for(int x = 1; x < Game.getCurrentWH().GetDimension().getY()-1; x++) {
+				Tile tile = wh.GetTileAt(new Vec2D(y,x));
 				
-				w1.Move(w1, Direction.LEFT, w1);
-           } 
-           else if (e.getCode() == KeyCode.RIGHT) {
-				w1.Move(w1, Direction.RIGHT, w1);
-          } 
-           else if (e.getCode() == KeyCode.UP) {
-				w1.Move(w1, Direction.UP, w1);
-          }  
-          
-           else if (e.getCode() == KeyCode.DOWN) {
-				w1.Move(w1, Direction.DOWN, w1);
-          } 
-	   		}
-		   catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				switch(tile.Hello()) {
+				case"T": drawables.add(new GTile(tile));
+				    break;
+				case"H": drawables.add(new GHole(tile));	
+					break;
+				case"P": drawables.add(new GPillar(tile));	
+				  	break;
+				case"S": drawables.add(new GSwitch(tile));	
+			  		break;
+				case"D": drawables.add(new GTarget(tile));	
+		  			break;
+				case"C": drawables.add(new GTrapDoor(tile));	
+	  				break;
+				default: 
+					System.out.print(tile.Hello());
+					break;
+				}
+				
+				
 			}
-       });
-	   
-	   
-	  
-	   stage.show();
-	   
-   }      
-   public static void main(String args[]) throws FileNotFoundException, IOException{ 
-	   game = new Game("game.txt");
-	   
-	   game.NewGame(0);
-	   
-      launch(args); 
-   } 
-   
-   public void RePaint(String s) {
-	   
-	   int x = 0;
-	   int y = 0;
-	   int k = 0;
-	   
-	  
-	   root.getChildren().clear();
-	   //System.out.println(s);
-	   
-	   for(int i= 0; i<height; i++) {
-			for(int j = 0; j<width; j++) {
-				Rectangle rectangle = new Rectangle(100,100);
-				rectangle.relocate(x,y);  
-			      
-			      
-			      switch(s.charAt(k)) {
-			      case'H': 
-			    	  rectangle.setFill(new ImagePattern(hole_img));
-			    	  break;
-			      case'D': 
-			    	  rectangle.setFill(new ImagePattern(target_img));
-			    	  break;
-			      case'S': 
-			    	  rectangle.setFill(Color.YELLOW);
-			    	  break;
-			      case'C': 
-			    	  rectangle.setFill(Color.ORANGE);
-			    	  break;
-			      case'P': 
-			    	  rectangle.setFill(new ImagePattern(pillar_img));
-			    	  break;
-			      case'B': 
-			    	  rectangle.setFill(new ImagePattern(box_img));
-			    	  break;
-			      case'W': 
-			    	  rectangle.setFill(Color.BLUE);
-			    	  break;
-			      case'T': 
-			    	  
-			    	  rectangle.setFill(new ImagePattern(tile_img));
-			    	  break;
-			      default:
-			    	  
-			    	  break;
-			      }
-			      
-			      rectangle.setStroke(Color.BLACK);
-			      x += size;
-			      k++;
-			      root.getChildren().add(rectangle);
-			}
-			
-			y += size;
-			x = 0;
 		}
-   }
-   
+		//Boxok hozzadasa
+		for(Entity b: Game.getCurrentWH().getBoxes()) {
+			drawables.add(new GBox(b));
+		}
+		//Workerek hozza adasa a rajzolhato abjektumomk listajahoz
+		for(Entity w: Game.getCurrentWH().getWorkers()) {
+			drawables.add(new GWorker(w));
+		}
+		
+		//A gamePane-nek adjuk az osszeset es igy mar ki lesz rajzolva
+		gamePane.getChildren().addAll(drawables);
+		
+	}
+	
+	//Ujrarajzolas
+	public void onUpdate() {
+		for(Drawable dr: drawables) {
+			dr.draw();
+			//Ez majd kell a klyukralepeseknel
+			//if(!dr.getAlive()) removeable.add(dr);
+		}
+	}
+	
+	// Uj jatek 
+	public void newGame() throws IOException{
+		
+		Game.ClearGame();
+		cwh = DialogBox.display("New Game", null);
+		Game.NewGame(cwh);
+		
+		DialogBox.display("Worker Number", null);
+		
+		initGame();
+		
+		initStatus();
+	}
+
+	//------------------- Eredmeny jelzes-------------------------
+
+	private void initStatus() {
+		
+		int numWork = Game.getCurrentWH().GetNumOfWorkers();
+		workerstatus = new ArrayList<StatusLabel>();
+
+		
+		for(int i = 0; i < numWork; i++) {
+			Worker act = (Worker) Game.getCurrentWH().getWorkers().get(i);
+			workerstatus.add(new StatusLabel(act));
+		}
+		statusPane.getChildren().addAll(workerstatus);
+	}
+	
+	private void updateStatus() {
+		for(StatusLabel st: workerstatus) {
+			st.update();
+		}
+	}
+
+	
+	// StatusLabel class az eredmenyekhez
+	public class StatusLabel extends Label{
+		private Worker worker;
+		public StatusLabel(Worker w){
+			super(w.getName() + " " + w.getScore());
+			worker = w;
+		}
+		public void update() {
+			super.setText(worker.getName() + " " + worker.getScore());
+		}
+	}
+	
+	//----------------------------------------------------------------------
+	
    
 } 

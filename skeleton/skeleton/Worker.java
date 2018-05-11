@@ -178,5 +178,9 @@ public class Worker extends Entity {
 	public Tile getTile() {
 		return tile;
 	}
+	
+	public String getName() {
+		return name;
+	}
 
 }

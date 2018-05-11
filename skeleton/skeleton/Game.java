@@ -16,7 +16,7 @@ public class Game {
 	/**
 	 * A palya fajlokbol beolvasott palyak tarolasa.
 	 */
-	private WareHouse[] warehouses;
+	private static WareHouse[] warehouses;
 	/**
 	 * Raktarak szama.
 	 */
@@ -72,12 +72,16 @@ public class Game {
 	 * Kilistazza a beolvasott palyakat.
 	 * @throws IOException
 	 */
-	public void ShowWHs() throws IOException {
+	public static int ShowWHs() throws IOException {
+		/*
 		for(int i = 0; i < warehouses.length; i++) {
 			System.out.println("--------------- WH ID: " + i + " ---------------");
 			warehouses[i].draw();
 			System.out.println("");
 		}
+		*/
+		
+		return numOfWHs;
 		
 	}
 	
@@ -86,7 +90,7 @@ public class Game {
 	 * @param wh raktar, mellyel uj jatek indul
 	 * @throws IOException
 	 */
-	public void NewGame(int wh) throws IOException { 
+	public static void NewGame(int wh) throws IOException { 
 		currentWarehouse = warehouses[wh];
 		
 		//w1.Move(null, Direction.DOWN);
@@ -113,5 +117,12 @@ public class Game {
 	 * @throws IOException
 	 */
 
+	
+	
+	public static void ClearGame() {
+		currentWarehouse.ClearWorkers();
+		currentWarehouse = null;
+		
+	}
 	
 }

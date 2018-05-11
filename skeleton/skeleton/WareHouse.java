@@ -258,4 +258,8 @@ public class WareHouse {
 		
 		return s;
 	}
+	
+	public void ClearWorkers() {
+		workers.clear();
+	}
 }
