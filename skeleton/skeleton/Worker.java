@@ -57,7 +57,7 @@ public class Worker extends Entity {
 	public boolean Move(Entity e, Direction d, Worker w) throws IOException {
 		Tile temp = tile;
 		double pow_temp = power;
-
+		if(e == w) return false;
 		if(temp.GetNbTile(d).Accept(this, d, w)){
 
 			temp.Remove(/*this*/);

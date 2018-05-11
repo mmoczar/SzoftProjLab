@@ -11,4 +11,8 @@ public abstract class Drawable extends Rectangle {
 	public boolean getisDead() {
 		return false;
 	}
+
+	public boolean getAlive() {
+		return true;
+	}
 }

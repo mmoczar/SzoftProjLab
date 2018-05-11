@@ -63,7 +63,7 @@ public class DialogBox {
 				for(int i = 0; i<nw; i++) {
 					Worker w;
 					
-						w = new Worker(i + " Player",5);
+						w = new Worker(i+1 + ". Player",5);
 						Game.getCurrentWH().AddWorker(w, 1, i+1);
 					
 				}

@@ -24,7 +24,7 @@ public class Game {
 	/**
 	 * A fajl, ahol a jatekokat taroljuk.
 	 */
-	private String WHfile; //a fajl, ahol a jatekokat tartoljuk.
+	private static String WHfile; //a fajl, ahol a jatekokat tartoljuk.
 	/**
 	 * Az osztaly konstruktora, ami beolvassa kulso fajlokbol a palyakat.
 	 * @param file a kivalasztott palya
@@ -39,7 +39,7 @@ public class Game {
 	 * Beolvassa a raktarakat.
 	 * @throws IOException
 	 */
-	private void readWHs() throws IOException {
+	private static void readWHs() throws IOException {
 		try (BufferedReader br = new BufferedReader(new FileReader(WHfile))) {
 		    String line;
 		    
@@ -119,9 +119,11 @@ public class Game {
 
 	
 	
-	public static void ClearGame() {
+	public static void ClearGame() throws IOException {
 		currentWarehouse.ClearWorkers();
 		currentWarehouse = null;
+		warehouses = null;
+		readWHs();
 		
 	}
 	

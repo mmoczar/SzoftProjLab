@@ -40,6 +40,12 @@ public class GUI extends Application implements Initializable  {
 	
 	//----- Workers
 	private List<Entity> workers;
+	
+	private Worker w1;
+	private Worker w2;
+	private Worker w3;
+	
+	
 	//----- Kirajzolhato objektumok
 	private List<Drawable> drawables;
 	//----- Aktualis wh
@@ -56,34 +62,23 @@ public class GUI extends Application implements Initializable  {
 	 //AD-HOC megoldas eventhandlerrel kene
 	 @FXML
 	 public void Move(KeyEvent key) throws IOException {
-		 
-		if(workers != null) {
+		 System.out.println(w1);
+		if(w1.getAlive()) {
 		 
 		 switch(key.getCode()) {
 		 //Worker 1
-		 	case UP: workers.get(0).Move(null, Direction.LEFT, (Worker)workers.get(0)); break;
-		 	case DOWN: workers.get(0).Move(null, Direction.RIGHT, (Worker)workers.get(0));break;
-		 	case LEFT: workers.get(0).Move(null, Direction.UP, (Worker)workers.get(0));break;
-		 	case RIGHT: workers.get(0).Move(null, Direction.DOWN, (Worker)workers.get(0));break;
-		 	
-		 //Worker 2
-		 	case W: System.out.println("UP");break;
-		 	case S: System.out.println("UP");break;
-		 	case A: System.out.println("UP");break;
-		 	case D: System.out.println("UP");break;
-		 
-		 //Worker 3
-		 	case U: System.out.println("UP");break;
-		 	case K: System.out.println("UP");break;
-		 	case J: System.out.println("UP");break;
-		 	case L: System.out.println("UP");break;
+		 	case UP: w1.Move(null, Direction.LEFT, w1); break;
+		 	case DOWN: w1.Move(null, Direction.RIGHT, (Worker)w1);break;
+		 	case LEFT: w1.Move(null, Direction.UP, (Worker)w1);break;
+		 	case RIGHT: w1.Move(null, Direction.DOWN, (Worker)w1);break;
 		default:
 			break;
 		 	
 		 }
+		
+	 }
 		onUpdate();
 		updateStatus();
-	 }
 	 }
 	
 	 
@@ -152,11 +147,22 @@ public class GUI extends Application implements Initializable  {
 	
 	//Ujrarajzolas
 	public void onUpdate() {
+		List<Drawable> removeable = new ArrayList<Drawable>();
+	
+		gamePane.getChildren().clear();
 		for(Drawable dr: drawables) {
-			dr.draw();
-			//Ez majd kell a klyukralepeseknel
-			//if(!dr.getAlive()) removeable.add(dr);
+			if(!dr.getAlive()) removeable.add(dr);
+			else dr.draw();
+			
 		}
+		
+		for(Drawable rm: removeable) {
+			drawables.remove(rm);
+		}
+		
+		gamePane.getChildren().addAll(drawables);
+		
+		
 	}
 	
 	// Uj jatek 
@@ -171,7 +177,19 @@ public class GUI extends Application implements Initializable  {
 		initGame();
 		
 		initStatus();
+		
+		initWorkerEvent();
 	}
+
+	private void initWorkerEvent() {
+		int l = workers.size();
+		System.out.println(l);
+		if(l >= 1) w1 = (Worker) workers.get(0);
+		if(l >= 2) w2 = (Worker) workers.get(1);
+		if(l >= 3) w3 = (Worker) workers.get(2);
+		
+	}
+
 
 	//------------------- Eredmeny jelzes-------------------------
 
@@ -199,11 +217,14 @@ public class GUI extends Application implements Initializable  {
 	public class StatusLabel extends Label{
 		private Worker worker;
 		public StatusLabel(Worker w){
-			super(w.getName() + " " + w.getScore());
+			super(w.getName() + ": " + w.getScore());
 			worker = w;
+			
+			this.setStyle("-fx-font-weight: bold;"
+					+ "-fx-font-size: 30;");
 		}
 		public void update() {
-			super.setText(worker.getName() + " " + worker.getScore());
+			super.setText(worker.getName() + ": " + worker.getScore());
 		}
 	}
 	

@@ -26,15 +26,14 @@ public class GBox extends Drawable{
 	}
 	@Override
 	public void draw() {
-		//isDead = ent.getisDead();
 		tile = ent.getTile();
 		this.relocate((tile.pos().getX()-1)*100,(tile.pos().getY()-1)*100);
 
 	}
 	
 	@Override
-	public boolean getisDead() {
-		return isDead;
+	public boolean getAlive() {
+		return ent.getAlive();
 	}
 
 }

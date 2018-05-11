@@ -29,5 +29,10 @@ public class GWorker extends Drawable {
 		this.relocate((tile.pos().getX()-1)*100,(tile.pos().getY()-1)*100);
 		
 	}
+	
+	@Override
+	public boolean getAlive() {
+		return ent.getAlive();
+	}
 
 }
