@@ -182,6 +182,7 @@ public class GUI extends Application implements Initializable  {
 		
 	}
 	
+	
 	//Ujrarajzolas
 	public void onUpdate() {
 		
