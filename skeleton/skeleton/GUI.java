@@ -79,6 +79,41 @@ public class GUI extends Application implements Initializable  {
 		 }
 		
 	 }
+	if(w2 != null)
+	{
+		if(w2.getAlive()) {
+			 
+			 switch(key.getCode()) {
+			 //Worker 1
+			 	case W: w2.Move(null, Direction.LEFT, w2); break;
+			 	case S: w2.Move(null, Direction.RIGHT, (Worker)w2);break;
+			 	case A: w2.Move(null, Direction.UP, (Worker)w2);break;
+			 	case D: w2.Move(null, Direction.DOWN, (Worker)w2);break;
+			default:
+				break;
+			 	
+			 }
+			
+		 }
+	}
+	
+	if(w3 != null)
+	{
+		if(w3.getAlive()) {
+			 
+			 switch(key.getCode()) {
+			 //Worker 1
+			 	case U: w3.Move(null, Direction.LEFT, w3); break;
+			 	case J: w3.Move(null, Direction.RIGHT, (Worker)w3);break;
+			 	case H: w3.Move(null, Direction.UP, (Worker)w3);break;
+			 	case K: w3.Move(null, Direction.DOWN, (Worker)w3);break;
+			default:
+				break;
+			 	
+			 }
+			
+		 }
+	}	
 		onUpdate();
 		updateStatus();
 	 }
@@ -238,6 +273,12 @@ public class GUI extends Application implements Initializable  {
 		}
 		public void update() {
 			super.setText(worker.getName() + ": " + worker.getScore());
+			if(!worker.getAlive())
+			{
+				this.setStyle("-fx-text-fill: red;"
+						+ "-fx-font-weight: bold;"
+						+ "-fx-font-size: 30;");
+			}
 		}
 	}
 	
