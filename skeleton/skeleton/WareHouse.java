@@ -262,4 +262,26 @@ public class WareHouse {
 	public void ClearWorkers() {
 		workers.clear();
 	}
+	public void RemoveBox(Box b) {
+		boxes.remove(b);
+	}
+
+	public boolean hasMovableBox() {
+		boolean retval = false;
+		int i = 0;
+		for (Entity b : boxes) {
+			/*retval = retval
+					&& ( b.getTile().GetNbTile(Direction.DOWN).Hello().equals("P") && b.getTile().GetNbTile(Direction.RIGHT).Hello().equals("P")
+					|| b.getTile().GetNbTile(Direction.DOWN).Hello().equals("P") && b.getTile().GetNbTile(Direction.LEFT).Hello().equals("P")
+					|| b.getTile().GetNbTile(Direction.UP).Hello().equals("P") && b.getTile().GetNbTile(Direction.LEFT).Hello().equals("P")
+					|| b.getTile().GetNbTile(Direction.UP).Hello().equals("P") && b.getTile().GetNbTile(Direction.RIGHT).Hello().equals("P"));
+					*/
+			System.out.println("wh: " + ((Box)b).canMove + " " + i);
+			i++;
+			if (((Box)b).canMove) {
+				retval = true;
+			}
+		}
+		return retval;
+	}
 }

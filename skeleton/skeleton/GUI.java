@@ -187,7 +187,8 @@ public class GUI extends Application implements Initializable  {
 	public void onUpdate() {
 		
 		gamePane.getChildren().clear();
-		if(Game.getCurrentWH().GetNumOfWorkers()==0) {
+		if(Game.getCurrentWH().GetNumOfWorkers()==0
+				|| !Game.getCurrentWH().hasMovableBox()) {
 			gamePane.getChildren().add(new Label("Game Over"));
 		}
 		else {
