@@ -228,6 +228,12 @@ public class GUI extends Application implements Initializable  {
 		
 		initWorkerEvent();
 	}
+	
+	// Szabalyok kiirasa
+	public void gameRule() throws IOException
+	{
+		DialogBox.display("Game Rule", null);
+	}
 
 	private void initWorkerEvent() {
 		int l = workers.size();

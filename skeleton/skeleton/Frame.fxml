@@ -21,6 +21,7 @@
           <items>
             <MenuItem mnemonicParsing="false" onAction="#newGame" text="NewGame" />
             <MenuItem mnemonicParsing="false" onAction="#quit" text="Quit" />
+            <MenuItem mnemonicParsing="false" onAction="#gameRule" text="GameRule" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
