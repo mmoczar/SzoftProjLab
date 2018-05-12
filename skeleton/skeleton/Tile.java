@@ -66,9 +66,9 @@ public class Tile {
 	 * @return	ide mozoghat-e az entity
 	 * @throws IOException
 	 */
-	public boolean Accept(Entity e) throws IOException {
-		return true;
-		
+	public boolean Accept() throws IOException {
+		if(entity == null) return true;
+		return false;
 	}
 	
 	//Worker vagy Box keri ezt az Acceptet

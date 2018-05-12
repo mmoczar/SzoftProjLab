@@ -15,7 +15,7 @@ public class Main extends Application {
 		 game.NewGame(0);
 		
 		   Parent root = FXMLLoader.load(getClass().getResource("Frame.fxml"));
-		   primaryStage.setTitle("Hello World");
+		   primaryStage.setTitle("Killer Sokoba");
 		   
 		   Scene rootScene = new Scene(root);
 		   rootScene.getRoot().requestFocus();

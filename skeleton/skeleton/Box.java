@@ -152,6 +152,11 @@ public class Box extends Entity {
 		return tile;
 	}
 
-
+	public boolean CanMove() {
+	
+		
+		return false;
+		
+	}
 
 }

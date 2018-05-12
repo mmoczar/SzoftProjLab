@@ -13,6 +13,11 @@ public class Pillar extends Tile {
 	public Pillar() throws IOException {
 
 	}
+	
+	@Override
+	public boolean Accept() {
+		return false;
+	}
 
 	/**
 	 * Az ososztaly Accept fuggvenyet definialja felul oly modon, hogy sosem fogad el ra erkezo entitast.
@@ -28,15 +33,6 @@ public class Pillar extends Tile {
 		return false;
 	}
 
-	/*
-	public boolean WorkerToPillar(Worker w) throws IOException {
-		Szkeleton.kiir(">", "Pillar", "Accept()");
-		System.out.println("Ezt a playert fel kell kanalazni");
-		Szkeleton.kiir("<", "Pillar", "Accept(): true");
-		return true;
-	}*/
-
-	// Nem tartózkodhaz rajta enitity
 	public Entity GetEntityAt() {
 		return null;
 	}

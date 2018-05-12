@@ -64,7 +64,7 @@ public class GUI extends Application implements Initializable  {
 	 //AD-HOC megoldas eventhandlerrel kene
 	 @FXML
 	 public void Move(KeyEvent key) throws IOException {
-		 System.out.println(w1);
+		 //System.out.println(w1);
 		if(w1.getAlive()) {
 		 
 		 switch(key.getCode()) {
@@ -149,9 +149,15 @@ public class GUI extends Application implements Initializable  {
 	
 	//Ujrarajzolas
 	public void onUpdate() {
+		
+		gamePane.getChildren().clear();
+		if(Game.getCurrentWH().GetNumOfWorkers()==0) {
+			gamePane.getChildren().add(new Label("Game Over"));
+		}
+		else {
 		List<Drawable> removeable = new ArrayList<Drawable>();
 	
-		gamePane.getChildren().clear();
+		
 		for(Drawable dr: drawables) {
 			if(!dr.getAlive()) removeable.add(dr);
 			else dr.draw();
@@ -166,7 +172,7 @@ public class GUI extends Application implements Initializable  {
 		right_status.setText("Workers: "+ Game.getCurrentWH().GetNumOfWorkers());
 		left_status.setText("Movable boxes: "+Game.getCurrentWH().GetNumOfBoxes());
 		gamePane.getChildren().addAll(drawables);
-		
+		}
 		
 		
 	}
@@ -201,6 +207,7 @@ public class GUI extends Application implements Initializable  {
 
 	private void initStatus() {
 		
+		statusPane.getChildren().clear();
 		int numWork = Game.getCurrentWH().GetNumOfWorkers();
 		workerstatus = new ArrayList<StatusLabel>();
 
@@ -235,6 +242,10 @@ public class GUI extends Application implements Initializable  {
 	}
 	
 	//----------------------------------------------------------------------
+	
+	public void quit() {
+		System.exit(0);
+	}
 	
    
 } 

@@ -19,7 +19,6 @@ public class GWorker extends Drawable {
 		setFill(new ImagePattern(img));
 		resize(100,100);
 		//System.out.println(tile.pos().getX());
-		
 		//setStroke(Color.BLACK);
 	}
 	
