@@ -60,13 +60,6 @@ public class GUI extends Application implements Initializable  {
 	 */
 	@FXML private Pane statusPane;
 	 
-<<<<<<< HEAD
-	 //Label - footer
-	@FXML private Label right_status;
-	@FXML private Label left_status;
-=======
->>>>>>> 3bbdaafb1fdbbcbe182f5a12ebfbafae5b053782
-	 
 	//FXML fajlban benne van hogy ez akkor hivodik meg ha lenyomnak egy billentyut
 	//AD-HOC megoldas eventhandlerrel kene
 	@FXML
@@ -80,6 +73,8 @@ public class GUI extends Application implements Initializable  {
 		 	case DOWN: w1.Move(null, Direction.RIGHT, (Worker)w1);break;
 		 	case LEFT: w1.Move(null, Direction.UP, (Worker)w1);break;
 		 	case RIGHT: w1.Move(null, Direction.DOWN, (Worker)w1);break;
+		 	case N: w1.setTileMod(Modifier.OIL);break;
+		 	case M: w1.setTileMod(Modifier.HONEY);break;
 		default:
 			break;
 		 	
@@ -96,6 +91,8 @@ public class GUI extends Application implements Initializable  {
 			 	case S: w2.Move(null, Direction.RIGHT, (Worker)w2);break;
 			 	case A: w2.Move(null, Direction.UP, (Worker)w2);break;
 			 	case D: w2.Move(null, Direction.DOWN, (Worker)w2);break;
+			 	case E: w2.setTileMod(Modifier.OIL);break;
+			 	case R: w2.setTileMod(Modifier.HONEY);break;
 			default:
 				break;
 			 	
@@ -114,6 +111,8 @@ public class GUI extends Application implements Initializable  {
 			 	case J: w3.Move(null, Direction.RIGHT, (Worker)w3);break;
 			 	case H: w3.Move(null, Direction.UP, (Worker)w3);break;
 			 	case K: w3.Move(null, Direction.DOWN, (Worker)w3);break;
+			 	case I: w3.setTileMod(Modifier.OIL);break;
+			 	case O: w3.setTileMod(Modifier.HONEY);break;
 			default:
 				break;
 			 	

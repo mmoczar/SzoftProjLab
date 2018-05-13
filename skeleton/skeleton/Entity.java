@@ -95,4 +95,8 @@ public abstract class Entity {
 		return true;
 	}
 	
+	public void setTileMod(Modifier m) {
+		
+	}
+	
 }

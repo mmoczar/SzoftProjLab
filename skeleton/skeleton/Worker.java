@@ -156,6 +156,10 @@ public class Worker extends Entity {
 	public Target getTarget() {
 		return null;
 	}
+	
+	public void setTileMod(Modifier m) {
+		tile.setRes(m);
+	}
 
 
 
