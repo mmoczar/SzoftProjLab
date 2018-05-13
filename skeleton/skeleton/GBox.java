@@ -1,6 +1,8 @@
 import java.io.IOException;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.StrokeType;
 
 /**
  * A lada grafikus megjeleniteset valositja meg.
@@ -30,10 +32,10 @@ public class GBox extends Drawable{
 
 		img = new Image("file:box.png");
 		setFill(new ImagePattern(img));
-		resize(100,100);
-		//System.out.println(tile.pos().getX());
 		
-		//setStroke(Color.BLACK);
+		setStroke(Color.web(ent.getTarget().getColorCode()));
+		setStrokeType(StrokeType.INSIDE);
+		setStrokeWidth(2);
 	}
 	
 	/**

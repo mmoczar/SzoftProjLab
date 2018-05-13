@@ -60,9 +60,12 @@ public class GUI extends Application implements Initializable  {
 	 */
 	@FXML private Pane statusPane;
 	 
+<<<<<<< HEAD
 	 //Label - footer
 	@FXML private Label right_status;
 	@FXML private Label left_status;
+=======
+>>>>>>> 3bbdaafb1fdbbcbe182f5a12ebfbafae5b053782
 	 
 	//FXML fajlban benne van hogy ez akkor hivodik meg ha lenyomnak egy billentyut
 	//AD-HOC megoldas eventhandlerrel kene
@@ -253,7 +256,6 @@ public class GUI extends Application implements Initializable  {
 	 */
 	private void initWorkerEvent() {
 		int l = workers.size();
-		System.out.println(l);
 		if(l >= 1) w1 = (Worker) workers.get(0);
 		if(l >= 2) w2 = (Worker) workers.get(1);
 		if(l >= 3) w3 = (Worker) workers.get(2);

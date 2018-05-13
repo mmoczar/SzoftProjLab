@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A dobozok céljait reprezentáló osztály, ha olyan doboz érkezik rá, ami hozzá van rendelve,
@@ -9,11 +10,12 @@ public class Target extends Tile {
 
 	// A célhez rendelt dobozok tárolója
 	private ArrayList<Entity> boxes = new ArrayList<Entity>();
-
+	private int colorCode;
 
 	// Default konstruktor
 	public Target() throws IOException {
-
+		Random rand = new Random();
+		colorCode = rand.nextInt(99999)+100000;
 	}
 
 	// Doboz hozzárendelése a célhoz
@@ -39,11 +41,11 @@ public class Target extends Tile {
 		else {
 			if(entity.Move(e, d, w)) {
 				e.SetTile(this);
-				//System.out.println("Sikeres Accept");
-				//System.out.println("Sikeres Target");
+				if(e.getTarget() == this) {
 				entity = null;
 				e.Die();
 				w.AddPlacedBox();
+				}
 				return true;
 			}
 			else return false;
@@ -51,7 +53,9 @@ public class Target extends Tile {
 			
 	}
 
-	// Debug fv
+	public String getColorCode() {
+		return "" +colorCode;
+	}
 
 	
 	public String Hello() {
