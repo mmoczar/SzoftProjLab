@@ -1,6 +1,4 @@
 import java.io.IOException;
-
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
 public abstract class Drawable extends Rectangle {

@@ -10,8 +10,7 @@ public class Target extends Tile {
 	// A célhez rendelt dobozok tárolója
 	private ArrayList<Entity> boxes = new ArrayList<Entity>();
 
-	private WareHouse wh;
-	
+
 	// Default konstruktor
 	public Target() throws IOException {
 
@@ -53,10 +52,7 @@ public class Target extends Tile {
 	}
 
 	// Debug fv
-	public void Hi() {
-		if(entity == null) System.out.print("D");
-		else entity.Hi();
-	}
+
 	
 	public String Hello() {
 		return "D";

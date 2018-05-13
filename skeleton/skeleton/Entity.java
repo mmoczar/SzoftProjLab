@@ -19,7 +19,9 @@ public abstract class Entity {
 	}
 	
 	
-	public abstract int getScore();
+	public int getScore() {
+		return 0;
+	}
 	
 	
 	/**
@@ -57,11 +59,12 @@ public abstract class Entity {
 	 * Csokkenti az entitasok szamat.
 	 * @throws IOException
 	 */
-	public abstract void reduceNum() throws IOException;
+	public void reduceNum() throws IOException{
+		
+	}
 	
 	//debug
 	
-	public abstract void Hi();
 	
 	public abstract String Hello();
 	

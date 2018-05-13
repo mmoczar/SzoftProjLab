@@ -13,9 +13,6 @@ public class Worker extends Entity {
 	 * A munkas altal helyere tett ladak szama.
 	 */
 	private int numOfPlacedBoxes = 0;
-
-	//TODO kitalalni, hogy mire jo.
-	private Entity byEntity;
 	Tile tile;
 	private double power;
 	
@@ -30,7 +27,6 @@ public class Worker extends Entity {
 		power = pow;
 	}
 
-	
 	
 	/**
 	 * Tile beallitasa
@@ -59,11 +55,7 @@ public class Worker extends Entity {
 		double pow_temp = power;
 		if(e == w) return false;
 		if(temp.GetNbTile(d).Accept(this, d, w)){
-
-			temp.Remove(/*this*/);
-			
-			//System.out.println(power);
-			
+			temp.Remove();
 			power = pow_temp;
 			return true;
 		}
@@ -118,8 +110,6 @@ public class Worker extends Entity {
 	 */
 	public void AddPlacedBox() {
 		numOfPlacedBoxes++;
-		//System.out.println(name + " - betolt egy dobozt a megfelelo targetre");
-		//System.out.println("Pontja: "+ numOfPlacedBoxes);
 	}
 
 	/**

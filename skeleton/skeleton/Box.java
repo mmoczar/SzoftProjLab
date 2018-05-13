@@ -1,5 +1,5 @@
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 /**
  * Ladat reprezentalo osztaly.
@@ -8,14 +8,12 @@ public class Box extends Entity {
 
 
 	boolean canMove = true;
-	private ArrayList<Box> visited = new ArrayList<>();
-
 	/**
 	 * A ladahoz tartozo celmezo.
 	 */
 	private Target target;
 	/**
-	 * A tolast megkezdo munkas.
+	 * Az aktualis mezo.
 	 */
 	private Tile tile;
 	
@@ -34,7 +32,6 @@ public class Box extends Entity {
 		
 		if(w.getPower() != 0 && temp.GetNbTile(d).Accept(this, d, w)){
 
-			//System.out.println("Sikeres mozgas");
 			double res;
 
 			switch (tile.getRes()) {
@@ -53,10 +50,6 @@ public class Box extends Entity {
 			w.setPower(w.getPower() - res);
 
 			temp.Remove(/*this*/);
-			
-			//this.MovableCheck();
-			System.out.println("move: " + canMove);
-			
 			return true;
 		}
 		else {
@@ -89,28 +82,14 @@ public class Box extends Entity {
 
 		return true;
 	}
-
-	// Debug fv
-	@Override
-	public void Hi() {
-		System.out.print("B");
-	}
-
+	
+	/**
+	 * Grafikus feluletnek adja vissza a tipust
+	 */
 	public String Hello() {
 		return "B";
 	}
-	
-	// Doboz eltünésekor
-	@Override
-	public void reduceNum() throws IOException {
-
-		//TODO: WTF
-
-	}
-	
-	
-	
-	// Tile beállítása
+		
 	/**
 	 * Beallitja azt a mezot, amelyiken a lada van.
 	 * @param t beallitando mezo
@@ -118,49 +97,52 @@ public class Box extends Entity {
 	public void SetTile(Tile t) {
 		tile = t;	
 	}
-
-	// Oszlopnak ütközik
 	/**
-	 * Oszlopnak utkozik.
+	 * Oszlopnak utkozeskor van e teendo a boxnak(meghalhat-e).
 	 * @return hamis
 	 */
-	@Override
 	public boolean ToPillar() {
 		return false;
 	}
 
+	/**
+	 * Visszadja a box targetjet.
+	 */
 	@Override
 	public Target getTarget(){
 		return target;
 	}
-	
+	/**
+	 * Beallitja a box targetjet.
+	 * @param t Target
+	 */
 	public void setTarget(Target t){
 		target = t;
 	}
 
-	
+	/**
+	 * Doboz eltunik(meghal).
+	 */
 	public void Die() {
 		try {
 			super.Die();
-			Game.getCurrentWH().reduceNumOfBoxes();
+			Game.getCurrentWH().reduceNumOfMovableBoxes();
 			Game.getCurrentWH().RemoveBox(this);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-	@Override
-	public int getScore() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	/**
+	 * Visszadja a Tile-t amin a box van.
+	 */
 	public Tile getTile() {
 		return tile;
 	}
 
-
+	/**
+	 * Azt vizsgalja, hogy a box mozgathato-e meg.
+	 */
 	public boolean MovableCheck() throws IOException {
 		//Ha mar tudjuk, hogy nem tud mozogni, nem kell csinálni semmit.
 
@@ -176,21 +158,27 @@ public class Box extends Entity {
 		left = !tLEFT.Accept(Direction.LEFT);
 		right = !tRIGHT.Accept(Direction.RIGHT);
 		
-		System.out.println(up +" " + down + " "+ left + ""+ right + " ");
 		
 		//sarokban vagyunk?
 		if ((up && right) || (up && left) || (down && right) || (down && left)) {
 			canMove = false;
 			Game.getCurrentWH().reduceNumOfMovableBoxes();
-			System.out.println("sarokban");
 			return false;
 		}
 		
 		return true;
 	}
 
+	/**
+	 * Visszadja, hogy a box mozgathato-e meg.
+	 */
 	public boolean getCanMove() {
 		return canMove;
 	}
+
+
+
+
+
 
 }

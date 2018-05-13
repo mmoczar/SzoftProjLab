@@ -1,36 +1,17 @@
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage; 
-import javafx.scene.shape.Rectangle;
+
 
 public class GUI extends Application implements Initializable  {
 
@@ -205,9 +186,6 @@ public class GUI extends Application implements Initializable  {
 			drawables.remove(rm);
 		}
 		
-		
-		right_status.setText("Workers: "+ Game.getCurrentWH().GetNumOfWorkers());
-		left_status.setText("Movable boxes: "+Game.getCurrentWH().GetNumOfBoxes());
 		gamePane.getChildren().addAll(drawables);
 		}
 		

@@ -68,7 +68,9 @@ public class Tile {
 	 * @throws IOException
 	 */
 	public boolean Accept(Direction d) throws IOException {
+		//Ha a tile on egy korabbi entity volt, lekérdezzuk hogy tud-e mozogni
 		if(entity != null) return entity.getCanMove();
+		//Ha nem volt entity akkor oda lehet mozogni
 		return true;
 	}
 	
@@ -167,18 +169,6 @@ public class Tile {
 	}
 
 
-	/**
-	 * Debug fv
-	 */
-	public void Hi() {
-		if(entity == null) System.out.print(" ");
-		else entity.Hi();
-	}
-
-	/**
-	 * Debug fv
-	 * @return
-	 */
 	public Vec2D pos() {
 		return position;
 	}

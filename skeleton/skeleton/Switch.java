@@ -23,7 +23,6 @@ public class Switch extends Tile {
 		if(entity == null || entity.Move(e, d, w)) {
 			entity = e;
 			e.SetTile(this);
-			//System.out.println("Sikeres Accept");
 			
 			if(entity.SwitchAction() && !trapdoor.GetState()) {
 				trapdoor.SetState(true);
@@ -33,18 +32,9 @@ public class Switch extends Tile {
 				trapdoor.SetState(false);
 			}
 			else trapdoor.SetState(false);
-			
-			System.out.println(trapdoor.GetState());
 			return true;
 		}
 		else return false;
-	}
-	
-
-
-	// Debug fuggveny
-	public void Hi() {
-		System.out.print("S");
 	}
 	
 	public String Hello() {

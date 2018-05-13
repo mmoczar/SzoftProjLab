@@ -8,14 +8,7 @@ import java.util.List;
  * A palyat reprezentalo osztaly.
  */
 public class WareHouse {
-	/**
-	 * L�d�k sz�ma.
-	 */
-	private int numOfBoxes = 0;
-	/**
-	 * Celmezok szama.
-	 */
-	private int numOfTargets = 0;
+
 	/**
 	 * Munkasok szama.
 	 */
@@ -107,7 +100,6 @@ public class WareHouse {
 			else if(temp_tile[0].equals("Target")) {
 				recenttarget = new Target();
 				tiles[x][y] = recenttarget;
-				numOfTargets++;
 				tiles[x][y].position = new Vec2D(x,y);
 			}
 			else if(temp_tile[0].equals("Pillar")) {
@@ -122,7 +114,6 @@ public class WareHouse {
 				currentBox.setTarget(recenttarget);
 				recenttarget.AddBox(currentBox);
 				boxes.add(currentBox);
-				numOfBoxes++;
 				numOfMovableBoxes++;
 				tiles[x][y].position = new Vec2D(x,y);
 			}
@@ -154,17 +145,6 @@ public class WareHouse {
 		}
 		
 		
-	}
-	/**
-	 * Kirajzol a konzolra.
-	 */
-	public void draw() {
-		for(int i= height-1; i>=0; i--) {
-			for(int j = 0; j<width; j++) {
-				tiles[i][j].Hi();
-				}
-			System.out.println("");
-			}
 	}
 
 	/**
@@ -203,8 +183,8 @@ public class WareHouse {
 	 * A raktarban levo ladak szama.
 	 * @return ladak szama
 	 */
-	public int GetNumOfBoxes() {
-		return numOfBoxes;
+	public int GetNumOfMoveableBoxes() {
+		return numOfMovableBoxes;
 	}
 
 	public int GetNumOfWorkers() {
@@ -219,15 +199,6 @@ public class WareHouse {
 		return workers;
 	}
 	
-	/**
-	 * A palyan levo ladak szamat csokkenti.
-	 * @throws IOException
-	 */
-	public void reduceNumOfBoxes() throws IOException {
-		numOfBoxes--;
-		
-	}
-
 	/**
 	 * A palyan levo munkasok szamat csokkenti.
 	 * @throws IOException
@@ -268,16 +239,9 @@ public class WareHouse {
 
 	public boolean hasMovableBox() {
 		boolean retval = false;
-		int i = 0;
+
 		for (Entity b : boxes) {
-			/*retval = retval
-					&& ( b.getTile().GetNbTile(Direction.DOWN).Hello().equals("P") && b.getTile().GetNbTile(Direction.RIGHT).Hello().equals("P")
-					|| b.getTile().GetNbTile(Direction.DOWN).Hello().equals("P") && b.getTile().GetNbTile(Direction.LEFT).Hello().equals("P")
-					|| b.getTile().GetNbTile(Direction.UP).Hello().equals("P") && b.getTile().GetNbTile(Direction.LEFT).Hello().equals("P")
-					|| b.getTile().GetNbTile(Direction.UP).Hello().equals("P") && b.getTile().GetNbTile(Direction.RIGHT).Hello().equals("P"));
-					*/
-			System.out.println("wh: " + ((Box)b).canMove + " " + i);
-			i++;
+			
 			if (((Box)b).canMove) {
 				retval = true;
 			}

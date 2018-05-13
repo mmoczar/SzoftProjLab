@@ -10,10 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	@Override 
 	   public void start(Stage primaryStage) throws FileNotFoundException, IOException, InterruptedException { 
-		   
-		Game game = new Game("game.txt");
-		 game.NewGame(0);
-		
+		 new Game("game.txt"); 
 		   Parent root = FXMLLoader.load(getClass().getResource("Frame.fxml"));
 		   primaryStage.setTitle("Killer Sokoba");
 		   
@@ -23,13 +20,8 @@ public class Main extends Application {
 	       primaryStage.setScene(rootScene);
 	       primaryStage.show();
 	   }      
-	   public static void main(String args[]) throws FileNotFoundException, IOException{ 
-		 
-		   
-		   
+	   public static void main(String args[]) throws FileNotFoundException, IOException{ 	 
+		  
 		   launch(args);
-		 
-		 
-		 
 	   } 
 }

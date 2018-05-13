@@ -120,7 +120,7 @@ public class Game {
 	
 	
 	public static void ClearGame() throws IOException {
-		currentWarehouse.ClearWorkers();
+		if(currentWarehouse != null)currentWarehouse.ClearWorkers();
 		currentWarehouse = null;
 		warehouses = null;
 		readWHs();
