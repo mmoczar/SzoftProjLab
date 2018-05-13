@@ -12,45 +12,68 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage; 
 
-
+/**
+ * A grafikus felulet megjeleniteseert felelos.
+ */
 public class GUI extends Application implements Initializable  {
 
-	
-	//----- Status ------
+	/**
+	 * A munkasok allapotai.
+	 */
 	private List<StatusLabel> workerstatus;
 	
-	//----- Workers
+	/**
+	 * A munkasok.
+	 */
 	private List<Entity> workers;
 	
+	/**
+	 * Elso munkas.
+	 */
 	private Worker w1;
+	/**
+	 * Masodik munkas.
+	 */
 	private Worker w2;
+	/**
+	 * Harmadik munkas.
+	 */
 	private Worker w3;
 	
-	
-	//----- Kirajzolhato objektumok
+	/**
+	 * Kirajzolhato objektumok.
+	 */
 	private List<Drawable> drawables;
-	//----- Aktualis wh
+	
+	/**
+	 * Aktualis raktar.
+	 */
 	private int cwh;
 	
 
-	//Az ablak ket oldala
-	 @FXML private Pane gamePane;
-	 @FXML private Pane statusPane;
+	/**
+	 * A jatekpanel
+	 */
+	@FXML private Pane gamePane;
+	/**
+	 * A statuszpanel
+	 */
+	@FXML private Pane statusPane;
 	 
 	 //Label - footer
-	 @FXML private Label right_status;
-	 @FXML private Label left_status;
+	@FXML private Label right_status;
+	@FXML private Label left_status;
 	 
-	 //FXML fajlban benne van hogy ez akkor hivodik meg ha lenyomnak egy billentyut
-	 //AD-HOC megoldas eventhandlerrel kene
-	 @FXML
-	 public void Move(KeyEvent key) throws IOException {
-		 //System.out.println(w1);
+	//FXML fajlban benne van hogy ez akkor hivodik meg ha lenyomnak egy billentyut
+	//AD-HOC megoldas eventhandlerrel kene
+	@FXML
+	public void Move(KeyEvent key) throws IOException {
+		//System.out.println(w1);
 		if(w1.getAlive()) {
 		 
-		 switch(key.getCode()) {
-		 //Worker 1
-		 	case UP: w1.Move(null, Direction.LEFT, w1); break;
+		switch(key.getCode()) {
+		//Worker 3
+			case UP: w1.Move(null, Direction.LEFT, w1); break;
 		 	case DOWN: w1.Move(null, Direction.RIGHT, (Worker)w1);break;
 		 	case LEFT: w1.Move(null, Direction.UP, (Worker)w1);break;
 		 	case RIGHT: w1.Move(null, Direction.DOWN, (Worker)w1);break;
@@ -65,7 +88,7 @@ public class GUI extends Application implements Initializable  {
 		if(w2.getAlive()) {
 			 
 			 switch(key.getCode()) {
-			 //Worker 1
+			 //Worker 2
 			 	case W: w2.Move(null, Direction.LEFT, w2); break;
 			 	case S: w2.Move(null, Direction.RIGHT, (Worker)w2);break;
 			 	case A: w2.Move(null, Direction.UP, (Worker)w2);break;
@@ -83,7 +106,7 @@ public class GUI extends Application implements Initializable  {
 		if(w3.getAlive()) {
 			 
 			 switch(key.getCode()) {
-			 //Worker 1
+			 //Worker 3
 			 	case U: w3.Move(null, Direction.LEFT, w3); break;
 			 	case J: w3.Move(null, Direction.RIGHT, (Worker)w3);break;
 			 	case H: w3.Move(null, Direction.UP, (Worker)w3);break;
@@ -99,7 +122,7 @@ public class GUI extends Application implements Initializable  {
 		updateStatus();
 	 }
 	
-	 
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -113,7 +136,9 @@ public class GUI extends Application implements Initializable  {
 	}
 	
 	
-	//Inicializalas
+	/**
+	 * A jatek inicializalasa.
+	 */
 	public void initGame() {
 		
 		//Eloszor lekerjuk a munkas listat
@@ -164,7 +189,10 @@ public class GUI extends Application implements Initializable  {
 	}
 	
 	
-	//Ujrarajzolas
+	/**
+	 * Az ujrarajzolast valositja meg.
+	 * @throws IOException
+	 */
 	public void onUpdate() throws IOException {
 		
 		gamePane.getChildren().clear();
@@ -192,14 +220,17 @@ public class GUI extends Application implements Initializable  {
 		
 	}
 	
-	// Uj jatek 
+	/**
+	 * Uj jatek letrehozasat valositja meg. 
+	 * @throws IOException
+	 */
 	public void newGame() throws IOException{
 		
 		Game.ClearGame();
-		cwh = DialogBox.display("New Game", null);
+		cwh = DialogBox.display("New Game");
 		Game.NewGame(cwh);
 		
-		DialogBox.display("Worker Number", null);
+		DialogBox.display("Worker Number");
 		
 		initGame();
 		
@@ -208,12 +239,18 @@ public class GUI extends Application implements Initializable  {
 		initWorkerEvent();
 	}
 	
-	// Szabalyok kiirasa
+	/**
+	 * Meghivja a dialogusablakot a jatekszaballyal.
+	 * @throws IOException
+	 */
 	public void gameRule() throws IOException
 	{
-		DialogBox.display("Game Rule", null);
+		DialogBox.display("Game Rule");
 	}
-
+	
+	/**
+	 * Munkasok inicializalasa.
+	 */
 	private void initWorkerEvent() {
 		int l = workers.size();
 		System.out.println(l);
@@ -225,7 +262,10 @@ public class GUI extends Application implements Initializable  {
 
 
 	//------------------- Eredmeny jelzes-------------------------
-
+	
+	/**
+	 * Statuszpanel inicializalasa.
+	 */
 	private void initStatus() {
 		
 		statusPane.getChildren().clear();
@@ -240,6 +280,9 @@ public class GUI extends Application implements Initializable  {
 		statusPane.getChildren().addAll(workerstatus);
 	}
 	
+	/**
+	 * Statusz frissitese.
+	 */
 	private void updateStatus() {
 		for(StatusLabel st: workerstatus) {
 			st.update();
@@ -248,8 +291,18 @@ public class GUI extends Application implements Initializable  {
 
 	
 	// StatusLabel class az eredmenyekhez
+	/**
+	 * Statuszpanel megvalositasa, szarmaztatas a Label osztalybol.
+	 */
 	public class StatusLabel extends Label{
+		/**
+		 * Munkas.
+		 */
 		private Worker worker;
+		/**
+		 * Az osztaly konstruktora.
+		 * @param w munkas
+		 */
 		public StatusLabel(Worker w){
 			super(w.getName() + ": " + w.getScore());
 			worker = w;
@@ -257,6 +310,9 @@ public class GUI extends Application implements Initializable  {
 			this.setStyle("-fx-font-weight: bold;"
 					+ "-fx-font-size: 30;");
 		}
+		/**
+		 * Allapot frissitese.
+		 */
 		public void update() {
 			super.setText(worker.getName() + ": " + worker.getScore());
 			if(!worker.getAlive())
@@ -270,6 +326,9 @@ public class GUI extends Application implements Initializable  {
 	
 	//----------------------------------------------------------------------
 	
+	/**
+	 * Kilepes, bezarja a programot.
+	 */
 	public void quit() {
 		System.exit(0);
 	}

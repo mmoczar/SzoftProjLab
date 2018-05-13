@@ -8,13 +8,30 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-//Univerzalis dialog
+/**
+ * Univerzalis dialogusablakot valositja meg.
+ */
 public class DialogBox {
+	/**
+	 * Az aktualis raktar.
+	 */
 	private static int cwh = 0;
+	/**
+	 * Az aktualis lista a dialogusablakban.
+	 */
 	private static ListView<String> list;
+	/**
+	 * Szovegdoboz, amelyben a szabaly leirasa van.
+	 */
 	private static TextArea rules;
 	
-	public static int display(String title, String message) throws IOException {
+	/**
+	 * A dialogusablak megjeleniteset valositja meg.
+	 * @param title a dialogusablak cime
+	 * @return az aktualis raktar sorszama
+	 * @throws IOException
+	 */
+	public static int display(String title) throws IOException {
 		Stage window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);

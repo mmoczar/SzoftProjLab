@@ -5,13 +5,19 @@ public abstract class Drawable extends Rectangle {
 	public Drawable(int i, int j, int k, int l) {
 		super(i,j,k,l);
 	}
-
-	public abstract void draw() throws IOException;
 	
-	public boolean getisDead() {
-		return false;
+	/**
+	 * Az entitas frissiteseert felelos.
+	 * @throws IOException
+	 */
+	public void draw() throws IOException {
+		
 	}
-
+	
+	/**
+	 * Visszaadja, hogy az entitas el-e.
+	 * @return az entitas el-e
+	 */
 	public boolean getAlive() {
 		return true;
 	}

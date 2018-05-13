@@ -1,12 +1,23 @@
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
-
-
+/**
+ * A csapoajto grafikus megjeleniteset valositja meg.
+ */
 public class GTrapDoor extends Drawable {
+	/**
+	 * A mezo, ahol van.
+	 */
 	private Tile tile;
+	/**
+	 * A csapoajtot reprezentalo kep.
+	 */
 	private Image img;
-
+	
+	/**
+	 * Az osztaly konstruktora.
+	 * @param tile a mezo, ahol van
+	 */
 	public GTrapDoor(Tile tile){
 		
 		super((tile.pos().getX()-1)*100,(tile.pos().getY()-1)*100,100,100);
@@ -15,7 +26,10 @@ public class GTrapDoor extends Drawable {
 		setFill(new ImagePattern(img));
 		resize(100,100);
 	}
-
+	
+	/**
+	 * A csapoajto kirajzolasa az allapotatol fuggoen
+	 */
 	@Override
 	public void draw() {
 		if(tile.getState()) {
