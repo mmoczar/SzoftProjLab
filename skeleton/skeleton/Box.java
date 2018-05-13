@@ -54,8 +54,7 @@ public class Box extends Entity {
 
 			temp.Remove(/*this*/);
 			
-			//TODO movable boxok kezel�se
-			this.MovableCheck();
+			//this.MovableCheck();
 			System.out.println("move: " + canMove);
 			
 			return true;
@@ -162,21 +161,8 @@ public class Box extends Entity {
 	}
 
 
-	public boolean CanMove() {
-		try {
-			MovableCheck();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("b: " + canMove);
-		return canMove;
-	}
-
-	public void MovableCheck() throws IOException {
+	public boolean MovableCheck() throws IOException {
 		//Ha mar tudjuk, hogy nem tud mozogni, nem kell csinálni semmit.
-		if (!canMove)
-			return;
 
 		// lekerdezzuk a szomszedos tileokat
 		Tile tUP = tile.GetNbTile(Direction.UP);
@@ -184,52 +170,27 @@ public class Box extends Entity {
 		Tile tLEFT = tile.GetNbTile(Direction.LEFT);
 		Tile tRIGHT = tile.GetNbTile(Direction.RIGHT);
 
+		boolean up,down,left,right;
+		up = !tUP.Accept(Direction.UP);
+		down = !tDOWN.Accept(Direction.DOWN);
+		left = !tLEFT.Accept(Direction.LEFT);
+		right = !tRIGHT.Accept(Direction.RIGHT);
+		
+		System.out.println(up +" " + down + " "+ left + ""+ right + " ");
+		
 		//sarokban vagyunk?
-		if ((tUP.Hello().equals("P") && (tRIGHT.Hello().equals("P"))) ||
-				(tUP.Hello().equals("P") && (tLEFT.Hello().equals("P"))) ||
-				(tDOWN.Hello().equals("P") && (tRIGHT.Hello().equals("P"))) ||
-				((tDOWN.Hello().equals("P")) && (tLEFT.Hello().equals("P")))
-				) {
+		if ((up && right) || (up && left) || (down && right) || (down && left)) {
 			canMove = false;
 			Game.getCurrentWH().reduceNumOfMovableBoxes();
 			System.out.println("sarokban");
-			return;
+			return false;
 		}
-
-		//lekerdezzuk a szomszedos entityket is.
-		Entity eUP = tile.GetEntityAt(Direction.UP);
-		Entity eDOWN = tile.GetEntityAt(Direction.DOWN);
-		Entity eLEFT = tile.GetEntityAt(Direction.LEFT);
-		Entity eRIGHT = tile.GetEntityAt(Direction.RIGHT);
-
-
-		boolean bUP = true, bDOWN = true, bLEFT = true, bRIGHT = true;
-
-		//ha box van a szomszedban, megkerdezzuk tole, o tud e mozogni. (itt a rekurzio :) )
-
-		if (eUP != null) {
-			if (eUP.Hello().equals("B")) {
-				visited.add((Box)eUP);
-				bUP = ((Box)eUP).CanMove();
-			}
-		}
-		if (eDOWN != null) {
-			if (eDOWN.Hello().equals("B")) bDOWN = ((Box) eDOWN).CanMove();
-		}
-		if (eLEFT != null) {
-			if (eLEFT.Hello().equals("B")) bLEFT = ((Box)eLEFT).CanMove();
-		}
-		if (eRIGHT != null) {
-			if (eRIGHT.Hello().equals("B")) bRIGHT = ((Box)eRIGHT).CanMove();
-		}
-
-		//ha semerre sem tudunk mozogni, akkor csokkentunk.
-		if(!bUP && !bDOWN && !bLEFT && !bRIGHT) {
-			canMove = false;
-			Game.getCurrentWH().reduceNumOfMovableBoxes();
-			return;
-		}
+		
+		return true;
 	}
 
+	public boolean getCanMove() {
+		return canMove;
+	}
 
 }

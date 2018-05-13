@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -25,9 +27,10 @@ public class GBox extends Drawable{
 		//setStroke(Color.BLACK);
 	}
 	@Override
-	public void draw() {
+	public void draw() throws IOException {
 		tile = ent.getTile();
 		this.relocate((tile.pos().getX()-1)*100,(tile.pos().getY()-1)*100);
+		ent.MovableCheck();
 
 	}
 	

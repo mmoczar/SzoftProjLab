@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
@@ -6,7 +8,7 @@ public abstract class Drawable extends Rectangle {
 		super(i,j,k,l);
 	}
 
-	public abstract void draw();
+	public abstract void draw() throws IOException;
 	
 	public boolean getisDead() {
 		return false;

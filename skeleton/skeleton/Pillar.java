@@ -15,7 +15,7 @@ public class Pillar extends Tile {
 	}
 	
 	@Override
-	public boolean Accept() {
+	public boolean Accept(Direction d) {
 		return false;
 	}
 

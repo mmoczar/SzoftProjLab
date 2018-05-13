@@ -62,13 +62,14 @@ public class Tile {
 
 	/**
 	 * Kezeli a ra erkezo entityket
+	 * @param up 
 	 * @param e	az entity
 	 * @return	ide mozoghat-e az entity
 	 * @throws IOException
 	 */
-	public boolean Accept() throws IOException {
-		if(entity == null) return true;
-		return false;
+	public boolean Accept(Direction d) throws IOException {
+		if(entity != null) return entity.getCanMove();
+		return true;
 	}
 	
 	//Worker vagy Box keri ezt az Acceptet
@@ -95,7 +96,7 @@ public class Tile {
 			w.PushTileResistance(pushres);
 			//System.out.println("Sikeres Accept");
 			//Remove();
-
+			//entity.MovableCheck();
 			return true;
 		}
 		else return false;

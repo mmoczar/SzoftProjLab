@@ -78,4 +78,18 @@ public abstract class Entity {
 	public boolean getAlive() {
 		return isAlive;
 	}
+	
+
+
+	public boolean MovableCheck() throws IOException {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+
+	public boolean getCanMove() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
 }

@@ -184,7 +184,7 @@ public class GUI extends Application implements Initializable  {
 	
 	
 	//Ujrarajzolas
-	public void onUpdate() {
+	public void onUpdate() throws IOException {
 		
 		gamePane.getChildren().clear();
 		if(Game.getCurrentWH().GetNumOfWorkers()==0
