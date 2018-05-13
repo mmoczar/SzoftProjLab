@@ -213,7 +213,6 @@ public class GUI extends Application implements Initializable  {
 
 	private void initWorkerEvent() {
 		int l = workers.size();
-		System.out.println(l);
 		if(l >= 1) w1 = (Worker) workers.get(0);
 		if(l >= 2) w2 = (Worker) workers.get(1);
 		if(l >= 3) w3 = (Worker) workers.get(2);
