@@ -41,11 +41,11 @@ public class Target extends Tile {
 		else {
 			if(entity.Move(e, d, w)) {
 				e.SetTile(this);
-				//System.out.println("Sikeres Accept");
-				//System.out.println("Sikeres Target");
+				if(e.getTarget() == this) {
 				entity = null;
 				e.Die();
 				w.AddPlacedBox();
+				}
 				return true;
 			}
 			else return false;
