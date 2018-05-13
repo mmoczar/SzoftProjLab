@@ -43,6 +43,10 @@ public class GWorker extends Drawable {
 		
 	}
 	
+	/**
+	 * Visszaadja, hogy az entitas el-e.
+	 * @return az entitas el-e
+	 */
 	@Override
 	public boolean getAlive() {
 		return ent.getAlive();

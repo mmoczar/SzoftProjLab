@@ -60,8 +60,20 @@ public class GUI extends Application implements Initializable  {
 	 */
 	@FXML private Pane statusPane;
 	 
+<<<<<<< HEAD
+=======
+	 //Label - footer
+	@FXML private Label right_status;
+	@FXML private Label left_status;
+	 
+>>>>>>> 30dc4f77aa2baa32023f61ff731bbeffeefbc3d1
 	//FXML fajlban benne van hogy ez akkor hivodik meg ha lenyomnak egy billentyut
 	//AD-HOC megoldas eventhandlerrel kene
+	/**
+	 * A mozgast kezeli.
+	 * @param key keyevent
+	 * @throws IOException
+	 */
 	@FXML
 	public void Move(KeyEvent key) throws IOException {
 		//System.out.println(w1);
