@@ -11,15 +11,17 @@ public class GTarget extends Drawable {
 	 * A celmezot reprezentalo kep.
 	 */
 	private Image img;
-<<<<<<< HEAD
 	
 	/**
 	 * Az osztaly konstruktora.
 	 * @param tile a mezo, ahol van
 	 */
-=======
 	private Target target;
->>>>>>> 3bbdaafb1fdbbcbe182f5a12ebfbafae5b053782
+
+	/**
+	 * Az osztaly konstruktora.
+	 * @param tile a mezo, ahol van
+	 */
 	public GTarget(Tile tile){
 		
 		super((tile.pos().getX()-1)*100,(tile.pos().getY()-1)*100,100,100);
