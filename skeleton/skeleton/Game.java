@@ -54,13 +54,11 @@ public class Game {
 		    int i = 0;
 		    while ((line = br.readLine()) != null) {
 		    	if(line.equals("+")) {
-		    		//System.out.println("Létrehozom");
 		    		warehouses[i] = new WareHouse(map);
 		    		map.clear();
 		    		i++;
 		    	}
 		    	else {
-		    		//System.out.println("Adatok...");
 		    		map.add(line);
 		    	}
 		    }
@@ -73,14 +71,6 @@ public class Game {
 	 * @throws IOException
 	 */
 	public static int ShowWHs() throws IOException {
-		/*
-		for(int i = 0; i < warehouses.length; i++) {
-			System.out.println("--------------- WH ID: " + i + " ---------------");
-			warehouses[i].draw();
-			System.out.println("");
-		}
-		*/
-		
 		return numOfWHs;
 		
 	}

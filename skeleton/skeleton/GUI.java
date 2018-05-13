@@ -37,9 +37,6 @@ public class GUI extends Application implements Initializable  {
 	 @FXML private Pane gamePane;
 	 @FXML private Pane statusPane;
 	 
-	 //Label - footer
-	 @FXML private Label right_status;
-	 @FXML private Label left_status;
 	 
 	 //FXML fajlban benne van hogy ez akkor hivodik meg ha lenyomnak egy billentyut
 	 //AD-HOC megoldas eventhandlerrel kene
